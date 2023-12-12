@@ -12,6 +12,9 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
+// Website
+use App\Http\Controllers\Website\PagesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +26,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth'])->group(function () {
+// Route::get('/', function () {
+//     return view('pages/index');
+// });
+
+// Route::get('/home', [PagesController::class,'index'])->name('home');
+// Route::get('/', [PagesController::class,'index']);
+
+Route::controller(PagesController::class)->name('website.')->group(function () {
+    Route::get('/', 'index')->name('home');
+    Route::get('/address', 'address');
+});
+Route::prefix('admin')->middleware(['auth'])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index']);
 
@@ -54,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('tag-change-status', [TagController::class,'change_status'])->name('tag.change.status');
 
 
-        Route::resource('vendor/product', ProductController::class);
+    Route::resource('vendor/product', ProductController::class);
 
 
 
