@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Apps;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\City;
+use Illuminate\Support\Str;
 class CityController extends Controller
 {
    /**
@@ -23,7 +24,8 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('pages.apps.city.index');
+        $city = City::all();
+        return view('pages.apps.city.index', compact('city'));
     }
 
     /**
@@ -39,7 +41,7 @@ class CityController extends Controller
 
     City::create([
         'name' => $request->input('name'),
-
+        'slug' => Str::slug($request->input('name'))
     ]);
 
     return redirect()->route('city.index')->with('success', ' City uploaded successfully');
@@ -81,7 +83,7 @@ class CityController extends Controller
         $city = City::find($id);
 
         $city->name = $request->input('name');
-
+        $city->slug = Str::slug($request->input('name'));
 
         $city->save();
 

@@ -15,7 +15,7 @@ class AreaController extends Controller
     public function index()
     {
         $data['city'] = City::all();
-        $data['area'] = Area::get();
+        $data['area'] = Area::with('city')->get();
         return view('pages.apps.area.index', compact('data'));
     }
 
@@ -39,7 +39,7 @@ class AreaController extends Controller
         ]);
 
 
-        City::create([
+        Area::create([
             'name' => $request->input('name'),
             'city_id'=>$request->input('city_id'),
 
@@ -65,9 +65,8 @@ class AreaController extends Controller
      */
     public function edit(string $id)
     {
-        $data['area'] = Area::get();
-
-        $data['city'] = City::find($id);
+        $data['city'] = City::all();
+        $data['area'] = Area::with('city')->where('id',$id)->first();
         return view('pages.apps.area.edit', compact('data'));
     }
 
