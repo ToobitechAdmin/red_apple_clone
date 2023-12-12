@@ -70,3 +70,15 @@ Breadcrumbs::for('category.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('Categories', route('category.index'));
 });
+Breadcrumbs::for('area.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Area', route('area.index'));
+});
+Breadcrumbs::for('city.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('City', route('city.index'));
+});
+Breadcrumbs::for('state.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('State', route('state.index'));
+});

@@ -7,6 +7,9 @@ use App\Http\Controllers\Apps\ProductController;
 use App\Http\Controllers\Apps\SliderController;
 use App\Http\Controllers\Apps\CategoryController;
 use App\Http\Controllers\Apps\TagController;
+use App\Http\Controllers\Apps\CityController;
+use App\Http\Controllers\Apps\AreaController;
+use App\Http\Controllers\Apps\StateController;
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\DashboardController;
@@ -67,6 +70,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('/tags', TagController::class);
     Route::get('tag-change-status', [TagController::class,'change_status'])->name('tag.change.status');
 
+    Route::resource('/city', CityController::class);
+   // Route::get('city-change-status', [TagController::class,'change_status'])->name('city.change.status');
+
+    Route::resource('/state', StateController::class);
+   // Route::get('state-change-status', [TagController::class,'change_status'])->name('state.change.status');
+
+    Route::resource('/area', AreaController::class);
+   // Route::get('address-change-status', [TagController::class,'change_status'])->name('address.change.status');
 
     Route::resource('vendor/product', ProductController::class);
 
