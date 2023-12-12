@@ -1,0 +1,178 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+    font-family: sans-serif;
+}
+    body{
+        background-color: #da291c;
+        font-family: sans-serif;
+    }
+    div#indexbtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+    .container{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    select#uname {
+    padding: 13px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.container1 {
+    width: 800px;
+    height: 563px;
+    margin: 6% auto;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    overflow-y: hidden !important;
+}
+.container1 h3{
+    text-align: center;
+    margin-bottom: 40px;
+    color: #777;
+}
+
+.container1 form {
+    width: 700px;
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    transition: 0.5s;
+}
+
+.container1 form input{
+    width: 100%;
+    padding: 10px 5px;
+    margin: 5px 0px;
+    border: 1px solid #777;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+}
+
+.container1 ::placeholder{
+    color: #777;
+}
+
+.container1 .btn-box{
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+
+.container1 form button {
+    width: 90%;
+    /* height: 35px; */
+    margin: 10px 10px;
+    background: #da291c;
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 11px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+button#Back1{
+    width: 95%;
+    /* height: 35px; */
+    margin: 10px 10px;
+    background: white;
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    color: #000000;
+    cursor: pointer;
+    padding: 11px;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: sans-serif;
+} 
+
+.container1 #fome2{
+
+left: 800px;
+}
+
+.container1 #fome3{
+
+    left: 800px;
+    }
+
+    .container1 .step-row{
+    width: 360px;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 -1px 5px -1px #000;
+    position: relative;
+}
+
+.container1 .step-col{
+    width: 120px;
+   text-align: center;
+   color: #333;
+   position: relative;
+}
+
+.container1 #progress{
+position: absolute;
+height: 100%;
+width: 120px;
+background:linear-gradient(to right,#ff105f,#ffad06);
+transition: 1s;
+}
+
+.container1 #progress::after{
+    content: '';
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    position: absolute;
+    right: -20px;
+    top: 0;
+    border-left: 20px solid #ffad06;
+    
+}
+
+button#nextBtn::after {
+    content: " Next ";
+    font-size: 20px;
+    font-weight: 800;
+    font-family: monospace;
+}
+
+button#Next1 {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+@media screen and (min-device-width: 200px) and (max-device-width: 768px) { 
+    .container1 {
+    width: 400px;
+    height: 463px;
+    margin: 6% auto;
+   
+}
+
+
+.container1 form {
+    width: 398px;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    transition: 0.5s;
+    margin: 2px;
+}
+}

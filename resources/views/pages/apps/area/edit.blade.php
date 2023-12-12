@@ -3,15 +3,15 @@
 <x-default-layout>
 
     @section('title')
-        Edit Product
+        Edit Area
     @endsection
 
     @section('breadcrumbs')
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Product Management</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
+                <li class="breadcrumb-item"><a href="{{ route('city.index') }}">City Management</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Area</li>
             </ol>
         </nav>
     @endsection
@@ -27,7 +27,7 @@
                 <div class="card-header border-0 pt-6">
                     <!--begin::Card title-->
                     <div class="card-title">
-                        <h2 class="fw-bold">Edit Product</h2>
+                        <h2 class="fw-bold">Edit Area</h2>
                     </div>
                 </div>
                 <!--end::Card header-->
@@ -35,81 +35,47 @@
                 <!--begin::Content-->
                 <div class="card-body py-4 mx-20">
                     <!--begin::Form-->
-                    <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('area.update', $data['area']->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
-                            <label class="fw-semibold fs-6 mb-2">Product File</label>
-                            <!--end::Label-->
 
-                            <!--begin::Input-->
-                            <input type="file" name="image" class="form-control form-control-solid mb-3 mb-lg-0" />
-                            <!--end::Input-->
-                        </div>
-                        <!--end::Input group-->
-
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
-                            <label class="fw-semibold fs-6 mb-2" name="title">Title</label>
-                            <!--end::Label-->
-
-                            <!--begin::Input-->
-                            <input type="text" name="title" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Title" value="{{ $product->title }}" />
-                            <!--end::Input-->
-                        </div>
                         <!--end::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="fw-semibold fs-6 mb-2" name="name">Name</label>
+                            <label class="fw-semibold fs-6 mb-2" name="name">Area Name</label>
                             <!--end::Label-->
 
                             <!--begin::Input-->
-                            <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Name" value="{{ $product->name }}" />
+                            <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0"
+                                placeholder="Enter Name" value="{{ $data['area']->name }}" />
                             <!--end::Input-->
                         </div>
+
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="fw-semibold fs-6 mb-2" name="description">Description</label>
+                            <label class="fw-semibold fs-6 mb-2">City </label>
                             <!--end::Label-->
 
-                            <!--begin::Input-->
-                            <input type="text" name="description" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Description" value="{{ $product->description }}" />
-                            <!--end::Input-->
-                        </div>
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
-                            <label class=" fw-semibold fs-6 mb-2" name="price">Price</label>
-                            <!--end::Label-->
-
-                            <!--begin::Input-->
-                            <input type="text" name="price" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Price" value="{{ $product->price }}" />
-                            <!--end::Input-->
-                        </div>
-                        <div class="form-group">
-                            <label>Category</label>
-                            <select class="select2-theme form-control" name="category_id"
-                                id="select2-theme">
-                                @foreach ($categories as $item)
-
-                                    <option @if ($item->id == $product->category_id) selected
-
-                                    @endif value="{{ $item->id }}">{{ $item->name }}</option>
+                            <select name="city_id" aria-label="Select a City" data-control="select2"
+                                data-placeholder="date_period" id="select2-theme"
+                                class="form-select form-select-sm form-select-solid form-control form-control-solid mb-3 mb-lg-0">
+                                @foreach ($data['city'] as $item)
+                                    <option @if ($item->id == $data['area']->city->id) selected @endif
+                                        value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
-
-
 
                             </select>
                         </div>
+
                         <!--begin::Actions-->
                         <div class="text-center pt-10 mb-5">
                             <button type="submit" class="btn btn-primary">
                                 <span class="indicator-label">Update</span>
                                 <span class="indicator-progress">
-                                    Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                    Please wait... <span
+                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                 </span>
                             </button>
                         </div>

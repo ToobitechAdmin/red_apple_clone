@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Apps;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\State;
-
+use Illuminate\Support\Str;
 class StateController extends Controller
 {
     /**
@@ -23,7 +23,8 @@ class StateController extends Controller
      */
     public function create()
     {
-        return view('pages.apps.state.index');
+        $state = State::all();
+        return view('pages.apps.state.index', compact('state'));
     }
     /**
      * Store a newly created resource in storage.
@@ -38,7 +39,7 @@ class StateController extends Controller
 
         State::create([
             'name' => $request->input('name'),
-
+            'slug' => Str::slug($request->input('name'))
         ]);
 
         return redirect()->route('state.index')->with('success', ' State uploaded successfully');
@@ -62,7 +63,7 @@ class StateController extends Controller
     public function edit(string $id)
     {
         $state = State::find($id);
-    return view('pages.apps.state.edit', compact('state'));
+        return view('pages.apps.state.edit', compact('state'));
     }
     /**
      * Update the specified resource in storage.
@@ -77,7 +78,7 @@ class StateController extends Controller
         $state = State::find($id);
 
         $state->name = $request->input('name');
-
+        $state->slug = Str::slug($request->input('name'));
 
         $state->save();
 
