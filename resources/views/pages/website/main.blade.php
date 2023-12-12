@@ -45,7 +45,8 @@
                 <div class="col-md-8" data-aos="fade-up">
                     <form id="regForm" data-aos="fade-up" data-aos-duration="1000">
                         <div class="text-center">
-                            <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25" srcset="" />
+                            <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25"
+                                srcset="" />
                         </div>
 
                         <div class="pt-2" style="overflow: auto;">
@@ -68,7 +69,8 @@
                 <div class="col-md-8">
                     <form id="regForm">
                         <div class="text-center">
-                            <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25" srcset="" />
+                            <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25"
+                                srcset="" />
                             <h1 id="register">Choose your delivery location</h1>
                         </div>
 
@@ -122,7 +124,8 @@
                 <div class="col-md-8">
                     <form id="regForm" onsubmit="return validateForm()">
                         <div class="text-center">
-                            <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25" srcset="" />
+                            <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25"
+                                srcset="" />
                             <h1 id="register">Choose your delivery location</h1>
                         </div>
 
