@@ -160,6 +160,63 @@
                     <!--end:Menu item-->
                 </div>
             </div>
+            <div data-kt-menu-trigger="click"
+            class="menu-item menu-accordion {{ request()->routeIs('product.*') ? 'here show' : '' }}">
+            <!--begin:Menu link-->
+            <span class="menu-link">
+                <span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>
+                <span class="menu-title">Location Management</span>
+                <span class="menu-arrow"></span>
+            </span>
+            <!--end:Menu link-->
+            <!--begin:Menu sub-->
+            <div class="menu-sub menu-sub-accordion">
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link {{ request()->routeIs('product.*') ? 'active' : '' }}"
+                        href="{{ route('state.index') }}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">State</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+            </div>
+            <!--end:Menu sub-->
+            <div class="menu-sub menu-sub-accordion">
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link {{ request()->routeIs('product.*') ? 'active' : '' }}"
+                        href="{{ route('city.index') }}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">City</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+            </div>
+            <div class="menu-sub menu-sub-accordion">
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link {{ request()->routeIs('product.*') ? 'active' : '' }}"
+                        href="#">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">Location</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+            </div>
+        </div>
 
             <div class="menu-item">
                 <!--begin:Menu link-->
