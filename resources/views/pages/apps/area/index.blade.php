@@ -223,8 +223,8 @@
                             <th>City</th>
 
 
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th>Action</th>
+
                         </tr>
                     </thead>
                     <tbody class="text-gray-600 fw-semibold">
@@ -255,8 +255,6 @@
                                                 onmouseover="this.style.backgroundColor='#7d3aaf'"
                                                 onmouseout="this.style.backgroundColor='#a932ff'">Delete</button>
                                         </form>
-                                    </td>
-                                    <td class="actions">
                                         <form action="{{ route('area.edit', $area->id) }}" method="get"
                                             style="display:inline">
                                             @csrf
@@ -267,6 +265,7 @@
                                                 onmouseout="this.style.backgroundColor='#a932ff'">Edit</button>
                                         </form>
                                     </td>
+
                                 </tr>
                             @endforeach
 

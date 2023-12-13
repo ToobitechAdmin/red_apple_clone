@@ -254,17 +254,17 @@
                                         data-kt-check-target="#kt_table_users .form-check-input" value="1" />
                                 </div>
                             </th>
+                            <th>Image</th>
                             <th>Title</th>
                             <th>Name</th>
 
-                            <th>Image</th>
+
                             <th>Description</th>
                             <th>Price</th>
 
                             <th>Status</th>
 
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-600 fw-semibold">
@@ -281,13 +281,14 @@
                                     <input class="form-check-input" type="checkbox" value="1" />
                                 </div>
                             </td>
+                            <td class="symbol symbol-80px symbol-lg-150px mb-4">
+                                <img class="img-thumbnail" src="{{ asset($product->image) }}" alt="Product Image">
+                            </td>
                             <td>{{ $product->title }}</td>
                             <td>{{ $product->name }}</td>
 
 
-                            <td>
-                                <img class="img-thumbnail" src="{{ asset($product->image) }}" alt="Product Image">
-                            </td>
+
                             {{-- <td><a href="{{ asset('storage/' . $audio->file_path) }}" download>Download</a></td> --}}
                             <td>{{ $product->description }}</td>
                             <td>{{ $product->price }}</td>
@@ -311,8 +312,6 @@
                                         onmouseover="this.style.backgroundColor='#7d3aaf'"
                                         onmouseout="this.style.backgroundColor='#a932ff'">Delete</button>
                                 </form>
-                            </td>
-                            <td class="actions">
                                 <form action="{{ route('product.edit', $product->id) }}" method="get"
                                     style="display:inline">
                                     @csrf
@@ -323,6 +322,7 @@
                                         onmouseout="this.style.backgroundColor='#a932ff'">Edit</button>
                                 </form>
                             </td>
+
                         </tr>
                         @endforeach
 
