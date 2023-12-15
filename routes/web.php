@@ -57,6 +57,7 @@ use App\Http\Controllers\Website\CartController;
         Route::get('cart/', 'cart')->name('cart');
         Route::post('update-cart/', 'updateCart')->name('update.cart');
         Route::post('delete-cart/', 'delCart')->name('delete.cart');
+        Route::post('add-order/', 'addOrder')->name('order');
 
     });
     Route::get('/product/list',[ProductController::class,'productList'])->name('product.list');

@@ -105,7 +105,7 @@ public function storeOrder($data){
         OrderItem::create($order_item);
     }
 
-    // \Cart::clear();
+    \Cart::clear();
     return true;
 }
 

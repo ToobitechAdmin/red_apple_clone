@@ -419,8 +419,8 @@
 
                         <form id="checkoutform">
                             <div class="mb-3 mt-4">
-                                <input type="text" class="form-control fullName" id="field" aria-describedby="emailHelp"
-                                    placeholder="Full Name *" />
+                                <input type="text" class="form-control fullName" id="field"
+                                    aria-describedby="emailHelp" placeholder="Full Name *" />
                             </div>
 
                             <div class="mt-4">
@@ -777,8 +777,8 @@
 
 
                                                     <p>
-                                                        <a class="btn" style="background:#ee6826;color:white" data-bs-toggle="collapse"
-                                                            href="" role="button">
+                                                        <a class="btn" style="background:#ee6826;color:white" id="cashOnDeliveryButton"
+                                                            data-bs-toggle="collapse" href="" role="button">
                                                             <span style=" font-size:20px;font-weight:bold"> Cash On
                                                                 Delivery</span>
                                                         </a>
@@ -991,13 +991,8 @@
             var area = $('#area').val();
 
             var orderTypes = $('#orderType').text();
-            console.log(phoneNumber);
-            console.log(fullName);
-            console.log(email);
-            console.log(address);
-            console.log(city);
-            console.log(area);
-            console.log(orderTypes);
+
+
 
             // Send the form data to the Laravel backend using AJAX
             $.ajax({
@@ -1018,6 +1013,7 @@
                 },
                 success: function(response) {
                     // Handle success if needed
+                    getCart('model')
                     toastr.success(response.message);
                     window.location.href =
                         "{{ route('website.home') }}";

@@ -148,6 +148,7 @@
                         var html;
                         var items = response.cart.item;
                         $('#cart_model_total_item').text(response.cart['total_item']);
+                        $('.cart_model_total_item').text(response.cart['total_item']);
                         $('#cart_model_subtotal').text(response.cart['subtotal']);
                         $('#cart_model_total').text(response.cart['total']);
                         $("#cart_model_items").html('');

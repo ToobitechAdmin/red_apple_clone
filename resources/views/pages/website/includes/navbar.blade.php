@@ -41,7 +41,7 @@
                     <ul class="navbar-nav ms-auto ">
                         <li class="nav-item cart" data-toggle="modal" data-target="#myModalcart">
                            <a class="nav-link mx-2 text-uppercase" href="#" style="color: white;">
-                                <i class="fa-solid fa-cart-shopping me-1"></i> <span >3</span> <span class="vl"></span> <i class="fa-solid fa-bag-shopping"></i> Cart</a>
+                                <i class="fa-solid fa-cart-shopping me-1"></i> <span class="cart_model_total_item" >3</span> <span class="vl"></span> <i class="fa-solid fa-bag-shopping"></i> Cart</a>
                         </li>
                         <li class="nav-item explor" data-toggle="modal" data-target="#myModal">
                            <a class="nav-link mx-2 ml-1 text-uppercase" href="#" style="color: white;"><i class="fa-solid fa-bars-staggered" style="color: white;"></i> Explore  </a>
