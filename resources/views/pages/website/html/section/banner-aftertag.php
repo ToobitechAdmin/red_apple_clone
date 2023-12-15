@@ -46,12 +46,12 @@
 <div class="container-fluid bg-white mt-4">
 
     <div class="row" id="fortagesss" data-aos="fade-down"  data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">
-    
+
         <div class="col-1 dd"   style="width: 40px !important;">
             <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
                 <i class="fa-solid fa-bars-staggered" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
-                
-                
+
+
             </button>
         </div>
         <div class="col-11" id="col11">
@@ -175,7 +175,7 @@
                 </ul>
             </div>
         </div>
-    
+
     </div>
 </div>
 
@@ -224,7 +224,7 @@ document.querySelectorAll(".tab-scroller").forEach((el) => {
           leftArrow.classList.remove("d-none")
           rightValue += 200;
           scrollTabInner.style.cssText = `right: ${rightValue}px;`
-       
+
         }
       })
 
@@ -241,5 +241,5 @@ document.querySelectorAll(".tab-scroller").forEach((el) => {
       })
     })
      })
-  
+
   </script>

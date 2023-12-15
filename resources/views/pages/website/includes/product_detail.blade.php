@@ -20,16 +20,17 @@
 
                     <div class="row  p-3">
 
-                        <img src="{{ asset('assets/website/images/pp2.png') }}" class="img-fluid w-50 " style="margin:auto">
+                        <img src="{{ asset('assets/website/images/pp2.png') }}" class="img-fluid w-50 "
+                            style="margin:auto">
 
                         <div class="namerate ">
                             <div class="name">hot & sour soup <br>
-                                <small class="muted cardpro-desc">Any specific preferences? Let us know.</small>
+                                {{-- <small class="muted cardpro-desc">Any specific preferences? Let us know.</small> --}}
                             </div>
                             <div class="rate">Rs. 400</div>
                         </div>
                         <div class="mt-3 new2"></div>
-                        <h5>Options</h5>
+                        {{-- <h5>Options</h5>
                         <h5>Select</h5>
 
 
@@ -39,22 +40,22 @@
                             <label class="form-check-label" for="flexRadioDefault1">
                                 White
                             </label>
-                        </div>
-                        <div class="form-check  ml-3">
+                        </div> --}}
+                        {{-- <div class="form-check  ml-3">
                             <input class="form-check-input" type="radio" name="flexRadioDefault"
                                 id="flexRadioDefault2">
                             <label class="form-check-label" for="flexRadioDefault2">
                                 Red
                             </label>
-                        </div>
+                        </div> --}}
 
 
-                        <h5 class="mt-2">Special instructions</h5>
+                        {{-- <h5 class="mt-2">Special instructions</h5>
                         <small class="muted">Any specific preferences? Let us know.</small>
                         <div class="mt-2">
 
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>
@@ -88,5 +89,4 @@
         </div>
     </div>
 
-</div>
 </div>

@@ -7,7 +7,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title menu" style="float: left;">Your Cart</h4>
                     <h4 class="modal-title menu" style="float: left;">
-                        Total items: 2</h4>
+                        Total items: <span id="cart_model_total_item">0</span> </h4>
                     <button type="button" class="close " data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -20,9 +20,10 @@
                                             <th scope="col">Product Name</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Amount</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="cart_model_items">
                                         <tr>
                                             <td class=" w-50">
                                                 <div class="img-withdesc"> <img src="{{ asset('assets/website/images/mainpagelogo.png') }}"
@@ -33,10 +34,10 @@
                                                 </div>
                                             </td>
                                             <td style="vertical-align: top;">
-                                                <div class="cart-mycart">
+                                                <div class="cart-mycart cart-mycart1">
                                                     <div class="minus"><i class="fa-solid fa-circle-minus"
                                                             style="margin-right:5px"></i></div>
-                                                    <div class="rate">222</div>
+                                                    <div class="rate1">222</div>
                                                     <div class="plus"><i
                                                             class="fa-solid fa-circle-plus"style="margin-left:5px"></i>
                                                     </div>
@@ -56,10 +57,10 @@
                     <div class="container-fluid footer">
                         <div class="row g-1">
                             <div class="col-sm-6">Subtotal</div>
-                            <div class="col-sm-6 float-end">Rs. 600</div>
+                            <div class="col-sm-6 float-end"><span id="cart_model_subtotal">0.00</span></div>
 
-                            <div class="col-sm-6">Tip</div>
-                            <div class="col-sm-6 float-end">0</div>
+                            {{-- <div class="col-sm-6">Tip</div>
+                            <div class="col-sm-6 float-end">0</div> --}}
 
 
                             <div class="col-sm-6">Delivery fee</div>
@@ -68,8 +69,8 @@
                             <div class="col-sm-6">
                                 <h4>Total</h4>
                             </div>
-                            <div class="col-sm-6 float-end">
-                                <h4>Rs. 600</h4>
+                            <div class="col-sm-6 float-end" >
+                                <h4>Rs. <span id="cart_model_total">0.00</span></h4>
                             </div>
                         </div>
                     </div>
