@@ -274,7 +274,7 @@
                 console.log(deliverytype);
                 saveData()
 
-                // window.open("{{ route('website.home') }}", "_self");
+                window.open("{{ route('website.home') }}", "_self");
 
             });
 
@@ -333,7 +333,8 @@
             if (currentTab >= x.length) {
                 document.getElementById("form2").style.display = "none";
                 saveData();
-                // window.open("{{ route('website.home') }}", "_self");
+
+                window.open("{{ route('website.home') }}", "_self");
 
 
                 document.getElementById("nextprevious").style.display = "none";

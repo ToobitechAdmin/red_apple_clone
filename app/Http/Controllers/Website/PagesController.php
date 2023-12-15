@@ -22,8 +22,8 @@ class PagesController extends Controller
     }
     public function location(Request $request)
     {
+        return view('pages.website.main');
         if (!Cache::has('cache-data')) {
-            return view('pages.website.main');
         } else {
             $data = Category::with(['products'])->get();
             return redirect()->route('website.home');

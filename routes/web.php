@@ -49,7 +49,7 @@ use App\Http\Controllers\Website\CartController;
         Route::get('/policy_privacy', 'policyPrivacy')->name('policy.privacy');
         Route::get('/term_condition', 'termCondition')->name('term.condition');
         Route::get('/contact_us', 'contactUs')->name('contact_us');
-        Route::get('/location', 'location')->name('location');
+        Route::get('/address-page', 'location')->name('location');
         Route::get('/data-save','saveData')->name('data.save');
     });
     Route::controller(CartController::class)->name('website.')->group(function () {
