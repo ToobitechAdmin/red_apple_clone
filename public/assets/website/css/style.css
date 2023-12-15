@@ -16,9 +16,9 @@ html, body {
 
 
 ::-webkit-scrollbar-track {
-  border: 1px solid #000;
+  border: 1px solid #ffffff;
   padding: 2px 0;
-  background-color: #da291c;
+  background-color: white;
 }
 
 ::-webkit-scrollbar {
@@ -28,8 +28,8 @@ html, body {
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-  background-color: white;
-  border: 1px solid #da291c;
+  background-color: #ee6826;
+  border: 1px solid white;
 }
 
 
@@ -112,8 +112,14 @@ button:focus{
 outline: none !important;
 }
 
+.vl {
+  border-left: 2px solid white;
+  height: 500px;
+  margin-right:6px;
+}
+
 #prevBtn {
-  background-color: #da291c;
+  background-color: #ee6826;
   padding-left: 100px;
   padding-right: 100px;
   border-radius: 100px;
@@ -124,7 +130,7 @@ outline: none !important;
 
 #prvoisform {
   margin-top: 20px;
-  background-color: #da291c;
+  background-color: #ee6826;
   padding-left: 110px;
   padding-right: 110px;
   border-radius: 100px;
@@ -132,7 +138,7 @@ outline: none !important;
 
 #nextBtn{
   margin-top: 20px;
-  background-color: #da291c;
+  background-color: #ee6826;
   padding-left: 100px;
   padding-right: 120px;
   border-radius: 120px;
@@ -140,7 +146,7 @@ outline: none !important;
 
 .nextBtn1{
   margin-top: 20px;
-  background-color: #da291c;
+  background-color: #ee6826;
   padding-left: 100px;
   padding-right: 120px;
   border-radius: 120px;
@@ -149,7 +155,7 @@ outline: none !important;
 
 
 #startformBtn1{
-  background-color: #da291c;
+  background-color: #ee6826;
   padding-left: 100px;
   padding-right: 100px;
   border-radius: 100px;
@@ -159,9 +165,9 @@ outline: none !important;
 
 #pickup{
   margin-top: 20px;
-  background-color: #da291c;
+  background-color: #ee6826;
   padding-left: 100px;
-  padding-right: 120px;
+  padding-right: 110px;
   border-radius: 120px;
   font-weight: 600;
   font-family: sans-serif;
@@ -267,7 +273,7 @@ h1, h2, h3, h4, h5,
 
 
   li.nav-item.cart {
-    background: #da291c;
+    background: #ee6826;
     color: white;
     padding: 2px;
     border-radius: 23px;
@@ -275,9 +281,10 @@ h1, h2, h3, h4, h5,
 }
 
 li.nav-item.explor {
-	background: #da291c;
+	background: #ee6826;
     color: white;
     padding: 2px;
+    padding-top:6px;
     border-radius: 23px;
 	border: 1px solid #7a7a7a;
 }
@@ -290,15 +297,15 @@ li.nav-item.explor {
     bottom: 0;
 }
 .bannerbottom-colo {
-    padding-bottom: 33px;
-    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-top: 20px;
     background: white;
 	padding-left: 50px;
 	border-radius: 20px 20px 0px 0px;
 }
 
 #iconnnn {
-    background: #da291c;
+    background: #ee6826;
     padding: 11px;
     border-radius: 24px;
 }
@@ -341,7 +348,7 @@ p.iconheading {
 .container-fluid.bodybanner {
  width: 90%;
  text-align: center;
-  background: #da291c;
+  background: #ee6826;
   margin-top: 3rem;
   padding: 3rem;
   border-radius: 20px;
@@ -368,6 +375,7 @@ h1{
   padding: 20px;
   border-radius: 20px;
   cursor: pointer;
+  position: relative;
 }
 
 .item  span{
@@ -392,7 +400,8 @@ img#menuimg {
 
 
 .bottem-text {
-  margin-top: 4rem;
+  position: absolute;
+  bottom: 11px;
 }
 
 /* .col-12.col-md-6.col-lg-4.item {
@@ -437,7 +446,7 @@ transition: opacity 0.3s linear, right 0.3s ease-out;
 }
     
     
-   .modal.right .modal-header {background-color:#da291c; color:#fff}
+   .modal.right .modal-header {background-color:#ee6826; color:#fff}
     .modal.right .modal-header::after {content:""; display:inline-block;}
     .modal.right .close {text-shadow:none; opacity:1; color:#ff4d4d;font-size:26px;font-weight: bold;background-color: white;}
 /*  form-control  */
@@ -500,9 +509,9 @@ transition: opacity 0.3s linear, left 0.3s ease-in;
   width: 100%;
 }
     
-   .modal.left .modal-header {background-color:#da291c; color:#fff;display: flex;justify-content: center;}
+   .modal.left .modal-header {background-color:#ee6826; color:#fff;display: flex;justify-content: center;}
     .modal.left .modal-header::after {content:""; display:inline-block;}
-    .modal.left .close {text-shadow:none; opacity:1; color:#da291c; font-size:26px;font-weight: bold;background-color: white;}
+    .modal.left .close {text-shadow:none; opacity:1; color:#ee6826; font-size:26px;font-weight: bold;background-color: white;}
     h4.modal-title.menu {
       margin-right: auto;
   }
@@ -542,7 +551,7 @@ transition: opacity 0.3s linear, left 0.3s ease-in;
     overflow: auto;
     border-radius: 0;
     scrollbar-width: thin;
-    scrollbar-color:#da291c;
+    scrollbar-color:#ee6826;
     
 }
 
@@ -577,7 +586,7 @@ transition: opacity 0.3s linear, left 0.3s ease-in;
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.25rem;
-  background: #da291c;
+  background: #ee6826;
 }
 
 
@@ -706,7 +715,7 @@ input#js_input-phonenumber{
 
 
 #iconn-cart{
-color:#da291c;
+color:#ee6826;
 font-size: 21px;
 }
 
@@ -741,7 +750,7 @@ box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 button.btn.btn-labeled.btn-successs {
   padding: 10px 80px 10px 10px;
   border-radius: 10px;
-  border: 1px solid #da291c;
+  border: 1px solid #ee6826;
 }
 
 
@@ -819,7 +828,7 @@ h3.h333 {
 
 .icon.icon-sm.icon-secondary {
   font-size: 34px;
-  color: #da291c;
+  color: #ee6826;
 }
 
 input#datetime-time {
@@ -906,7 +915,7 @@ input#inputAddress {
 }
 .dropdown dt a:after {
 	content: '';
-	background: #da291c;
+	background: #ee6826;
 	position: absolute;
 	
 	height: 53px;
@@ -1156,7 +1165,7 @@ a.rightaccor {
   font-weight: 1000;
 }
 .search::selection{
-background-color: #da291c;
+background-color: #ee6826;
 color: white;
 }
 .search:focus{
@@ -1167,7 +1176,7 @@ outline: 0;
 cursor: text;
 }
 input#search-inp {
-  border: 2px solid #da291c;
+  border: 2px solid #ee6826;
   border-right: 0px;
 }
 
@@ -1176,14 +1185,14 @@ input#search-inp {
 
 .search-btn{
   transition: 0.2s ease-in-out;
-  /* box-shadow:0px 0px 20px 1px #da291c ; */
+  /* box-shadow:0px 0px 20px 1px #ee6826 ; */
   border: 0;
   border-radius: 0 30px 30px 0;
   padding: 0 10px 0 10px;
   text-align: center;
   color: white;
   position: relative;
-  background-color: #da291c;
+  background-color: #ee6826;
   height: 50px;
   width: 100px;
   font-size: 25px;
@@ -1195,7 +1204,7 @@ input#search-inp {
 .search-btn:hover{
 transition: 0.2s ease-in-out;
 background-color: black;
-box-shadow:0px 0px 20px 1px #da291c ;
+box-shadow:0px 0px 20px 1px #ee6826 ;
 font-size: 30px;
 font-weight: 800;
 cursor: pointer;
@@ -1273,18 +1282,18 @@ width: 65%;
 span.redheading {
 font-size: 17px;
 font-weight: 500;
-color: #da291c;
+color: #ee6826;
 }
 
 i#cnticon {
-color: #da291c;
+color: #ee6826;
 margin-right: 20px;
 }
 
 
 
 i#cntwgatsapp {
-color: #da291c;
+color: #ee6826;
 margin-right: 20px;
 }
 
@@ -1294,16 +1303,21 @@ span#contact-bdge {
   padding: 10px;
   font-size: 15px;
   margin: 6px 6px 6px 10px;
+  background-color:#ee6826 ;
 }
 
 .cart-mycart {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 16px;
+  margin-top: 7px;
 }
-
-
+.descr {
+  margin-top: 5px;
+}
+.price-cart {
+  margin-top: 8px;
+}
 .col-1.dd {
   display: flex;
 }
@@ -1320,7 +1334,7 @@ span#contact-bdge {
 
 .container-fluid.footer1212 {
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 8px;
   background-color: #efefef;
   width: 100% !important;
 }
@@ -1332,9 +1346,11 @@ span#footerstrong {
 }
 div#allright {
  
-  margin-top: 10px;
+  margin-top: 18px;
 }
-
+#allrightmaster {
+  margin-top: 12px;
+}
 
 img#footerimg {
   width: 13% !important;
@@ -1372,7 +1388,7 @@ ul#pills-tab li.nav-item a button{
 }
 
 .offcanvas-header {
-  background: #da291c;
+  background: #ee6826;
   color: white;
  
 }
@@ -1421,7 +1437,7 @@ span#leftagfont {
 
 button#cartdangerbtn {
   width: 100%;
-  background: #da291c;
+  background: #ee6826;
   margin-top: 10px;
   font-size: 18px;
   border-radius: 10px;
@@ -1433,10 +1449,10 @@ i.fa-solid.fa-arrow-right.abc {
 .container-fluid.profile{
   width: 70%;
   margin-top:100px;
-  margin-bottom:170px;
+  margin-bottom:150px;
 }
 img#main-logo {
-  width: 15%;
+  width: 60%;
 }
 
 
@@ -1457,7 +1473,7 @@ img#main-logo {
 }
 
 .carddd h6 {
-  color: #da291c;
+  color: #ee6826;
   font-size: 20px
 }
 
@@ -1491,7 +1507,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .card-2 .content a {
-  color: #da291c
+  color: #ee6826
 }
 
 button.btn-close.text-reset {
@@ -1500,14 +1516,14 @@ button.btn-close.text-reset {
 
 .form-control:focus {
   box-shadow: none;
-  border: 2px solid #da291c
+  border: 2px solid #ee6826
 }
 
 .validate {
   border-radius: 20px;
   height: 40px;
-  background-color: #da291c;
-  border: 1px solid #da291c;
+  background-color: #ee6826;
+  border: 1px solid #ee6826;
   width: 140px
 }
 
@@ -1517,9 +1533,9 @@ button.btn.btn-secondary.btn-lg.btn-block.aa {
 }
 
 
-div#brand {
+/* div#brand {
   width: 36%;
-}
+} */
 
 div#brand {
   display: flex;
@@ -1532,7 +1548,7 @@ i.fa-solid.fa-cart-shopping.me-1.d-lg-none {
 }
 
 .forhr {
-  border-top: 2px solid #da291c;
+  border-top: 2px solid #ee6826;
 }
 
 .vocher{
@@ -1567,6 +1583,9 @@ i.fa-solid.fa-cart-shopping.me-1.d-lg-none {
   transition: 0.5s all ease-in-out;
 }
 
+#rnavicon{
+ color: #ee6826;
+}
 
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1023px) { 
@@ -1582,7 +1601,7 @@ i.fa-solid.fa-cart-shopping.me-1.d-lg-none {
   margin-top: 20px;
 }
 img#main-logo {
-  width: 28%;
+  width: 40%;
 }
 
 .container-fluid.banner-bottom {
@@ -1614,7 +1633,7 @@ img#main-logo {
     align-items: center;
   }
   img#main-logo {
-    width: 28%;
+    width: 40%;
   }
   i.fa-solid.fa-cart-shopping.me-1.d-lg-none {
     margin-right: 23px !important;
@@ -1651,7 +1670,7 @@ h1 {
 
 
     img#main-logo {
-      width: 28%;
+      width: 40%;
     }
 
     .descr {
@@ -1678,9 +1697,7 @@ h1 {
   span#bodyspan {
     font-size: 14px;
 }
-  .bottem-text {
-    margin-top: 0rem;
-}
+
 .col-12.col-md-6.col-lg-4.item {
   width: 100%;
   margin-top: 10px;
@@ -1710,14 +1727,12 @@ span#forcolosebtncss {
 .container-fluid.profile {
   width: 93%;
   margin-top: 100px;
-  margin-bottom: 170px;
+  margin-bottom: 150px;
 }
 h1 {
   font-size: 26px;
 }
-.bottem-text {
-  margin-top: 2rem;
-}
+
 i#menuicon {
   margin-left: 0px;
 }

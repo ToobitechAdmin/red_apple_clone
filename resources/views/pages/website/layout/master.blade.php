@@ -179,7 +179,7 @@
                             </td>
 
                             <td style="vertical-align: top; ">
-                                <div style="margin-top:15px"><span
+                                <div style="margin-top:15px" class="remove-cart"><span
                                             class="badge badge-secondary"><i
                                                 class="fa-solid fa-trash"></i> remove</span></div>
                             </td>
@@ -194,20 +194,39 @@
 
 
             }
-
-            function updateCart(id,quantity) {
+            /* Update Cart */
+            function updateCart(id, quantity) {
 
                 $.ajax({
                     type: "POST",
                     url: "{{ route('website.update.cart') }}",
                     data: {
-                        id:id,
-                        quantity:quantity
+                        id: id,
+                        quantity: quantity
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    success: function (response) {
+                    success: function(response) {
+                        getCart('model')
+                    }
+                });
+            }
+
+            /* Delete Cart */
+            function delCart(id) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('website.delete.cart') }}",
+                    data: {
+                        id: id,
+
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
                         getCart('model')
                     }
                 });
@@ -223,12 +242,15 @@
                 // Decrease rate, but not less than 1
                 rate = Math.max(1, rate - 1);
                 var product_id = $(this).parents('tr').attr('data-product-id')
-                updateCart(product_id,rate)
+                updateCart(product_id, rate)
                 $(this).parent('.cart-mycart').children('.rate1').text(rate);
                 // updateRate(this);
             });
 
-
+            $(document).on("click", ".remove-cart", function() {
+                var product_id = $(this).parents('tr').attr('data-product-id')
+                delCart(product_id)
+            });
             // Click event for the plus button
             $(document).on("click", ".plus", function() {
                 rate = $(this).parents('.cart-mycart1').children('.rate1').text();
@@ -236,7 +258,7 @@
                 rate++;
                 var product_id = $(this).parents('tr').attr('data-product-id')
                 console.log(product_id);
-                updateCart(product_id,rate)
+                updateCart(product_id, rate)
                 // updateRate(this)
                 $(this).parent('.cart-mycart').children('.rate1').text(rate);
             });

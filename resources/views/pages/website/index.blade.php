@@ -96,7 +96,7 @@
     <div class="container-fluid main">
         <div class="row">
             <div class="col-12" data-aos="zoom-out" data-aos-duration="500">
-                <i class="fa-solid fa-location-dot" style="color: #da291c; font-size: 33px;"></i> <span
+                <i class="fa-solid fa-location-dot" style="color: #ee6826 ; font-size: 33px;"></i> <span
                     style="margin-left: 20px;" id="bodyspan">Delivering to: <strong> DHA - Defence Phase 03
                     </strong></span>
             </div>

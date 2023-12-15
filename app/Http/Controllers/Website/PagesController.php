@@ -12,13 +12,11 @@ class PagesController extends Controller
     public function index(Request $request)
     {
         if (!Cache::has('cache-data')) {
-                    return redirect()->route('website.location');
-                } else {
-                    $data = Category::with(['products'])->get();
-                    return view('pages.website.index',compact('data'));
-                }
-
-        # code...
+            return redirect()->route('website.location');
+        } else {
+            $data = Category::with(['products'])->get();
+            return view('pages.website.index',compact('data'));
+        }
     }
     public function location(Request $request)
     {

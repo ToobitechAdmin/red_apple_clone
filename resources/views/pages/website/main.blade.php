@@ -155,8 +155,9 @@
         <section>
             <div id="preloader">
                 <div id="ctn-preloader" class="ctn-preloader">
-                    <div class="animation-preloader">
-                        <div class="spinner"></div>
+                    <div class="animation-preloader text-center">
+                        {{-- <div class="spinner"></div> --}}
+                        <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50 mb-5" srcset="">
                         <div class="txt-loading">
                             <span data-text-preloader="L" class="letters-loading">
                                 L

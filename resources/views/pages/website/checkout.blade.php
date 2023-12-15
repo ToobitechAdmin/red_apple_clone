@@ -1770,13 +1770,13 @@
 
 
                                                     <p>
-                                                        <a class="btn btn-danger" data-bs-toggle="collapse"
+                                                        <a class="btn" style="background:#ee6826;color:white" data-bs-toggle="collapse"
                                                             href="" role="button">
-                                                            <span style="font-size:20px;font-weight:bold"> Cash On
+                                                            <span style=" font-size:20px;font-weight:bold"> Cash On
                                                                 Delivery</span>
                                                         </a>
                                                         <br>
-                                                        <a class="btn btn-danger" data-bs-toggle="collapse"
+                                                        <a class="btn " style="background:#ee6826;color:white" data-bs-toggle="collapse"
                                                             data-bs-target="#collapseExample" aria-expanded="false"
                                                             aria-controls="collapseExample">
                                                             <span style="font-size:20px;font-weight:bold"> Cash On
