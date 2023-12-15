@@ -5,17 +5,30 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Cache;
 class PagesController extends Controller
 {
+
     public function index(Request $request)
     {
-        $data = Category::with(['products'])->get();
-        return view('pages.website.index',compact('data'));
+        if (!Cache::has('cache-data')) {
+                    return redirect()->route('website.location');
+                } else {
+                    $data = Category::with(['products'])->get();
+                    return view('pages.website.index',compact('data'));
+                }
+
         # code...
     }
     public function location(Request $request)
     {
-        return view('pages.website.main');
+        if (!Cache::has('cache-data')) {
+            return view('pages.website.main');
+        } else {
+            $data = Category::with(['products'])->get();
+            return redirect()->route('website.home');
+        }
+
         # code...
     }
 
@@ -48,6 +61,17 @@ class PagesController extends Controller
     {
         return view('pages.website.contact_us');
 
+    }
+
+    public function saveData(Request $request)
+    {
+
+        Cache::put('cache-data', $request->all(), now()->addDays(2));
+
+         $cachedData = Cache::get('cache-data');
+        //  return $cachedData['deliverytype'];
+        return 'save data';
+        # code...
     }
 
 }

@@ -6,6 +6,8 @@
     <link rel="icon" href="{{ asset('assets/website/images/mainpagelogo.png') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="{{ asset('assets/website/js/jquery.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -71,15 +73,15 @@
                         <div class="text-center">
                             <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25"
                                 srcset="" />
-                            <h1 id="register">Choose your delivery location</h1>
+                            <h1 id="register">Choose your Delivery Location</h1>
                         </div>
 
                         <div class="tab">
                             <h5>City</h5>
 
-                            <input list="fruitList" id="fruits" name="fruits" required
-                                placeholder="Input Branch *" />
-                            <datalist id="fruitList">
+                            <input list="city_list" id="city_input" name="city" required
+                                placeholder="Input City *" />
+                            <datalist id="city_list">
                                 <option value="lahore">Lahore</option>
                                 <option value="karachi">karachi</option>
                                 <option value="rawal_pindi">RawalPindi</option>
@@ -87,10 +89,10 @@
                             </datalist>
                         </div>
                         <div class="tab">
-                            <h5>What's your city?</h5>
-                            <input list="fruitList" id="fruits" name="fruits" required
-                                placeholder="Input Branch *" />
-                            <datalist id="fruitList">
+                            <h5>What's your Area?</h5>
+                            <input list="area_list" id="area_input" name="area" required
+                                placeholder="Input Area *" />
+                            <datalist id="area_list">
                                 <option value="lahore">Lahore</option>
                                 <option value="karachi">karachi</option>
                                 <option value="rawal_pindi">Rawal Pindi</option>
@@ -126,12 +128,12 @@
                         <div class="text-center">
                             <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25"
                                 srcset="" />
-                            <h1 id="register">Choose your delivery location</h1>
+                            <h1 id="register">Choose your Pickup Location</h1>
                         </div>
 
-                        <input list="fruitList" id="fruits" name="fruits" required
+                        <input list="brnach_list" id="brnach_input" name="brnach" required
                             placeholder="Input Branch *" />
-                        <datalist id="fruitList">
+                        <datalist id="brnach_list">
                             <option value="lahore">Lahore</option>
                             <option value="karachi">karachi</option>
                             <option value="rawal_pindi">Rawal Pindi</option>
@@ -209,9 +211,6 @@
 
 
 
-
-
-    <script src="{{ asset('assets/website/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/website/js/popper.js') }}"></script>
     <script src="{{ asset('assets/website/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/website/js/owl.carousel.min.js') }}"></script>
@@ -226,6 +225,25 @@
 
 
     <script>
+        let deliverytype = null;
+        let branch = null;
+        let area = null;
+        let city = null;
+        $('#city_input').change(function (e) {
+            city = $(this).val();
+            e.preventDefault();
+
+        });
+        $('#area_input').change(function (e) {
+            area = $(this).val();
+            e.preventDefault();
+
+        });
+        $('#brnach_input').change(function (e) {
+            branch = $(this).val();
+
+
+        });
         $(document).ready(function() {
             $('#form2').hide();
             $('.container1').hide();
@@ -233,7 +251,7 @@
 
             $('#pickupf').hide();
             $('#startformBtn1').click(function() {
-
+                deliverytype = 'Delivery';
                 $('#form2').show();
 
                 $('#startform').hide();
@@ -241,6 +259,8 @@
             })
 
             $('#pickup').click(function() {
+
+                deliverytype = 'Pickup';
                 $('#newform').show();
                 $('#startform').hide();
             });
@@ -251,7 +271,16 @@
             })
 
             $('#Next1').click(function() {
-                window.open("home.php", "_self");
+                console.log(deliverytype);
+                saveData()
+
+                // window.open("{{ route('website.home') }}", "_self");
+
+            });
+
+            $("#nextBtn").click(function(e) {
+
+                e.preventDefault();
 
             });
         });
@@ -262,6 +291,99 @@
                 $('#startform').show();
             })
         });
+
+
+        //Code by ARiyou2000
+
+        var currentTab = 0;
+        document.addEventListener("DOMContentLoaded", function(event) {
+
+
+            showTab(currentTab);
+
+        });
+
+        function showTab(n) {
+            var x = document.getElementsByClassName("tab");
+            x[n].style.display = "block";
+            if (n == 0) {
+                document.getElementById("prvoisform").style.display = "block"
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prvoisform").style.display = "none"
+                document.getElementById("prevBtn").style.display = "inline";
+            }
+            if (n == (x.length - 1)) {
+                document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+            } else {
+                document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+            }
+            fixStepIndicator(n)
+
+        }
+
+        function nextPrev(n) {
+
+            var x = document.getElementsByClassName("tab");
+            if (n == 1 && !validateForm()) return false;
+            x[currentTab].style.display = "none";
+
+            currentTab = currentTab + n;
+
+            if (currentTab >= x.length) {
+                document.getElementById("form2").style.display = "none";
+                saveData();
+                // window.open("{{ route('website.home') }}", "_self");
+
+
+                document.getElementById("nextprevious").style.display = "none";
+                document.getElementById("all-steps").style.display = "none";
+                document.getElementById("register").style.display = "none";
+                document.getElementById("text-message").style.display = "none";
+            }
+
+            showTab(currentTab);
+
+        }
+
+        function validateForm() {
+            var x, y, i, valid = true;
+            x = document.getElementsByClassName("tab");
+            y = x[currentTab].getElementsByTagName("input");
+
+            for (i = 0; i < y.length; i++) {
+
+                if (y[i].value == "") {
+                    y[i].className += " invalid";
+                    valid = false;
+
+                }
+
+
+            }
+
+
+            return valid;
+
+
+        }
+
+        function saveData() {
+
+            $.ajax({
+                type: "get",
+                url: "{{ route('website.data.save') }}",
+                data: {
+                    deliverytype:deliverytype,
+                    branch:branch,
+                    area:area,
+                    city:city,
+                },
+                success: function (response) {
+                    window.reload()
+                }
+            });
+         }
     </script>
 
 

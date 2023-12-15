@@ -36,25 +36,31 @@ use App\Http\Controllers\Website\CartController;
 
 // Route::get('/home', [PagesController::class,'index'])->name('home');
 // Route::get('/', [PagesController::class,'index']);
+// Route::get('/location', [PagesController::class,'location'])->name('website.location');
 
-Route::controller(PagesController::class)->name('website.')->group(function () {
-    Route::get('/', 'index')->name('home');
-    Route::get('/location', 'location')->name('location');
-    Route::get('/checkout', 'checkout')->name('checkout');
-    Route::get('/profile', 'profile')->name('profile');
-    Route::get('/return_policy', 'returnPolicy')->name('return.policy');
-    Route::get('/policy_privacy', 'policyPrivacy')->name('policy.privacy');
-    Route::get('/term_condition', 'termCondition')->name('term.condition');
-    Route::get('/contact_us', 'contactUs')->name('contact_us');
-});
-Route::controller(CartController::class)->name('website.')->group(function () {
-    Route::post('add-to-cart/', 'addToCart')->name('add.to.cart');
-    Route::get('cart/', 'cart')->name('cart');
-    Route::post('update-cart/', 'updateCart')->name('update.cart');
-    Route::post('delete-cart/', 'delCart')->name('delete.cart');
+    // Your routes go here
+    Route::controller(PagesController::class)->name('website.')->group(function () {
+        Route::get('/', 'index')->name('home');
+        // Route::get('/location', 'location')->name('location');
+        Route::get('/home', 'index')->name('home');
+        Route::get('/checkout', 'checkout')->name('checkout');
+        Route::get('/profile', 'profile')->name('profile');
+        Route::get('/return_policy', 'returnPolicy')->name('return.policy');
+        Route::get('/policy_privacy', 'policyPrivacy')->name('policy.privacy');
+        Route::get('/term_condition', 'termCondition')->name('term.condition');
+        Route::get('/contact_us', 'contactUs')->name('contact_us');
+        Route::get('/location', 'location')->name('location');
+        Route::get('/data-save','saveData')->name('data.save');
+    });
+    Route::controller(CartController::class)->name('website.')->group(function () {
+        Route::post('add-to-cart/', 'addToCart')->name('add.to.cart');
+        Route::get('cart/', 'cart')->name('cart');
+        Route::post('update-cart/', 'updateCart')->name('update.cart');
+        Route::post('delete-cart/', 'delCart')->name('delete.cart');
 
-});
-Route::get('/product/list',[ProductController::class,'productList'])->name('product.list');
+    });
+    Route::get('/product/list',[ProductController::class,'productList'])->name('product.list');
+
 Route::prefix('admin')->middleware(['auth'])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index']);
