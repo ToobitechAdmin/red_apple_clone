@@ -167,15 +167,15 @@
                                 <div id="flush-collapseOne" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <span class="badge bg-danger" id="contact-bdge">PWD</span>
-                                        <span class="badge bg-danger"id="contact-bdge">Bahria Town - Phase 05</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Bahria Town - Phase 07</span>
-                                        <span class="badge bg-danger" id="contact-bdge">DHA - Defence Phase 02</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Bahria Town - Phase 04</span>
-                                        <span class="badge bg-danger" id="contact-bdge">DHA - Defence Phase 01</span>
-                                        <span class="badge bg-danger" id="contact-bdge">DHA - Defence Phase 03</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Jeddah Town</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Civic Centre</span>
+                                        <span class="badge " id="contact-bdge">PWD</span>
+                                        <span class="badge "id="contact-bdge">Bahria Town - Phase 05</span>
+                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 07</span>
+                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 02</span>
+                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 04</span>
+                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 01</span>
+                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 03</span>
+                                        <span class="badge " id="contact-bdge">Jeddah Town</span>
+                                        <span class="badge " id="contact-bdge">Civic Centre</span>
 
                                     </div>
                                 </div>
@@ -200,15 +200,15 @@
                                 <div id="flush-collapseOne2" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingOne2" data-bs-parent="#accordionFlushExample2">
                                     <div class="accordion-body">
-                                        <span class="badge bg-danger" id="contact-bdge">PWD</span>
-                                        <span class="badge bg-danger"id="contact-bdge">Bahria Town - Phase 05</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Bahria Town - Phase 07</span>
-                                        <span class="badge bg-danger" id="contact-bdge">DHA - Defence Phase 02</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Bahria Town - Phase 04</span>
-                                        <span class="badge bg-danger" id="contact-bdge">DHA - Defence Phase 01</span>
-                                        <span class="badge bg-danger" id="contact-bdge">DHA - Defence Phase 03</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Jeddah Town</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Civic Centre</span>
+                                        <span class="badge " id="contact-bdge">PWD</span>
+                                        <span class="badge "id="contact-bdge">Bahria Town - Phase 05</span>
+                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 07</span>
+                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 02</span>
+                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 04</span>
+                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 01</span>
+                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 03</span>
+                                        <span class="badge " id="contact-bdge">Jeddah Town</span>
+                                        <span class="badge " id="contact-bdge">Civic Centre</span>
 
                                     </div>
                                 </div>
@@ -229,15 +229,15 @@
                                 <div id="flush-collapseOne3" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingOne3" data-bs-parent="#accordionFlushExample3">
                                     <div class="accordion-body">
-                                        <span class="badge bg-danger" id="contact-bdge">PWD</span>
-                                        <span class="badge bg-danger"id="contact-bdge">Bahria Town - Phase 05</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Bahria Town - Phase 07</span>
-                                        <span class="badge bg-danger" id="contact-bdge">DHA - Defence Phase 02</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Bahria Town - Phase 04</span>
-                                        <span class="badge bg-danger" id="contact-bdge">DHA - Defence Phase 01</span>
-                                        <span class="badge bg-danger" id="contact-bdge">DHA - Defence Phase 03</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Jeddah Town</span>
-                                        <span class="badge bg-danger" id="contact-bdge">Civic Centre</span>
+                                        <span class="badge " id="contact-bdge">PWD</span>
+                                        <span class="badge "id="contact-bdge">Bahria Town - Phase 05</span>
+                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 07</span>
+                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 02</span>
+                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 04</span>
+                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 01</span>
+                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 03</span>
+                                        <span class="badge " id="contact-bdge">Jeddah Town</span>
+                                        <span class="badge " id="contact-bdge">Civic Centre</span>
 
                                     </div>
                                 </div>

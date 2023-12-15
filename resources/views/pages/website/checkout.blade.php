@@ -777,9 +777,9 @@
 
 
                                                     <p>
-                                                        <a class="btn btn-danger" id="cashOnDeliveryButton"
-                                                            data-bs-toggle="collapse" href="" role="button">
-                                                            <span style="font-size:20px;font-weight:bold"> Cash On
+                                                        <a class="btn" style="background:#ee6826;color:white" data-bs-toggle="collapse"
+                                                            href="" role="button">
+                                                            <span style=" font-size:20px;font-weight:bold"> Cash On
                                                                 Delivery</span>
                                                         </a>
                                                         <br>

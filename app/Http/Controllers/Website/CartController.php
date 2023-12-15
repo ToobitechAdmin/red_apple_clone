@@ -30,8 +30,9 @@ class CartController extends Controller
         }
     }
 
-    public function delCart()
+    public function delCart(Request $request)
     {
+
         \Cart::remove($request->id);
         return 'cart del successfully';
     }
