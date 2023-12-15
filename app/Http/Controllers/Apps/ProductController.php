@@ -4,18 +4,24 @@ namespace App\Http\Controllers\Apps;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Products;
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
+    public function productList()
+    {
+        $data = Category::with(['products'])->get();
+        return view('pages.website.ajax.products_cart',compact('data'));
+        # code...
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data['product'] = Products::all();
+        $data['product'] = Product::all();
         $data['categories'] = Category::get();
         return view('pages.apps.product.index', compact('data'));
     }
@@ -51,7 +57,7 @@ class ProductController extends Controller
             $request->image->move(public_path("documents/product/"), $img);
         }
 
-        Products::create([
+        Product::create([
             'name' => $request->input('name'),
             'title' => $request->input('title'),
             'image' => $file_path ?? 'documents/product/default.svg',
@@ -69,7 +75,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Products::find($id);
+        $product = Product::find($id);
 
         $imagePath = public_path($product->image);
 //dd($imagePath);
@@ -92,7 +98,7 @@ class ProductController extends Controller
     {
         $categories = Category::get();
 
-        $product = Products::find($id);
+        $product = Product::find($id);
         return view('pages.apps.product.edit', compact('product','categories'));
     }
 
@@ -103,7 +109,7 @@ class ProductController extends Controller
     {
 
 
-        $product = Products::find($id);
+        $product = Product::find($id);
         $product->name = $request->input('name');
 
         $product->title = $request->input('title');
@@ -134,7 +140,7 @@ class ProductController extends Controller
 
     public function change_status(Request $request)
     {
-        $statusChange = Products::where('id',$request->id)->update(['status'=>$request->status]);
+        $statusChange = Product::where('id',$request->id)->update(['status'=>$request->status]);
         if($statusChange)
         {
             return array('message'=>'Product status  has been changed successfully','type'=>'success');

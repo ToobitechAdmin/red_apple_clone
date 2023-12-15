@@ -1,104 +1,8 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <title>Red Apple Clone @yield('title')</title>
-    <link rel="icon" href="{{ asset('assets/website/images/mainpagelogo.png') }}">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&display=swap"
-        rel="stylesheet">
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/website/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/website/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/website/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/website/css/preloader.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-
-    <style>
-        .d-none.d-lg-block {
-            width: 50%;
-        }
-
-
-        .d-flex {
-            display: flex !important;
-            align-items: center;
-        }
-    </style>
-
-</head>
-
-<body>
-
-
-    <div class="container-fluid">
-        <div id="navbar_top">
-            <div class="superNav border-bottom py-2  " style="background-color: #da291c; columns: white;"
-                data-aos="fade-up">
-                <marquee behavior="" direction="" style="color: white; font-weight: 600; font-size:17px">
-                    redapple is currently closed and will open shortly at 11:00 am for new orders.
-                </marquee>
-            </div>
-            <nav id="navbar_top" class="navbar navbar-expand-lg bg-white  navbar-light p-4 shadow-sm "
-                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-
-                <div class="container-fluid">
-
-                    <div id="brand">
-                        <a class="navbar-brand" href="{{ route('website.home') }}"><img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid "
-                                id="main-logo"> </a> <i class="fa-solid fa-cart-shopping me-1 d-lg-none"
-                            style="color: red; cursor:pointer" data-toggle="modal" data-target="#myModalcart"></i>
-                        <i class="fa-solid fa-bars-staggered d-lg-none" style="color: red; cursor:pointer"
-                            id="menuicon" data-toggle="modal" data-target="#myModal"></i>
-                    </div>
-
-                    <div class="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
-                        <div class="input-group">
-                            <span class="border-warning input-group-text  bg-danger text-white"><i
-                                    class="fa-solid fa-magnifying-glass"></i></span>
-                            <input type="text" class="form-control border-danger" style="color:#7a7a7a">
-                            <button class="btn btn-danger text-white">Search</button>
-                        </div>
-                    </div>
-                    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
-                        <div class=" d-none d-lg-block">
-                            <div class="input-group">
-                                <span class="border-warning input-group-text bg-danger text-white"><i
-                                        class="fa-solid fa-magnifying-glass"></i></span>
-                                <input type="text" class="form-control border-danger" style="color:#7a7a7a">
-                                <button class="btn btn-danger text-white"><i class="fa-solid fa-circle-arrow-right"
-                                        style="color: white; font: 40px;"></i></button>
-                            </div>
-                        </div>
-                        <ul class="navbar-nav ms-auto ">
-                            <li class="nav-item cart" data-toggle="modal" data-target="#myModalcart">
-                                <a class="nav-link mx-2 text-uppercase" href="#" style="color: white;"><i
-                                        class="fa-solid fa-cart-shopping me-1"></i> Cart</a>
-                            </li>
-                            <li class="nav-item explor" data-toggle="modal" data-target="#myModal">
-                                <a class="nav-link mx-2 ml-1 text-uppercase" href="#" style="color: white;"><i
-                                        class="fa-solid fa-bars-staggered" style="color: white;"></i> Explore </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-
-    <!----nav end---->
-    <!---home Start--->
+@extends('pages.website.layout.master')
+@section('title', 'Home')
+@section('style')
+@endsection
+@section('content')
     <!---Banner start--->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -112,7 +16,8 @@
                 <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100 " alt="...">
+                <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100 "
+                    alt="...">
             </div>
 
         </div>
@@ -183,7 +88,7 @@
 
     <!---- for tags -->
 
-
+    @include('pages.website.includes.nav_bar2')
     <!---- for tags -->
 
     <!------body-->
@@ -198,532 +103,186 @@
         </div>
     </div>
 
-    <!----body banner menu---->
 
-    <div class="container-fluid bodybanner">
-        <div class="row" id="chatbazar">
-            <div class="col-12" data-aos="zoom-in" data-aos-duration="500">
-                <h1>Chaat bazzar</h1>
+    <div class="products_list">
+
+        <!----body banner menu---->
+
+        @include('pages.website.ajax.products_cart')
+
+    </div>
+
+
+    {{-- Begin::Product Details Model --}}
+    <div class="container">
+
+        <!-- Trigger the modal with a button -->
+
+
+        <!-- Modal pro click menu -->
+        <div class="modal right fade" id="myModalmoreproduct-deltails" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title menu" style="float: left;"></h4>
+
+
+                        <button type="button" class="close " data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row  p-3">
+
+                            <img id="model_product_image" src="{{ asset('assets/website/images/pp2.png') }}"
+                                class="img-fluid w-50 " style="margin:auto">
+
+                            <div class="namerate ">
+                                <div id="model_product_name" class="name"><br>
+                                    {{-- <small class="muted cardpro-desc">Any specific preferences? Let us know.</small> --}}
+                                </div>
+                                <div id="model_product_price" class="rate"></div>
+                            </div>
+                            <div class="mt-3 new2"></div>
+                            {{-- <h5>Options</h5>
+                                <h5>Select</h5>
+
+
+                                <div class="form-check ml-3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1" checked>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        White
+                                    </label>
+                                </div> --}}
+                            {{-- <div class="form-check  ml-3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Red
+                                    </label>
+                                </div> --}}
+
+
+                            {{-- <h5 class="mt-2">Special instructions</h5>
+                                <small class="muted">Any specific preferences? Let us know.</small>
+                                <div class="mt-2">
+
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div> --}}
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-success">Save</button>
+                                                    <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
+                        <!-- <p class="text-center">© 2023 redapple. All Rights Reserved.</p>
+                                                    <br>
+                                                    <p class="text-center">Shop powered by ....</p> -->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="cart-mycart">
+                                        <div class="minus"><i class="fa-solid fa-circle-minus"
+                                                style="margin-right:5px"></i></div>
+                                        <div class="rate1">1</div>
+                                        <input id="product_id" hidden type="hidden">
+                                        <div class="plus"><i class="fa-solid fa-circle-plus"style="margin-left:5px"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6"><button type="button" class="btn btn-danger"
+                                        id="addtocart_btn">ADD
+                                        TO CART <span><i class="fa-solid fa-arrow-right abc"
+                                                style="float:right"></i></span>
+                                    </button></div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-
-    <!----body banner menu---->
-
-    <div class="container-fluid menu">
-        <div class="container">
-            <div class="row g-4" data-aos="fade-up" data-aos-duration="1000">
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#myModalprocliclcart">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6 col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#myModalprocliclcart">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6 col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#myModalmoreproduct-deltails">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6 col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6 col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6 col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6 col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!---column--->
-
-
 
     </div>
-
-
-
-
-    </div>
-    </div>
-
-
-
-
-    <!----body banner menu---->
-
-    <div class="container-fluid bodybanner">
-        <div class="row">
-            <div class="col-12" data-aos="zoom-in" data-aos-duration="500">
-
-                <h1>New Arrival</h1>
-            </div>
-        </div>
-    </div>
-
-    <!----body banner menu---->
-
-    <div class="container-fluid menu">
-        <div class="container">
-            <div class="row g-4" data-aos="fade-up" data-aos-duration="1000">
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-
-
-            </div>
-
-
-
-
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-    <!----body banner menu---->
-
-    <div class="container-fluid bodybanner" id="onlineexc">
-        <div class="row">
-            <div class="col-12" data-aos="zoom-in" data-aos-duration="500">
-
-                <h1>online exclusive deals</h1>
-            </div>
-        </div>
-    </div>
-
-    <!----body banner menu---->
-
-    <div class="container-fluid menu">
-        <div class="container">
-            <div class="row g-4" data-aos="fade-up" data-aos-duration="1000">
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-
-                <!---column--->
-
-                <div class="col-12 col-md-6 col-lg-4  ">
-                    <div class="item">
-                        <div class="row ">
-                            <div class="col-6 col-md-6">
-                                <div><span>lorim ipsume</span></div>
-                                <div class="bottem-text"><span>lorim ipsume</span></div>
-                            </div>
-                            <div class="col-6  col-md-6">
-                                <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50" id="menuimg"
-                                    srcset="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---column--->
-
-
-
-            </div>
-
-
-
-
-        </div>
-    </div>
-
-
-
-
-
-    <!--preloader start-->
-
-    @include('pages/website/includes/preloader')
-    <!--preloader end--->
-
-    <!--model  for Man Menu ---->
-
-    @include('pages/website/includes/sidebar')
-
-
-    @include('pages/website/includes/right_nav')
-
-    <!---Model right menu---->
-
-
-
-    <!--Model Cart---->
-    @include('pages/website/includes/cart')
-    <!--Model Menu---->
-
-    <!---Model left side tag----->
-
-
-
-
-
-
-
-    <!--footer start-->
-    @include('pages/website/includes/product_cart')
-    <!--footer end--->
-
-
-    <!--footer start-->
-    @include('pages/website/includes/product_detail')
-    <!--footer end--->
-
-    <!--footer start-->
-    @include('pages/website/includes/footer')
-    <!--footer end--->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- model left side tag--->
-
-    <!--proe loader-->
-
-
-
-
-    <!--preloader--->
-
-
-
-
-    <script src="{{ asset('assets/website/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/website/js/popper.js') }}"></script>
-    <script src="{{ asset('assets/website/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/website/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/website/js/main.js') }}"></script>
-    <script src="{{ asset('assets/website/js/script.js') }}"></script>
+    {{-- End::Product Details Model --}}
+@endsection
+@section('script')
     <script>
+        function productDetails(product) {
+
+            $('#model_product_name').text(product.name);
+            $('#model_product_price').text(product.price);
+            $('#model_product_image').attr('src', product.image);
+            $('#model_product_price').text('Rs. ' + product.price);
+            $('#model_product_price').text('Rs. ' + product.price);
+            $('#product_id').val(product.id);
+
+        }
+
         $(document).ready(function() {
-            $(".modal a").not(".dropdown-toggle").on("click", function() {
-                $(".modal").modal("hide");
+            // Initial rate value
+            var rate = 1;
 
-
+            // Click event for the minus button
+            $('.minus').on('click', function() {
+                // Decrease rate, but not less than 1
+                rate = Math.max(1, rate - 1);
+                updateRate();
             });
 
+            // Click event for the plus button
+            $('.plus').on('click', function() {
+                // Increase rate
+                rate++;
+                updateRate();
+            });
 
+            // Function to update the displayed rate
+            function updateRate() {
+                $('.rate1').text(rate);
+            }
 
+            $('#addtocart_btn').click(function(e) {
 
+                var qty = $('.rate1').text();
+                var product_id = $("#product_id").val();
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('website.add.to.cart') }}",
+                    data: {
+                        qty:qty,
+                        product_id:product_id
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    dataType: "json", // Update dataType if needed
+                    success: function(response) {
+                        console.log(response);
+                        toastr.success(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        toastr.error('Something went wrong');
+                        // Handle error
+                    }
+                });
+                e.preventDefault();
 
+            });
         });
-
-        wow = new WOW({
-            boxClass: 'wow', // default
-            animateClass: 'animated', // default
-            offset: 0, // default
-            mobile: true, // default
-            live: true // default
-        })
-        wow.init();
+        // $.ajax({
+        //     type: "GET",
+        //     url: "{{ route('product.list') }}",
+        //     success: function(response) {
+        //         console.log(response);
+        //         $('.products_list').html('');
+        //         $('.products_list').html(response);
+        //     }
+        // });
     </script>
-</body>
-
-</html>
+@endsection

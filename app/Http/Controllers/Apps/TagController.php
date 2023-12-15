@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Apps;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Tags;
+use App\Models\Tag;
 use Illuminate\Support\Facades\File;
 class TagController extends Controller
 {
@@ -13,7 +13,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tags::all();
+        $tags = Tag::all();
         return view('pages.apps.tags.index', compact('tags'));
     }
 
@@ -37,7 +37,7 @@ class TagController extends Controller
         ]);
 
 
-        Tags::create([
+        Tag::create([
             'name' => $request->input('name'),
 
         ]);
@@ -50,7 +50,7 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tags = Tags::find($id);
+        $tags = Tag::find($id);
 
 
         $tags->delete();
@@ -63,7 +63,7 @@ class TagController extends Controller
      */
     public function edit(string $id)
     {
-        $tags = Tags::find($id);
+        $tags = Tag::find($id);
         return view('pages.apps.tags.edit', compact('tags'));
     }
 
@@ -74,7 +74,7 @@ class TagController extends Controller
     {
 
 
-        $tags = Tags::find($id);
+        $tags = Tag::find($id);
         $tags->name = $request->input('name');
 
 
@@ -86,7 +86,7 @@ class TagController extends Controller
 
     public function change_status(Request $request)
     {
-        $statusChange = Tags::where('id',$request->id)->update(['status'=>$request->status]);
+        $statusChange = Tag::where('id',$request->id)->update(['status'=>$request->status]);
         if($statusChange)
         {
             return array('message'=>'Tags status  has been changed successfully','type'=>'success');

@@ -24,18 +24,18 @@
 
 
                             <li class="nav-item  ">
-                                <a class="nav-link" href="home.php"><i class="fa-solid fa-house"></i> <span
-                                        class="forspacing"></span> Home</a>
+                                <a class="nav-link" href="{{ route('website.home') }}"><i class="fa-solid fa-house"></i> <span
+                                        class="forspacing"></span>Home</a>
                             </li>
 
                             <li class="nav-item  ">
-                                <a class="nav-link" href="checkout.php"><i class="fa-solid fa-cart-plus"></i> <span
+                                <a class="nav-link" href="{{ route('website.checkout') }}"><i class="fa-solid fa-cart-plus"></i> <span
                                         class="forspacing"></span> Cart</a>
                             </li>
 
 
                             <li class="nav-item  ">
-                                <a class="nav-link" href="my-profile.php"><i class="fa-regular fa-user"></i> <span
+                                <a class="nav-link" href="{{ route('website.profile') }}"><i class="fa-regular fa-user"></i> <span
                                         class="forspacing"></span> My Profile</a>
                             </li>
 
@@ -46,9 +46,9 @@
                                             class="fa-regular fa-file-lines"></i> <span class="forspacing"></span>
                                         Shopping Info</a>
                                     <div class="dropdown-menu">
-                                        <a href="return-policy.php" class="dropdown-item">Return & Refund</a>
-                                        <a href="privacy-policy.php" class="dropdown-item">Privacy Policy</a>
-                                        <a href="terms-and-condition.php" class="dropdown-item">Terms & Condition</a>
+                                        <a href="{{ route('website.return.policy') }}" class="dropdown-item">Return & Refund</a>
+                                        <a href="{{ route('website.policy.privacy') }}" class="dropdown-item">Privacy Policy</a>
+                                        <a href="{{ route('website.term.condition') }}" class="dropdown-item">Terms & Condition</a>
                                     </div>
                                 </div>
 
@@ -56,7 +56,7 @@
 
 
                             <li class="nav-item  ">
-                                <a class="nav-link" href="contact-us.php"><i class="fa-regular fa-message"></i> <span
+                                <a class="nav-link" href="{{ route('website.contact_us') }}"><i class="fa-regular fa-message"></i> <span
                                         class="forspacing"></span> Contact Us</a>
                             </li>
 

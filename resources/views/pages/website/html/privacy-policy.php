@@ -17,7 +17,7 @@
             </p>
             <h4 id="rptheading">Can I request a replacement rather than a refund?</h4>
             <p id="rptp">If you prefer to replace your product, just let our Customer Service executive know your choice and we will call you as soon as your initial product has been received, and we have looked into the availability of the replacement product. If you choose a refund voucher, you can use it to buy a similar product or a different product yourself using the amount originally paid for the returned item.</p>
-            
+
             <h4 id="rptheading">If my returned product is not validated for return, how am I informed?</h4>
             <p id="rptp">If your return does not meet the Quality Check criteria, then we will call you to explain the issue and send the item(s) back to you. We will arrange the delivery of the item.</p>
 
@@ -38,7 +38,7 @@
             </p>
             <h4 id="rptheading">Can I request a replacement rather than a refund?</h4>
             <p id="rptp">If you prefer to replace your product, just let our Customer Service executive know your choice and we will call you as soon as your initial product has been received, and we have looked into the availability of the replacement product. If you choose a refund voucher, you can use it to buy a similar product or a different product yourself using the amount originally paid for the returned item.</p>
-            
+
             <h4 id="rptheading">If my returned product is not validated for return, how am I informed?</h4>
             <p id="rptp">If your return does not meet the Quality Check criteria, then we will call you to explain the issue and send the item(s) back to you. We will arrange the delivery of the item.</p>
 
@@ -66,17 +66,17 @@
 			<!---Model left side tag----->
 
 
-			
-			
-		
 
-			
+
+
+
+
 			<!-- model left side tag--->
 
 		<!--proe loader-->
 
 		<?php include('section/preloader.php') ?>
-	
+
 
 
 		<!--preloader--->
@@ -110,7 +110,7 @@
     <script src="js/main.js"></script>
 	<script src="js/script.js"></script>
 
-    
+
 
 
     </body>

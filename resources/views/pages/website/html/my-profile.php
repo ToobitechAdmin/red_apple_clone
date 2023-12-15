@@ -5,9 +5,9 @@
 <header>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js'></script>
-   
-  
- 
+
+
+
     </header>
     <style>
 
@@ -331,9 +331,9 @@ input[type=text]:-moz-placeholder {
     align-items: center;
 }
     </style>
-		
 
-   
+
+
 
         <div class="container-fluid profile">
             <div class="row">
@@ -402,13 +402,13 @@ input[type=text]:-moz-placeholder {
                     <div class="forget" id="">
                         <div class="container height-100 d-flex justify-content-center align-items-center">
                             <div class="position-relative">
-                               
+
                                 <div class="cardddd p-2 text-center">
                                 <h5 class="text-center">Reset Password</h5>
 
                                 <h5 class="text-center">+0000000000000000</h5>
                                     <h6 class="text-center">We have sent you an OTP. Verify the OTP and retrieve your name, <br>address and payment details for a quick checkout.</h6>
-                                   
+
                                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2"> <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1" /></div>
 
                                   <h5> <strong> Couldn’t verify the OTP? </strong></h5>
@@ -456,7 +456,7 @@ input[type=text]:-moz-placeholder {
 
 
 
-       
+
 
             <!--model  for Man Menu ---->
             <?php include('section/right-nav.php') ?>
@@ -480,7 +480,7 @@ input[type=text]:-moz-placeholder {
     <script src="js/main.js"></script>
 	<script src="js/script.js"></script>
 	<script>
-	
+
 $(document).ready(function(){
     $(".otpp").hide();
     $('.forget').hide();
@@ -489,11 +489,11 @@ $(document).on("keypress", "#js_input-phonenumber", function(e) {
      if (e.which == 13) {
         $(".otpp").show();
         $(".checkout-col").hide();
-        
+
      }
 
      $('#backkk').click(function(){
-   
+
         $(".otpp").hide();
         $(".checkout-col").show();
      })
@@ -515,11 +515,11 @@ $(document).on("keypress", "#js_input-phonenumber", function(e) {
 	  $ (document).ready (function () {
 	$ (".modal a").not (".dropdown-toggle").on ("click", function () {
 		$ (".modal").modal ("hide");
-	
-	
+
+
 	});
 
-	
+
 });
 
 
