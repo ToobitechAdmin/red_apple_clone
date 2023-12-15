@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Red Apple Clone | @yield('title')</title>
+    <title>GINO GINELLES | @yield('title')</title>
     <link rel="icon" href="{{ asset('assets/website/images/mainpagelogo.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta charset="utf-8">
@@ -278,7 +278,7 @@
 
             });
 
-            getCart();
+            getCart('model');
         });
 
 

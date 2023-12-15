@@ -177,10 +177,10 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-success">Save</button>
-                                                    <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
+                                                                <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
                         <!-- <p class="text-center">© 2023 redapple. All Rights Reserved.</p>
-                                                    <br>
-                                                    <p class="text-center">Shop powered by ....</p> -->
+                                                                <br>
+                                                                <p class="text-center">Shop powered by ....</p> -->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
@@ -255,15 +255,17 @@
                     type: "POST",
                     url: "{{ route('website.add.to.cart') }}",
                     data: {
-                        qty:qty,
-                        product_id:product_id
+                        qty: qty,
+                        product_id: product_id
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     dataType: "json", // Update dataType if needed
                     success: function(response) {
-                        console.log(response);
+                        $('#myModalmoreproduct-deltails').modal('hide');
+                        getCart1('model');
+
                         toastr.success(response.message);
                     },
                     error: function(xhr, status, error) {
@@ -275,6 +277,66 @@
 
             });
         });
+
+        function getCart1(type) {
+
+            $.ajax({
+                type: "get",
+                url: "{{ route('website.cart') }}",
+                data: {
+                    type: type
+                },
+                success: function(response) {
+                    var html;
+                    var items = response.cart.item;
+                    $('#cart_model_total_item').text(response.cart['total_item']);
+                    $('.cart_model_total_item').text(response.cart['total_item']);
+                    $('#cart_model_subtotal').text(response.cart['subtotal']);
+                    $('#cart_model_total').text(response.cart['total']);
+                    $("#cart_model_items").html('');
+
+                    for (const key in items) {
+                        if (items.hasOwnProperty(key)) {
+                            const element = items[key];
+
+
+                            html += ` <tr data-product-id=${element.id}>
+                    <td class=" w-50">
+                        <div class="img-withdesc"> <img src="{{ asset('${element.attributes.image}') }}"
+                                class="img-fluid w-25" alt="">
+                            <div class="descr"> ${element.name}  </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align: top;">
+                        <div class="cart-mycart cart-mycart1">
+                            <div class="minus"><i class="fa-solid fa-circle-minus"
+                                    style="margin-right:5px"></i></div>
+                            <div class="rate1">${element.quantity}</div>
+                            <div class="plus"><i
+                                    class="fa-solid fa-circle-plus"style="margin-left:5px"></i>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align: top; ">
+                        <div style="margin-top:15px">${element.price}</div>
+                    </td>
+
+                    <td style="vertical-align: top; ">
+                        <div style="margin-top:15px" class="remove-cart"><span
+                                    class="badge badge-secondary"><i
+                                        class="fa-solid fa-trash"></i> remove</span></div>
+                    </td>
+
+                </tr> `
+                        }
+                    }
+
+                    $("#cart_model_items").html(html);
+                }
+            });
+
+
+        }
         // $.ajax({
         //     type: "GET",
         //     url: "{{ route('product.list') }}",
