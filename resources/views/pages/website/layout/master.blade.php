@@ -264,6 +264,11 @@
                 $(this).parent('.cart-mycart').children('.rate1').text(rate);
             });
 
+            $('.cart').click(function (e) {
+                getCart('model');
+                e.preventDefault();
+
+            });
             // Function to update the displayed rate
             function updateRate(element) {
 

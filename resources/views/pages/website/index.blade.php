@@ -194,7 +194,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6"><button type="button" class="btn btn-danger"
-                                        id="addtocart_btn">ADD
+                                        id="addtocart_btn" class="close " data-dismiss="modal">ADD
                                         TO CART <span><i class="fa-solid fa-arrow-right abc"
                                                 style="float:right"></i></span>
                                     </button></div>
@@ -263,7 +263,7 @@
                     },
                     dataType: "json", // Update dataType if needed
                     success: function(response) {
-                        $('#myModalmoreproduct-deltails').modal('hide');
+                        $('#myModalcart').modal('show');
                         getCart1('model');
 
                         toastr.success(response.message);
