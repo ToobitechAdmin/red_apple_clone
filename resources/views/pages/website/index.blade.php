@@ -177,24 +177,24 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-success">Save</button>
-                                                                <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
+                                                                    <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
                         <!-- <p class="text-center">© 2023 redapple. All Rights Reserved.</p>
-                                                                <br>
-                                                                <p class="text-center">Shop powered by ....</p> -->
+                                                                    <br>
+                                                                    <p class="text-center">Shop powered by ....</p> -->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="cart-mycart">
-                                        <div class="minus"><i class="fa-solid fa-circle-minus"
+                                        <div class="minus" id="decreaseqty"><i class="fa-solid fa-circle-minus"
                                                 style="margin-right:5px"></i></div>
-                                        <div class="rate1">1</div>
+                                        <div class="rate1" id="qty">1</div>
                                         <input id="product_id" hidden type="hidden">
-                                        <div class="plus"><i class="fa-solid fa-circle-plus"style="margin-left:5px"></i>
+                                        <div class="plus" id="increseqty"><i class="fa-solid fa-circle-plus"style="margin-left:5px"></i>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6"><button type="button" class="btn btn-danger"
-                                        id="addtocart_btn" class="close " data-dismiss="modal">ADD
+                                <div class="col-md-6"><button type="button" class="btn btn-danger" id="addtocart_btn"
+                                        class="close " data-dismiss="modal">ADD
                                         TO CART <span><i class="fa-solid fa-arrow-right abc"
                                                 style="float:right"></i></span>
                                     </button></div>
@@ -229,14 +229,14 @@
             var rate = 1;
 
             // Click event for the minus button
-            $('.minus').on('click', function() {
+            $('#decreaseqty').on('click', function() {
                 // Decrease rate, but not less than 1
                 rate = Math.max(1, rate - 1);
                 updateRate();
             });
 
             // Click event for the plus button
-            $('.plus').on('click', function() {
+            $('#increseqty').on('click', function() {
                 // Increase rate
                 rate++;
                 updateRate();
@@ -244,12 +244,13 @@
 
             // Function to update the displayed rate
             function updateRate() {
-                $('.rate1').text(rate);
+                $('#qty').text(rate);
             }
 
             $('#addtocart_btn').click(function(e) {
 
-                var qty = $('.rate1').text();
+                var qty = $('#qty').text();
+                console.log($('#qty'));
                 var product_id = $("#product_id").val();
                 $.ajax({
                     type: "POST",
@@ -261,7 +262,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    dataType: "json", // Update dataType if needed
+
                     success: function(response) {
                         $('#myModalcart').modal('show');
                         getCart1('model');
@@ -309,10 +310,10 @@
                     </td>
                     <td style="vertical-align: top;">
                         <div class="cart-mycart cart-mycart1">
-                            <div class="minus"><i class="fa-solid fa-circle-minus"
+                            <div class="minus" id="decreaseqty"><i class="fa-solid fa-circle-minus"
                                     style="margin-right:5px"></i></div>
-                            <div class="rate1">${element.quantity}</div>
-                            <div class="plus"><i
+                            <div class="rate1" id="qty">${element.quantity}</div>
+                            <div class="plus" id="increseqty"><i
                                     class="fa-solid fa-circle-plus"style="margin-left:5px"></i>
                             </div>
                         </div>
