@@ -3,6 +3,9 @@
 @section('style')
 @endsection
 @section('content')
+@php
+    $cachedData = cache('cache-data');
+@endphp
     <!---Banner start--->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -97,7 +100,7 @@
         <div class="row">
             <div class="col-12" data-aos="zoom-out" data-aos-duration="500">
                 <i class="fa-solid fa-location-dot" style="color: #ee6826 ; font-size: 33px;"></i> <span
-                    style="margin-left: 20px;" id="bodyspan">Delivering to: <strong> DHA - Defence Phase 03
+                    style="margin-left: 20px;" id="bodyspan">Delivering to: <strong> {{ $cachedData['city']??'' }} | {{ $cachedData['area']??'' }}
                     </strong></span>
             </div>
         </div>

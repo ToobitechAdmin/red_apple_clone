@@ -47,7 +47,12 @@
 
     @php
         $cart = \Cart::getContent();
+
+        $cachedData = cache('cache-data');
+
+
     @endphp
+
     {{-- @dd($cart->count()) --}}
     @include('pages.website.includes.navbar')
 
