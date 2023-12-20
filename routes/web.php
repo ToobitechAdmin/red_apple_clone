@@ -10,6 +10,7 @@ use App\Http\Controllers\Apps\TagController;
 use App\Http\Controllers\Apps\CityController;
 use App\Http\Controllers\Apps\AreaController;
 use App\Http\Controllers\Apps\StateController;
+use App\Http\Controllers\Apps\BranchController;
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\DashboardController;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 // Website
 use App\Http\Controllers\Website\PagesController;
 use App\Http\Controllers\Website\CartController;
+use App\Http\Controllers\Website\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +62,11 @@ use App\Http\Controllers\Website\CartController;
         Route::post('add-order/', 'addOrder')->name('order');
 
     });
+    Route::controller(HomeController::class)->name('website.')->group(function () {
+        Route::get('areas', 'areas')->name('get.areas');
+
+    });
+
     Route::get('/product/list',[ProductController::class,'productList'])->name('product.list');
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
@@ -101,6 +108,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('/area', AreaController::class);
    // Route::get('address-change-status', [TagController::class,'change_status'])->name('address.change.status');
 
+   Route::resource('/branch', BranchController::class);
     Route::resource('vendor/product', ProductController::class);
 
 

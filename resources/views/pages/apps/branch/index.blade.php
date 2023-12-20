@@ -1,10 +1,10 @@
 <x-default-layout>
 
     @section('title')
-        Location Management
+        Branch Management
     @endsection
     @section('breadcrumbs')
-        {{ Breadcrumbs::render('area.index') }}
+        {{ Breadcrumbs::render('branch.index') }}
     @endsection
     <div id="kt_app_content" class="app-content  flex-column-fluid ">
 
@@ -19,7 +19,7 @@
                             <span class="path1"></span><span class="path2"></span>
                         </i>
                         <input type="text" id="userSearchInput" class="form-control form-control-solid w-250px ps-13"
-                            placeholder="Search Area" />
+                            placeholder="Search Branch" />
                     </div>
                     <!--end::Search-->
                 </div>
@@ -35,7 +35,7 @@
                     <!--begin::Add user-->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#kt_modal_add_user">
-                        <i class="ki-duotone ki-plus fs-2"></i> Add Area
+                        <i class="ki-duotone ki-plus fs-2"></i> Add Branch
                     </button>
                     <!--end::Add user-->
                 </div>
@@ -78,7 +78,7 @@
                             <!--begin::Modal body-->
                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                 <!--begin::Form-->
-                                <form id="kt_modal_export_users_form" class="form" action="{{ route('area.store') }}"
+                                <form id="kt_modal_export_users_form" class="form" action="{{ route('branch.store') }}"
                                     method="POST" enctype="multipart/form-data">
 
                                     <div class="text-center">
@@ -116,7 +116,7 @@
                             <!--begin::Modal header-->
                             <div class="modal-header" id="kt_modal_add_user_header">
                                 <!--begin::Modal title-->
-                                <h2 class="fw-bold">Add Area</h2>
+                                <h2 class="fw-bold">Add Branch</h2>
                                 <!--end::Modal title-->
 
                                 <!--begin::Close-->
@@ -132,7 +132,7 @@
                             <!--begin::Modal body-->
                             <div class="modal-body px-5 my-7">
                                 <!--begin::Form-->
-                                <form id="kt_modal_add_user_form" class="form" action="{{ route('area.store') }}"
+                                <form id="kt_modal_add_user_form" class="form" action="{{ route('branch.store') }}"
                                     method="POST" enctype="multipart/form-data">
                                     @csrf
 
@@ -147,13 +147,13 @@
 
                                         <div class="fv-row mb-7">
                                             <!--begin::Label-->
-                                            <label class="required fw-semibold fs-6 mb-2" >Area Name</label>
+                                            <label class="required fw-semibold fs-6 mb-2" >Branch Name</label>
                                             <!--end::Label-->
 
                                             <!--begin::Input-->
                                             <input type="text" name="name"
                                                 class="form-control form-control-solid mb-3 mb-lg-0"
-                                                placeholder="Enter Area Name" />
+                                                placeholder="Enter Branch Name" />
                                             <!--end::Input-->
                                         </div>
 
@@ -242,8 +242,10 @@
                                         data-kt-check-target="#kt_table_users .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th>Area Name</th>
+                            <th>Branch Name</th>
                             <th>City</th>
+                            <th>Address</th>
+                            <th>Phone</th>
 
 
                             <th>Action</th>
@@ -257,7 +259,7 @@
 
 
 
-                            @foreach ($data['area'] as $area)
+                            @foreach ($data['branch'] as $item)
                                 <tr>
                                     <td>
                                         <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -265,11 +267,14 @@
                                         </div>
                                     </td>
 
-                                    <td>{{ $area->name }}</td>
-                                    <td>{{ $area->city->name }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->city->name }}</td>
+                                    <td>{{ $item->address }}</td>
+                                    <td>{{ $item->number }}</td>
+
 
                                     <td class="actions">
-                                        <form action="{{ route('area.destroy', $area->id) }}" method="post"
+                                        <form action="{{ route('branch.destroy', $item->id) }}" method="post"
                                             style="display:inline">
                                             @csrf
                                             @method('DELETE')
@@ -278,7 +283,7 @@
                                                 onmouseover="this.style.backgroundColor='#7d3aaf'"
                                                 onmouseout="this.style.backgroundColor='#a932ff'">Delete</button>
                                         </form>
-                                        <form action="{{ route('area.edit', $area->id) }}" method="get"
+                                        <form action="{{ route('branch.edit',$item->id) }}" method="get"
                                             style="display:inline">
                                             @csrf
 

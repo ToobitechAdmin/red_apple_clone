@@ -3,9 +3,9 @@
 @section('style')
 @endsection
 @section('content')
-@php
-    $cachedData = cache('cache-data');
-@endphp
+    @php
+        $cachedData = cache('cache-data');
+    @endphp
     <!---Banner start--->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -52,10 +52,19 @@
                                 <div class="ps-4 pb-0">
                                     <p class="iconheading p-0">Address</p>
                                     <div class="padddding">
-                                        <span class="iconspan">F-6 Markaz F 6 Markaz F-6..</span>
+                                        <span class="iconspan">
+                                            @if (isset($cachedData['area']->address))
+                                                {{ $cachedData['area']->address ?? '' }}
+                                            @endif
+                                            @if (isset($cachedData['branch']->address))
+                                                {{ $cachedData['branch']->address ?? '' }}
+                                            @endif
+                                        </span>
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
                         <!-- <div class="col-md-4">   <h5> <i class="fa-solid fa-square-phone" style="font-size: 22px; color: white;" id="iconnnn"></i> Trusted Partner</h5></div> -->
                         <div class="col-md-4">
@@ -67,7 +76,14 @@
                                 <div class="ps-4 pb-0">
                                     <p class="iconheading p-0">Contact</p>
                                     <div class="padddding">
-                                        <span class="iconspan">(000) 000-000-000</span>
+                                        <span class="iconspan">
+                                            @if (isset($cachedData['area']->number))
+                                                {{ $cachedData['area']->number ?? '' }}
+                                            @endif
+                                            @if (isset($cachedData['branch']->number))
+                                                {{ $cachedData['branch']->number ?? '' }}
+                                            @endif
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -99,9 +115,19 @@
     <div class="container-fluid main">
         <div class="row">
             <div class="col-12" data-aos="zoom-out" data-aos-duration="500">
-                <i class="fa-solid fa-location-dot" style="color: #ee6826 ; font-size: 33px;"></i> <span
-                    style="margin-left: 20px;" id="bodyspan">Delivering to: <strong> {{ $cachedData['city']??'' }} | {{ $cachedData['area']??'' }}
-                    </strong></span>
+                <i class="fa-solid fa-location-dot" style="color: #ee6826 ; font-size: 33px;"></i>
+                @if (isset($cachedData['area']->name))
+                    <span style="margin-left: 20px;" id="bodyspan">
+                        Delivering to: <strong> {{ $cachedData['city'] ?? '' }} |
+                            {{ $cachedData['area']->name ?? '' }}
+                        </strong></span>
+                @endif
+                @if (isset($cachedData['branch']->name))
+                    <span style="margin-left: 20px;" id="bodyspan">
+                        Pickup from: <strong> {{ $cachedData['city'] ?? '' }} |
+                            {{ $cachedData['branch']->name ?? '' }}
+                        </strong></span>
+                @endif
             </div>
         </div>
     </div>
@@ -180,10 +206,10 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-success">Save</button>
-                                                                    <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
+                                                                                        <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
                         <!-- <p class="text-center">© 2023 redapple. All Rights Reserved.</p>
-                                                                    <br>
-                                                                    <p class="text-center">Shop powered by ....</p> -->
+                                                                                        <br>
+                                                                                        <p class="text-center">Shop powered by ....</p> -->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
@@ -192,7 +218,8 @@
                                                 style="margin-right:5px"></i></div>
                                         <div class="rate1" id="qty">1</div>
                                         <input id="product_id" hidden type="hidden">
-                                        <div class="plus" id="increseqty"><i class="fa-solid fa-circle-plus"style="margin-left:5px"></i>
+                                        <div class="plus" id="increseqty"><i
+                                                class="fa-solid fa-circle-plus"style="margin-left:5px"></i>
                                         </div>
                                     </div>
                                 </div>

@@ -32,9 +32,12 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required',
             'city_id'=>'required',
+            'address'=>'required',
+            'number'=>'required',
 
         ]);
 
@@ -42,7 +45,8 @@ class AreaController extends Controller
         Area::create([
             'name' => $request->input('name'),
             'city_id'=>$request->input('city_id'),
-
+            'address' => $request->input('address'),
+            'number'=>$request->input('number'),
         ]);
 
         return redirect()->route('area.index')->with('success', 'Area created successfully');
@@ -78,13 +82,16 @@ class AreaController extends Controller
         $request->validate([
             'name' => 'required',
             'city_id'=>'required',
-
+            'address' => 'required',
+            'number'=>'required',
         ]);
 
         $area = Area::find($id);
         $area->name = $request->input('name');
 
 
+        $area->address=$request->input('address');
+        $area->number=$request->input('number');
         $area->city_id=$request->input('city_id');
         $area->save();
 

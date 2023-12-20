@@ -78,26 +78,42 @@
 
                         <div class="tab">
                             <h5>City</h5>
+                            <select id="city_input" class="form-select form-select-lg mb-3"
+                                aria-label="form-select-lg example">
+                                <option value="">Select City</option>
+                                @forelse ($data['city'] as $item)
+                                    <option data-id='{{ $item->id }}' value="{{ $item->name }}">
+                                        {{ $item->name }}</option>
+                                @empty
+                                    <option value="">Cities Not Found</option>
+                                @endforelse
 
-                            <input list="city_list" id="city_input" name="city" required
+                            </select>
+                            {{-- <input list="city_list" id="city_input" name="city" required
                                 placeholder="Input City *" />
                             <datalist id="city_list">
-                                <option value="lahore">Lahore</option>
-                                <option value="karachi">karachi</option>
-                                <option value="rawal_pindi">RawalPindi</option>
-                                <option value="hyderabad">Hyderabad</option>
-                            </datalist>
+                                @forelse ($data['city'] as $item)
+                                    <option data-id='{{ $item->id }}' value="{{ $item->name }}">
+                                        {{ $item->name }}</option>
+                                @empty
+                                    <option value="">Cities Not Found</option>
+                                @endforelse
+
+                            </datalist> --}}
                         </div>
                         <div class="tab">
                             <h5>What's your Area?</h5>
-                            <input list="area_list" id="area_input" name="area" required
-                                placeholder="Input Area *" />
-                            <datalist id="area_list">
-                                <option value="lahore">Lahore</option>
-                                <option value="karachi">karachi</option>
-                                <option value="rawal_pindi">Rawal Pindi</option>
-                                <option value="hyderabad">Hyderabad</option>
-                            </datalist>
+
+                            <select id="area_input" class="form-select form-select-lg mb-3"
+                                aria-label="form-select-lg example">
+                                {{-- @forelse ($data['city'] as $item)
+                                    <option data-id='{{ $item->id }}' value="{{ $item->name }}">
+                                        {{ $item->name }}</option>
+                                @empty
+                                    <option value="">Cities Not Found</option>
+                                @endforelse --}}
+
+                            </select>
                         </div>
 
                         <div style="overflow: auto;" id="nextprevious">
@@ -131,14 +147,25 @@
                             <h1 id="register">Choose your Pickup Location</h1>
                         </div>
 
-                        <input list="brnach_list" id="brnach_input" name="brnach" required
+                        {{-- <input list="brnach_list" id="brnach_input" name="brnach" required
                             placeholder="Input Branch *" />
                         <datalist id="brnach_list">
                             <option value="lahore">Lahore</option>
                             <option value="karachi">karachi</option>
                             <option value="rawal_pindi">Rawal Pindi</option>
                             <option value="hyderabad">Hyderabad</option>
-                        </datalist>
+                        </datalist> --}}
+                        <select id="brnach_input" class="form-select form-select-lg mb-3"
+                            aria-label="form-select-lg example">
+                            <option value="">Select Area</option>
+                            @forelse ($data['branch'] as $item)
+                                <option data-id='{{ $item->id }}' value="{{ $item->name }}">
+                                    {{ $item->city->name }} - {{ $item->name }}</option>
+                            @empty
+                                <option value="">Branch Not Found</option>
+                            @endforelse
+
+                        </select>
 
                         <div class="btn-box">
                             <button type="button" id="Next1" class="nextBtn1">Next</button>
@@ -157,7 +184,8 @@
                 <div id="ctn-preloader" class="ctn-preloader">
                     <div class="animation-preloader text-center">
                         {{-- <div class="spinner"></div> --}}
-                        <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50 mb-5" srcset="">
+                        <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50 mb-5"
+                            srcset="">
                         <div class="txt-loading">
                             <span data-text-preloader="L" class="letters-loading">
                                 L
@@ -230,18 +258,48 @@
         let branch = null;
         let area = null;
         let city = null;
-        $('#city_input').change(function (e) {
+        let area_id = null;
+        let city_id = null;
+        let branch_id = null;
+        $(document).on("change", "#city_list", function() {
+            alert('aaa')
+        });
+
+        $('#city_input').change(function(e) {
             city = $(this).val();
+            $("#area_input").empty();
+            var selectedOption = $(this).find(':selected');
+            city_id = selectedOption.data('id');
+            $.ajax({
+                type: "GET",
+                url: "{{ route('website.get.areas') }}",
+                data: {
+                    city_id: city_id
+                },
+
+                success: function(response) {
+                    var html = `<option>Select Area</option>`;
+                    response.forEach(element => {
+                        html += `<option data-id='${element.id }' value="${ element.name }">
+                            ${ element.name }</option>`
+                    });
+                    $("#area_input").append(html);
+                }
+            });
             e.preventDefault();
 
         });
-        $('#area_input').change(function (e) {
+        $('#area_input').change(function(e) {
             area = $(this).val();
+            var selectedOption = $(this).find(':selected');
+            area_id = selectedOption.data('id');
             e.preventDefault();
 
         });
-        $('#brnach_input').change(function (e) {
+        $('#brnach_input').change(function(e) {
             branch = $(this).val();
+            var selectedOption = $(this).find(':selected');
+            branch_id = selectedOption.data('id');
 
 
         });
@@ -253,6 +311,7 @@
             $('#pickupf').hide();
             $('#startformBtn1').click(function() {
                 deliverytype = 'Delivery';
+
                 $('#form2').show();
 
                 $('#startform').hide();
@@ -262,6 +321,7 @@
             $('#pickup').click(function() {
 
                 deliverytype = 'Pickup';
+
                 $('#newform').show();
                 $('#startform').hide();
             });
@@ -272,7 +332,6 @@
             })
 
             $('#Next1').click(function() {
-                console.log(deliverytype);
                 saveData()
 
                 window.open("{{ route('website.home') }}", "_self");
@@ -372,20 +431,33 @@
 
         function saveData() {
 
+
+            if (deliverytype == "Delivery") {
+
+                branch = null;
+                branch_id = null;
+            }
+            if (deliverytype == "Pickup") {
+                area = null;
+                area_id = null;
+            }
             $.ajax({
                 type: "get",
                 url: "{{ route('website.data.save') }}",
                 data: {
-                    deliverytype:deliverytype,
-                    branch:branch,
-                    area:area,
-                    city:city,
+                    deliverytype: deliverytype,
+                    branch: branch,
+                    area: area,
+                    city: city,
+                    city_id: city_id,
+                    area_id: area_id,
+                    branch_id: branch_id
                 },
-                success: function (response) {
+                success: function(response) {
                     window.reload()
                 }
             });
-         }
+        }
     </script>
 
 

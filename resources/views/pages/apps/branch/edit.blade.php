@@ -3,15 +3,15 @@
 <x-default-layout>
 
     @section('title')
-        Edit Area
+        Edit Branch
     @endsection
 
     @section('breadcrumbs')
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('city.index') }}">City Management</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Area</li>
+                <li class="breadcrumb-item"><a href="{{ route('branch.index') }}">Branch Management</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Branch</li>
             </ol>
         </nav>
     @endsection
@@ -27,7 +27,7 @@
                 <div class="card-header border-0 pt-6">
                     <!--begin::Card title-->
                     <div class="card-title">
-                        <h2 class="fw-bold">Edit Area</h2>
+                        <h2 class="fw-bold">Edit Branch</h2>
                     </div>
                 </div>
                 <!--end::Card header-->
@@ -35,7 +35,7 @@
                 <!--begin::Content-->
                 <div class="card-body py-4 mx-20">
                     <!--begin::Form-->
-                    <form action="{{ route('area.update', $data['area']->id) }}" method="POST"
+                    <form action="{{ route('branch.update', $data['branch']->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -43,12 +43,12 @@
 
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Area Name</label>
+                            <label class="required fw-semibold fs-6 mb-2">Branch Name</label>
                             <!--end::Label-->
 
                             <!--begin::Input-->
                             <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0"
-                                placeholder="Enter Area Name" value="{{ $data['area']->name??'' }}"/>
+                                placeholder="Enter Area Name" value="{{ $data['branch']->name??'' }}"/>
                             <!--end::Input-->
                         </div>
 
@@ -59,7 +59,7 @@
 
                             <!--begin::Input-->
                             <input type="text" name="address" class="form-control form-control-solid mb-3 mb-lg-0"
-                                placeholder="Enter Address" value="{{ $data['area']->address??'' }}" />
+                                placeholder="Enter Address" value="{{ $data['branch']->address??'' }}" />
                             <!--end::Input-->
                         </div>
 
@@ -70,7 +70,7 @@
 
                             <!--begin::Input-->
                             <input type="number" name="number" class="form-control form-control-solid mb-3 mb-lg-0"
-                                placeholder="Enter Contact Number"  value="{{ $data['area']->number??'' }}"/>
+                                placeholder="Enter Contact Number"  value="{{ $data['branch']->number??'' }}"/>
                             <!--end::Input-->
                         </div>
                         <div class="fv-row mb-7">
@@ -82,7 +82,7 @@
                                 data-placeholder="date_period" id="select2-theme"
                                 class="form-select form-select-sm form-select-solid form-control form-control-solid mb-3 mb-lg-0">
                                 @foreach ($data['city'] as $item)
-                                    <option @if ($item->id == $data['area']->city->id) selected @endif
+                                    <option @if ($item->id == $data['branch']->city->id) selected @endif
                                         value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
 

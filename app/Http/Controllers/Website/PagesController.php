@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\City;
+use App\Models\Area;
+use App\Models\Branch;
+
 use Illuminate\Support\Facades\Cache;
 class PagesController extends Controller
 {
@@ -20,7 +24,10 @@ class PagesController extends Controller
     }
     public function location(Request $request)
     {
-        return view('pages.website.main');
+        $data['city'] = City::all();
+        $data['area'] = Area::all();
+        $data['branch'] = Branch::with('city')->get();
+        return view('pages.website.main',compact('data'));
         if (!Cache::has('cache-data')) {
         } else {
             $data = Category::with(['products'])->get();
@@ -63,10 +70,18 @@ class PagesController extends Controller
 
     public function saveData(Request $request)
     {
+        $data = $request->all();
+        if ($request->area_id) {
+            # code...
+            $data['area'] = Area::find($request->area_id);
+        }
+        if ($request->branch_id) {
+            # code...
+            $data['branch'] = Branch::find($request->branch_id);
+        }
 
-        Cache::put('cache-data', $request->all(), now()->addDays(2));
-
-         $cachedData = Cache::get('cache-data');
+        Cache::put('cache-data', $data, now()->addDays(2));
+        $cachedData = Cache::get('cache-data');
         //  return $cachedData['deliverytype'];
         return 'save data';
         # code...

@@ -82,3 +82,7 @@ Breadcrumbs::for('state.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('State', route('state.index'));
 });
+Breadcrumbs::for('branch.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Branch', route('branch.index'));
+});
