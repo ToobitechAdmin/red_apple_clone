@@ -79,7 +79,7 @@
                         <div class="tab">
                             <h5>City</h5>
                             <select id="city_input" class="form-select form-select-lg mb-3"
-                                aria-label="form-select-lg example">
+                                aria-label="form-select-lg example" required>
                                 <option value="">Select City</option>
                                 @forelse ($data['city'] as $item)
                                     <option data-id='{{ $item->id }}' value="{{ $item->name }}">

@@ -8,7 +8,11 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Area;
 use App\Models\Branch;
-
+use App\Models\Privacy;
+use App\Models\Term;
+use App\Models\Refund;
+use App\Models\Pickuptime;
+use App\Models\Deliverytime;
 use Illuminate\Support\Facades\Cache;
 class PagesController extends Controller
 {
@@ -39,32 +43,60 @@ class PagesController extends Controller
 
     public function checkout(Request $request)
     {
+
+        $data =$this->getCart()->count();
+        if ($data <= 0) {
+            return  redirect()->route('website.home');
+        }
+
         return view('pages.website.checkout');
 
     }
     public function profile(Request $request)
     {
+
         return view('pages.website.profile');
 
     }
     public function returnPolicy(Request $request)
     {
-        return view('pages.website.return_policy');
+        $data = Refund::first();
+
+        return view('pages.website.return_policy',compact('data'));
 
     }
     public function policyPrivacy(Request $request)
     {
-        return view('pages.website.policyPrivacy');
+        $data = Privacy::first();
+        return view('pages.website.policyPrivacy',compact('data'));
 
     }
     public function termCondition(Request $request)
     {
-        return view('pages.website.term_condition');
+        $data = Term::first();
+        return view('pages.website.term_condition',compact('data'));
 
     }
     public function contactUs(Request $request)
     {
-        return view('pages.website.contact_us');
+        $cachedData = cache('cache-data');
+
+        $data['city'] = City::all();
+        $data['area'] = Area::all();
+        $data['branch'] = Branch::with('city')->get();
+        $data['pickup'] = Pickuptime::all();
+        $data['delivery'] = Deliverytime::all();
+        if ($cachedData['city_id']) {
+            # code...
+            $data['myCity']=City::where('id',$cachedData['city_id'])->with('area')->first();
+        }
+
+        if (isset($cachedData['branch']->city_id)) {
+            # code...
+            $data['cityBranch']=City::where('id',$cachedData['branch']->city_id)->with('branch')->first();
+        }
+
+        return view('pages.website.contact_us',compact('data'));
 
     }
 
@@ -87,4 +119,8 @@ class PagesController extends Controller
         # code...
     }
 
+    public function getCart()
+{
+    return \Cart::getContent();
+}
 }

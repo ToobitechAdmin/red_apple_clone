@@ -86,3 +86,27 @@ Breadcrumbs::for('branch.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('Branch', route('branch.index'));
 });
+Breadcrumbs::for('delivery-time.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Delivery Time', route('delivery-time.index'));
+});
+Breadcrumbs::for('pickup-time.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Pickup Time', route('pickup-time.index'));
+});
+Breadcrumbs::for('return-refund.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Return & Refund', route('return-refund.index'));
+});
+Breadcrumbs::for('privacy-policy.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Privacy & Policy', route('privacy-policy.index'));
+});
+Breadcrumbs::for('term-condition.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Term & Condition', route('term-condition.index'));
+});
+Breadcrumbs::for('order.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Order', route('order.index'));
+});

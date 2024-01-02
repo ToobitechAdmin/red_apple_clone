@@ -70,8 +70,6 @@ public function addOrder(Request $request)
         'email' => 'required|email',
         'phone_number' => 'required',
         'address' => 'required',
-        'city' => 'required',
-        'area' => 'required',
         'order_type' => 'required',
     ]);
 

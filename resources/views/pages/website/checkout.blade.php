@@ -361,6 +361,10 @@
     </style>
 @endsection
 @section('content')
+    @php
+        $cachedData = cache('cache-data');
+
+    @endphp
     <div class="container-fluid checkout">
         <div class="row ">
             <div class="col-md-8  mt-4">
@@ -431,7 +435,7 @@
                         <p class="pt-4" id="pppp">Order Type</p>
                         <button type="button" class="btn btn-labeled btn-successs">
                             <span class="btn-label"><i class="fa-solid fa-truck" id="iconn-cart"></i></span> <span
-                                id="orderType">Delivery </span>
+                                id="orderType"> {{ $cachedData['deliverytype'] ?? '' }}</span>
                         </button>
                         {{-- <p class="pt-4" id="pppp">Order Type</p>
                         <button type="button" class="btn btn-labeled btn-successs">
@@ -563,53 +567,93 @@
                             </div>
                         </div> --}}
 
-                        <p class="mt-2">Delivery Address</p>
+                        @if ($cachedData['deliverytype'] == 'Delivery')
+                            <p class="mt-2">Delivery Address</p>
+                        @else
+                            <p class="mt-2">Pickup Location</p>
+                        @endif
+
+                        @if ($cachedData['deliverytype'] == 'Delivery')
+                            <div class="form-group">
+                                <input type="text" class="form-control address" id="field"
+                                    placeholder="Complete Delivery Address *"
+                                    value=" {{ $cachedData['area']->address ?? '' }}" />
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-4 mt-4">
+                                    <input list="city" id="city" name="fruits" required placeholder="City *"
+                                        value="{{ $cachedData['area']->city->name ?? '' }}" />
+
+                                </div>
+
+                                <div class="col-md-8 mt-4">
+                                    <input list="area" id="area" name="fruits" required placeholder="Area *"
+                                        value=" {{ $cachedData['area']->name ?? '' }}" />
+
+                                </div>
+
+                                <dl id="country-select" class="dropdown mt-4">
+                                    <dt>
+                                        <a href="javascript:void(0);">
+                                            <span><span
+                                                    style="background-position: 0px -2035px;"></span><span>Pakistan</span><span>+92</span></span>
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <ul style="display: none;">
+                                            <li>
+                                                <a cunt_code="+92" href="javascript:void(0);"><span
+                                                        style="background-position: 0px -2035px;"></span><span>Pakistan</span><span>+92</span></a>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        @endif
+
+                        @if ($cachedData['deliverytype'] == 'Pickup')
+                        <div id="google-map" style="height: 200px; width: 100%;"></div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control address" id="field"
-                                placeholder="Complete Delivery Address *" />
+                            <input type="text" class="form-control address" id="field" placeholder="Complete Pickup Address *"
+                                value="{{ $cachedData['branch']->address ?? '' }}" hidden />
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-4 mt-4">
-                                <input list="city" id="city" name="fruits" required placeholder="City *" />
-                                <datalist id="city">
-                                    <option value="Karachi"> </option>
-                                    <option value="Lahore"> </option>
-                                    <option value="Islamabad"> </option>
-                                    <option value="Peshawar"> </option>
-                                    <option value="Swat"> </option>
-                                </datalist>
-                            </div>
 
-                            <div class="col-md-8 mt-4">
-                                <input list="area" id="area" name="fruits" required placeholder="Area *" />
-                                <datalist id="area">
-                                    <option value="Jiddah"> </option>
-                                    <option value="Baharia Town"> </option>
-                                    <option value="Defance"> </option>
-                                    <option value="Civic Center"> </option>
-                                    <option value="DHA"> </option>
-                                </datalist>
-                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mt-4">
+                                    {{-- <input list="city" id="city" name="fruits" required placeholder="City *"
+                                        value="{{ $cachedData['area']->city->name ?? '' }}" /> --}}
 
-                            <dl id="country-select" class="dropdown mt-4">
-                                <dt>
-                                    <a href="javascript:void(0);">
-                                        <span><span
-                                                style="background-position: 0px -2035px;"></span><span>Pakistan</span><span>+92</span></span>
-                                    </a>
-                                </dt>
-                                <dd>
-                                    <ul style="display: none;">
-                                        <li>
-                                            <a cunt_code="+92" href="javascript:void(0);"><span
-                                                    style="background-position: 0px -2035px;"></span><span>Pakistan</span><span>+92</span></a>
-                                        </li>
-                                    </ul>
-                                </dd>
-                            </dl>
-                        </div>
+                                </div>
+
+                                <div class="col-md-8 mt-4">
+                                    {{-- <input list="area" id="area" name="fruits" required placeholder="Area *"
+                                        value=" {{ $cachedData['area']->name ?? '' }}" /> --}}
+
+                                </div>
+
+                                <dl id="country-select" class="dropdown mt-4">
+                                    <dt>
+                                        <a href="javascript:void(0);">
+                                            <span><span
+                                                    style="background-position: 0px -2035px;"></span><span>Pakistan</span><span>+92</span></span>
+                                        </a>
+                                    </dt>
+                                    <dd>
+                                        <ul style="display: none;">
+                                            <li>
+                                                <a cunt_code="+92" href="javascript:void(0);"><span
+                                                        style="background-position: 0px -2035px;"></span><span>Pakistan</span><span>+92</span></a>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -777,8 +821,9 @@
 
 
                                                     <p>
-                                                        <a class="btn" style="background:#ee6826;color:white" id="cashOnDeliveryButton"
-                                                            data-bs-toggle="collapse" href="" role="button">
+                                                        <a class="btn" style="background:#ee6826;color:white"
+                                                            id="cashOnDeliveryButton" data-bs-toggle="collapse"
+                                                            href="" role="button">
                                                             <span style=" font-size:20px;font-weight:bold"> Cash On
                                                                 Delivery</span>
                                                         </a>
@@ -1026,5 +1071,68 @@
         }
     </script>
 
+    <script>
+        // Function to initialize Google Map
+        function initMap() {
+            // Get the address from the input field
+            var address = $('.address').val();
+
+            // Create a geocoder to convert address to LatLng
+            var geocoder = new google.maps.Geocoder();
+
+            // Get the map element
+            var mapElement = document.getElementById('google-map');
+
+            // Set default coordinates (e.g., a central location)
+            var defaultLatLng = { lat: 0, lng: 0 };
+
+            // Create a map with default coordinates
+            var map = new google.maps.Map(mapElement, {
+                zoom: 15,
+                center: defaultLatLng
+            });
+
+            // If address is available, use geocoder to get LatLng and update map
+            if (address) {
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    if (status === 'OK') {
+                        var location = results[0].geometry.location;
+
+                        // Set center and add a marker at the location
+                        map.setCenter(location);
+
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: location,
+                            title: address
+                        });
+
+                        // Add an info window with the address text
+                        var infowindow = new google.maps.InfoWindow({
+                            content: '<strong>' + address + '</strong>'
+                        });
+
+                        // Open the info window when the marker is clicked
+                        marker.addListener('click', function () {
+                            infowindow.open(map, marker);
+                        });
+                    } else {
+                        console.error('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+        }
+
+        // Load the Google Maps JavaScript API
+        function loadScript() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCeeUZJDwiG1wIrvzJ2Lxmhn2zcoGPWXKQ&callback=initMap';
+            document.body.appendChild(script);
+        }
+
+        // Call the loadScript function to load the API
+        loadScript();
+    </script>
 
 @endsection

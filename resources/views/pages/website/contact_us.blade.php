@@ -59,7 +59,10 @@
     </style>
 @endsection
 @section('content')
+    @php
+        $cachedData = cache('cache-data');
 
+    @endphp
     <div class="container-fluid cnt">
 
         <div class="row">
@@ -74,12 +77,34 @@
             <div class="col-md-8 mt-5">
                 <div class="cntbgp">
                     <span class="redheading">Phone Number</span>
-                    <h5 class="pt-4 mb-4"> <i class="fa-solid fa-phone" id="cnticon"></i> (021) 111-111-733</h5>
+                    <h5 class="pt-4 mb-4"> <i class="fa-solid fa-phone" id="cnticon"></i>
+                        @if (isset($cachedData['area']->number))
+                            {{ $cachedData['area']->number ?? '' }}
+                        @endif
+                        @if (isset($cachedData['branch']->number))
+                            {{ $cachedData['branch']->number ?? '' }}
+                        @endif
+
+                    </h5>
                     <span class="redheading">Store Address </span>
-                    <p>F-6 Markaz F 6 Markaz F-6, Islamabad, Islamabad Capital Territory, Pakistan </p>
+                    <p>
+                        @if (isset($cachedData['area']->address))
+                            {{ $cachedData['area']->address ?? '' }}
+                        @endif
+                        @if (isset($cachedData['branch']->address))
+                            {{ $cachedData['branch']->address ?? '' }}
+                        @endif
+                    </p>
                     <span class="redheading">Whatsapp Number </span>
 
-                    <h5 class="pt-4 mb-4"> <i class="fa-brands fa-whatsapp" id="cntwgatsapp"></i> (021) 111-111-733</h5>
+                    <h5 class="pt-4 mb-4"> <i class="fa-brands fa-whatsapp" id="cntwgatsapp"></i>
+                        @if (isset($cachedData['area']->number))
+                            {{ $cachedData['area']->number ?? '' }}
+                        @endif
+                        @if (isset($cachedData['branch']->number))
+                            {{ $cachedData['branch']->number ?? '' }}
+                        @endif
+                    </h5>
 
 
                     <div class="schedul-upp">
@@ -89,26 +114,20 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered mt-4 table align-middle">
+
                             <thead>
                                 <tr class="text-center">
-                                    <th scope="col">Mon</th>
-                                    <th scope="col">Tue</th>
-                                    <th scope="col">Wed</th>
-                                    <th scope="col">Thu</th>
-                                    <th scope="col">Fri</th>
-                                    <th scope="col">Sat</th>
-                                    <th scope="col">Sun</th>
+                                    @foreach ($data['pickup'] as $key => $pickup)
+                                        <th scope="col">{{ $pickup->day }}</th>
+                                    @endforeach
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="text-center">
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
+                                    @foreach ($data['pickup'] as $key => $pickup)
+                                        <td>{{ $pickup->opening_time }} - {{ $pickup->closing_time }}</td>
+                                    @endforeach
+
                                 </tr>
                             </tbody>
                         </table>
@@ -124,24 +143,16 @@
                         <table class="table table-bordered mt-4 table align-middle">
                             <thead>
                                 <tr class="text-center">
-                                    <th scope="col">Mon</th>
-                                    <th scope="col">Tue</th>
-                                    <th scope="col">Wed</th>
-                                    <th scope="col">Thu</th>
-                                    <th scope="col">Fri</th>
-                                    <th scope="col">Sat</th>
-                                    <th scope="col">Sun</th>
+                                    @foreach ($data['delivery'] as $key => $delivery)
+                                        <th scope="col">{{ $delivery->day }}</th>
+                                    @endforeach
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="text-center">
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
-                                    <td>11:00 am - 12:00 am</td>
+                                    @foreach ($data['delivery'] as $key => $delivery)
+                                        <td>{{ $delivery->from }} - {{ $delivery->to }}</td>
+                                    @endforeach
                                 </tr>
                             </tbody>
                         </table>
@@ -150,9 +161,13 @@
 
 
 
-
+                    @if ($cachedData['deliverytype'] == 'Delivery')
                     <span class="redheading mt-2">Delivery Locations </span>
-
+                     @endif
+                     @if ($cachedData['deliverytype'] == 'Pickup')
+                    <span class="redheading mt-2">Pickup Locations </span>
+                     @endif
+                    @if ($cachedData['deliverytype'] == 'Delivery')
 
                     <div class="mt-2">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -161,89 +176,83 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseOne" aria-expanded="false"
                                         aria-controls="flush-collapseOne">
-                                        <strong style="font-size:18px"> Islamabad </strong>
+                                        <strong style="font-size:18px">{{$data['myCity']->name}} </strong>
                                     </button>
                                 </h2>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <span class="badge " id="contact-bdge">PWD</span>
-                                        <span class="badge "id="contact-bdge">Bahria Town - Phase 05</span>
-                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 07</span>
-                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 02</span>
-                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 04</span>
-                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 01</span>
-                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 03</span>
-                                        <span class="badge " id="contact-bdge">Jeddah Town</span>
-                                        <span class="badge " id="contact-bdge">Civic Centre</span>
+                                        @foreach ($data['myCity']->area as $key=>$area )
+                                        <span class="badge " id="contact-bdge">
+                                            {{$area->name}}
+                                         </span>
+
+                                        @endforeach
+
 
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+@endif
+@if ($cachedData['deliverytype'] == 'Pickup')
 
+<div class="mt-2">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" aria-expanded="false"
+                    aria-controls="flush-collapseOne">
+                    <strong style="font-size:18px">{{$data['cityBranch']->name}} </strong>
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    @foreach ($data['cityBranch']->branch as $key=>$branch )
+                    <span class="badge " id="contact-bdge">
+                        {{$branch->name}}
+                     </span>
+
+                    @endforeach
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
                     <div class="mt-4"></div>
                     <span class="redheading ">We also deliver to</span>
 
-
-                    <div class="mt-2">
-                        <div class="accordion accordion-flush" id="accordionFlushExample2">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne2">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseOne2" aria-expanded="false"
-                                        aria-controls="flush-collapseOne">
-                                        <strong style="font-size:18px"> Islamabad </strong>
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne2" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingOne2" data-bs-parent="#accordionFlushExample2">
-                                    <div class="accordion-body">
-                                        <span class="badge " id="contact-bdge">PWD</span>
-                                        <span class="badge "id="contact-bdge">Bahria Town - Phase 05</span>
-                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 07</span>
-                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 02</span>
-                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 04</span>
-                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 01</span>
-                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 03</span>
-                                        <span class="badge " id="contact-bdge">Jeddah Town</span>
-                                        <span class="badge " id="contact-bdge">Civic Centre</span>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                  @foreach ($data['city'] as $key => $city)
+    <div class="mt-2">
+        <div class="accordion accordion-flush" id="accordionFlushExample2">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading{{ $key }}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapse{{ $key }}" aria-expanded="false"
+                            aria-controls="flush-collapse{{ $key }}">
+                        <strong style="font-size:18px">{{ $city->name }}</strong>
+                    </button>
+                </h2>
+                <div id="flush-collapse{{ $key }}" class="accordion-collapse collapse"
+                     aria-labelledby="flush-heading{{ $key }}" data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                        @foreach ($data['area']->where('city_id', $city->id) as $area)
+                            <span class="badge" id="contact-badge">{{ $area->name }}</span>
+                        @endforeach
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
                     <div class="mt-2"></div>
-                    <div class="mt-2">
-                        <div class="accordion accordion-flush" id="accordionFlushExample3">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne3">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseOne3" aria-expanded="false"
-                                        aria-controls="flush-collapseOne">
-                                        <strong style="font-size:18px"> Karachi </strong>
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne3" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingOne3" data-bs-parent="#accordionFlushExample3">
-                                    <div class="accordion-body">
-                                        <span class="badge " id="contact-bdge">PWD</span>
-                                        <span class="badge "id="contact-bdge">Bahria Town - Phase 05</span>
-                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 07</span>
-                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 02</span>
-                                        <span class="badge " id="contact-bdge">Bahria Town - Phase 04</span>
-                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 01</span>
-                                        <span class="badge " id="contact-bdge">DHA - Defence Phase 03</span>
-                                        <span class="badge " id="contact-bdge">Jeddah Town</span>
-                                        <span class="badge " id="contact-bdge">Civic Centre</span>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

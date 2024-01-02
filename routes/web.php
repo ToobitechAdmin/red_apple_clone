@@ -11,6 +11,11 @@ use App\Http\Controllers\Apps\CityController;
 use App\Http\Controllers\Apps\AreaController;
 use App\Http\Controllers\Apps\StateController;
 use App\Http\Controllers\Apps\BranchController;
+use App\Http\Controllers\Apps\DeliveryTimeController;
+use App\Http\Controllers\Apps\PickupTimeController;
+use App\Http\Controllers\Apps\TermAndConditionController;
+use App\Http\Controllers\Apps\PrivacyAndPolicyController;
+use App\Http\Controllers\Apps\OrderController;
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\DashboardController;
@@ -20,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\PagesController;
 use App\Http\Controllers\Website\CartController;
 use App\Http\Controllers\Website\HomeController;
+use App\Http\Controllers\Website\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +117,15 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
    Route::resource('/branch', BranchController::class);
     Route::resource('vendor/product', ProductController::class);
 
+    Route::resource('/delivery-time', DeliveryTimeController::class);
+
+
+    Route::resource('/pickup-time', PickupTimeController::class);
+    Route::resource('/term-condition', TermAndConditionController::class);
+    Route::resource('/privacy-policy', PrivacyAndPolicyController::class);
+    Route::resource('/return-refund', ReturnAndRefundController::class);
+    Route::resource('/profile', UserController::class);
+    Route::get('order',  [OrderController::class,'index'])->name('order.index');
 
 
 });
