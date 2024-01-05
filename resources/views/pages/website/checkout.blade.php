@@ -663,7 +663,7 @@
             <div class="col-md-12  col-lg-4  ">
                 <div class="row">
                     <div class="col-12 mt-4">
-                        <div class="rightcolbgcolor">
+                        {{-- <div class="rightcolbgcolor">
                             <div class="container">
                                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                     <div class="panel panel-default">
@@ -686,7 +686,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row mt-4">
                             <div class="col-12">
                                 <div class="rightcolbgcolor">
@@ -915,7 +915,6 @@
                     for (const key in items) {
                         if (items.hasOwnProperty(key)) {
                             const element = items[key];
-                            console.log('item===>>>>', element.name);
                             html += `<div class="panel-body">
                                         <div class="descr"> ${element.name}<span class="badge badge-secondary"><i
                                                     class="fa-solid fa-trash"></i> remove</span> </div>
@@ -998,13 +997,11 @@
             // Regular expression for a Pakistani phone number
             var pakistanPhoneNumberRegex = /^3\d{9}$/;
 
-            console.log('Entered phone number:', phoneNumber);
 
             // Check if the entered number starts with '3'
             if (phoneNumber.startsWith('3')) {
                 // If it does, automatically add '+92'
                 var phoneNumber = '+92' + phoneNumberInput.value;
-                console.log(phoneNumber);
             }
 
             // Validate using the regular expression
@@ -1012,14 +1009,12 @@
                 hiddenFields.classList.add("hidden");
 
                 // Invalid phone number
-                console.log('Invalid phone number');
 
                 // Set custom validity message
                 phoneNumberInput.setCustomValidity('This is not a valid Pakistani phone number');
             } else {
                 hiddenFields.classList.remove("hidden");
 
-                console.log('Valid Pakistani phone number');
                 phoneNumberInput.setCustomValidity('');
             }
         }

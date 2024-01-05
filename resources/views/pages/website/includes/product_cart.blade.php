@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="cart-mycart">
-                                    <div class="minus"><i class="fa-solid fa-circle-minus"
+                                    <div class="minus" ><i class="fa-solid fa-circle-minus"
                                             style="margin-right:5px"></i></div>
                                     <div class="rate">222</div>
                                     <div class="plus"><i class="fa-solid fa-circle-plus"style="margin-left:5px"></i>

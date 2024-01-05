@@ -35,7 +35,7 @@
                                             </td>
                                             <td style="vertical-align: top;">
                                                 <div class="cart-mycart cart-mycart1">
-                                                    <div class="minus"><i class="fa-solid fa-circle-minus"
+                                                    <div class="minus" id="minus"><i class="fa-solid fa-circle-minus"
                                                             style="margin-right:5px"></i></div>
                                                     <div class="rate1">222</div>
                                                     <div class="plus"><i

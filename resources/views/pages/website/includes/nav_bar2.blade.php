@@ -103,7 +103,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="">
     <div class="col-lg-6">
         <div class="offcanvas offcanvas-start " tabindex="-1" id="offcanvas" data-bs-keyboard="false"
             data-bs-backdrop="false">

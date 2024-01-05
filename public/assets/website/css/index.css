@@ -4,7 +4,7 @@ html, body {
     font-family: sans-serif;
 }
     body{
-        background-color: #ee6826;
+        background-color: black;
         font-family: sans-serif;
     }
     div#indexbtn {
@@ -96,7 +96,7 @@ button#Back1{
     font-size: 22px;
     font-weight: 600;
     font-family: sans-serif;
-} 
+}
 
 .container1 #fome2{
 
@@ -143,7 +143,7 @@ transition: 1s;
     right: -20px;
     top: 0;
     border-left: 20px solid #ffad06;
-    
+
 }
 
 button#nextBtn::after {
@@ -158,12 +158,12 @@ button#Next1 {
     font-weight: 600;
     font-family: sans-serif;
 }
-@media screen and (min-device-width: 200px) and (max-device-width: 768px) { 
+@media screen and (min-device-width: 200px) and (max-device-width: 768px) {
     .container1 {
     width: 400px;
     height: 463px;
     margin: 6% auto;
-   
+
 }
 
 

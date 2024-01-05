@@ -24,7 +24,7 @@
             </div>
 
         </div>
-        <div class="container-fluid banner-bottom" data-aos="zoom-in">
+        {{-- <div class="container-fluid banner-bottom" data-aos="zoom-in">
             <div class="row">
                 <div class=" col-lg-8 bannerbottom-colo">
                     <div class="row">
@@ -84,6 +84,58 @@
                                                 {{ $cachedData['branch']->number ?? '' }}
                                             @endif
                                         </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        <div class="container-fluid banner-bottom">
+            <div class="row justify-content-center">
+                <div class=" col-xl-6 bannerbottom-colo">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="d-flex hver">
+                                <div>
+                                    <i class="fa-solid fa-clock mb-2" style="font-size:22px; color: white;"
+                                        id="iconnnn"></i>
+                                </div>
+                                <div class="ps-4 pb-0">
+                                    <p class="iconheading p-0">Opening Hours</p>
+                                    <div class="padddding">
+                                        <span class="iconspan">Fri 11:00 am - 12:00 am</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-4">   <h5> <i class="fa-solid fa-location-dot" id="iconnnn" style="font-size: 22px; color: white;"></i> Trusted Partner </h5> </div> -->
+                        <div class="col-md-4">
+                            <div class="d-flex ">
+                                <div>
+                                    <i class="fa-solid fa-location-dot" id="iconnnn"
+                                        style="font-size: 22px; color: white;"></i>
+                                </div>
+                                <div class="ps-4 pb-0">
+                                    <p class="iconheading p-0">Address</p>
+                                    <div class="padddding">
+                                        <span class="iconspan">F-6 Markaz F 6 Markaz..</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-4">   <h5> <i class="fa-solid fa-square-phone" style="font-size: 22px; color: white;" id="iconnnn"></i> Trusted Partner</h5></div> -->
+                        <div class="col-md-4">
+                            <div class="d-flex ">
+                                <div>
+                                    <i class="fa-solid fa-square-phone" style="font-size: 22px; color: white;"
+                                        id="iconnnn"></i>
+                                </div>
+                                <div class="ps-4 pb-0">
+                                    <p class="iconheading p-0">Contact</p>
+                                    <div class="padddding">
+                                        <span class="iconspan">(000) 000-000-000</span>
                                     </div>
                                 </div>
                             </div>
@@ -206,15 +258,15 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-success">Save</button>
-                                                                                        <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
+                                                                                            <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
                         <!-- <p class="text-center">© 2023 GINO GINELLES. All Rights Reserved.</p>
-                                                                                        <br>
-                                                                                        <p class="text-center">Shop powered by ....</p> -->
+                                                                                            <br>
+                                                                                            <p class="text-center">Shop powered by ....</p> -->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="cart-mycart">
-                                        <div class="minus" id="decreaseqty"><i class="fa-solid fa-circle-minus"
+                                    <div class="cart-mycart" id="cart-btns">
+                                        <div class="minus"  id="decreaseqty"><i class="fa-solid fa-circle-minus"
                                                 style="margin-right:5px"></i></div>
                                         <div class="rate1" id="qty">1</div>
                                         <input id="product_id" hidden type="hidden">
@@ -280,7 +332,7 @@
             $('#addtocart_btn').click(function(e) {
 
                 var qty = $('#qty').text();
-                console.log($('#qty'));
+
                 var product_id = $("#product_id").val();
                 $.ajax({
                     type: "POST",
@@ -339,7 +391,7 @@
                         </div>
                     </td>
                     <td style="vertical-align: top;">
-                        <div class="cart-mycart cart-mycart1">
+                        <div class="cart-mycart1">
                             <div class="minus" id="decreaseqty"><i class="fa-solid fa-circle-minus"
                                     style="margin-right:5px"></i></div>
                             <div class="rate1" id="qty">${element.quantity}</div>

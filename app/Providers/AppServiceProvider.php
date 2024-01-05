@@ -34,11 +34,11 @@ class AppServiceProvider extends ServiceProvider
 
         //dynamic navbar
          // Using a wildcard to include the navbar in all views
-         View::composer('*', function ($view) {
+        //  View::composer('*', function ($view) {
 
-            $status = navbarData();
+        //     $status = navbarData();
 
-            $view->with('status', $status);
-        });
+        //     $view->with('status', $status);
+        // });
     }
 }

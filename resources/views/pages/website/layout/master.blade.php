@@ -67,7 +67,7 @@
 
     <!--preloader start-->
 
-    {{-- @include('pages/website/includes/preloader') --}}
+    @include('pages/website/includes/preloader')
     <!--preloader end--->
 
     <!--model  for Man Menu ---->
@@ -149,7 +149,7 @@
                         type: type
                     },
                     success: function(response) {
-                        console.log(response.cart.item);
+
                         var html;
                         var items = response.cart.item;
                         $('#cart_model_total_item').text(response.cart['total_item']);
@@ -161,7 +161,7 @@
                         for (const key in items) {
                             if (items.hasOwnProperty(key)) {
                                 const element = items[key];
-                                console.log(element);
+
 
                                 html += ` <tr data-product-id=${element.id}>
                             <td class=" w-50">
@@ -181,11 +181,11 @@
                                 </div>
                             </td>
                             <td style="vertical-align: top; ">
-                                <div style="margin-top:15px">${element.price}</div>
+                                <div style="margin-top:9px;color: white;">${element.price}</div>
                             </td>
 
                             <td style="vertical-align: top; ">
-                                <div style="margin-top:15px" class="remove-cart"><span
+                                <div style="margin-top:9px" class="remove-cart"><span
                                             class="badge badge-secondary"><i
                                                 class="fa-solid fa-trash"></i> remove</span></div>
                             </td>
@@ -244,7 +244,7 @@
 
             $(document).on("click", ".minus", function() {
                 rate = $(this).parents('.cart-mycart1').children('.rate1').text();
-                console.log(rate);
+
                 // Decrease rate, but not less than 1
                 rate = Math.max(1, rate - 1);
                 var product_id = $(this).parents('tr').attr('data-product-id')
@@ -263,7 +263,7 @@
                 // Increase rate
                 rate++;
                 var product_id = $(this).parents('tr').attr('data-product-id')
-                console.log(product_id);
+
                 updateCart(product_id, rate)
                 // updateRate(this)
                 $(this).parent('.cart-mycart').children('.rate1').text(rate);

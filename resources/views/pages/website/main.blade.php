@@ -47,7 +47,7 @@
                 <div class="col-md-8" data-aos="fade-up">
                     <form id="regForm" data-aos="fade-up" data-aos-duration="1000">
                         <div class="text-center">
-                            <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25"
+                            <img src="{{ asset('assets/website/images/mainpagelogo1212121.png') }}" class="img-fluid w-25"
                                 srcset="" />
                         </div>
 
@@ -71,7 +71,7 @@
                 <div class="col-md-8">
                     <form id="regForm">
                         <div class="text-center">
-                            <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25"
+                            <img src="{{ asset('assets/website/images/mainpagelogo1212121.png') }}" class="img-fluid w-25"
                                 srcset="" />
                             <h1 id="register">Choose your Delivery Location</h1>
                         </div>
@@ -142,7 +142,7 @@
                 <div class="col-md-8">
                     <form id="regForm" onsubmit="return validateForm()">
                         <div class="text-center">
-                            <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25"
+                            <img src="{{ asset('assets/website/images/mainpagelogo1212121.png') }}" class="img-fluid w-25"
                                 srcset="" />
                             <h1 id="register">Choose your Pickup Location</h1>
                         </div>
@@ -179,41 +179,43 @@
     <!---form2 close--->
 
     <body class="no-scroll-y" style="overflow-y: hidden;">
-        <section>
+        <section >
             <div id="preloader">
                 <div id="ctn-preloader" class="ctn-preloader">
                     <div class="animation-preloader text-center">
-                        {{-- <div class="spinner"></div> --}}
-                        <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-50 mb-5"
-                            srcset="">
+
+                        <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25 mb-5" srcset="">
+                        <!-- <div class="spinner"></div> -->
                         <div class="txt-loading">
-                            <span data-text-preloader="L" class="letters-loading">
-                                L
-                            </span>
+                            <!--<span data-text-preloader="L" class="letters-loading">-->
+                            <!--	L-->
+                            <!--</span>-->
 
-                            <span data-text-preloader="O" class="letters-loading">
-                                O
-                            </span>
+                            <!--<span data-text-preloader="O" class="letters-loading">-->
+                            <!--	O-->
+                            <!--</span>-->
 
-                            <span data-text-preloader="A" class="letters-loading">
-                                A
-                            </span>
+                            <!--<span data-text-preloader="A" class="letters-loading">-->
+                            <!--	A-->
+                            <!--</span>-->
 
-                            <span data-text-preloader="D" class="letters-loading">
-                                D
-                            </span>
+                            <!--<span data-text-preloader="D" class="letters-loading">-->
+                            <!--	D-->
+                            <!--</span>-->
 
-                            <span data-text-preloader="I" class="letters-loading">
-                                I
-                            </span>
+                            <!--<span data-text-preloader="I" class="letters-loading">-->
+                            <!--	I-->
+                            <!--</span>-->
 
-                            <span data-text-preloader="N" class="letters-loading">
-                                N
-                            </span>
+                            <!--<span data-text-preloader="N" class="letters-loading">-->
+                            <!--	N-->
+                            <!--</span>-->
 
-                            <span data-text-preloader="G" class="letters-loading">
-                                G
-                            </span>
+                            <!--<span data-text-preloader="G" class="letters-loading">-->
+                            <!--	G-->
+                            <!--</span>-->
+                            <img src="{{ asset('assets/website/images/Giff.gif') }}" class="img-fluid w-25 " srcset="">
+
                         </div>
                     </div>
                     <div class="loader-section section-left"></div>
