@@ -14,6 +14,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="" />
     <link rel="canonical" href="" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}" /> --}}
     <script src="{{ asset('assets/js/ckeditor/ckeditor.js') }}"></script>
 
     {!! includeFavicon() !!}
@@ -72,8 +73,32 @@
     <!--end::Custom Javascript-->
     @stack('scripts')
     <!--end::Javascript-->
-
+    {{-- <script src="{{asset('assets/js/toastr.min.js')}}"></script> --}}
     <script>
+
+        var type = "{{ Session::get('type') }}";
+
+        switch (type) {
+            case 'info':
+                toastr.info("{{ Session::get('message') }}");
+                break;
+
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
+
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
+
+        }
+    </script>
+    <script>
+
         document.addEventListener('livewire:load', () => {
             Livewire.on('success', (message) => {
                 toastr.success(message);

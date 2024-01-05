@@ -162,7 +162,7 @@
                                             <!--end::Label-->
 
                                             <!--begin::Input-->
-                                            <input type="text" name="opening_time"
+                                            <input type="time" name="opening_time"
                                                 class="form-control form-control-solid mb-3 mb-lg-0"
                                                 placeholder="Enter Opening Time" />
                                             <!--end::Input-->

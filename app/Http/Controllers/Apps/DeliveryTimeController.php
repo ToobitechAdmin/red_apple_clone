@@ -68,7 +68,7 @@ class DeliveryTimeController extends Controller
     public function edit(string $id)
     {
         $delivery = Deliverytime::find($id);
-    return view('pages.apps.deliverytime.edit', compact('delivery'));
+        return view('pages.apps.deliverytime.edit', compact('delivery'));
     }
 
     /**
@@ -76,14 +76,14 @@ class DeliveryTimeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'to' => 'required',
-        //     'from' => 'required',
+        $request->validate([
+            'to' => 'required',
+            'from' => 'required',
 
-        // ]);
+        ]);
 
         $delivery = Deliverytime::find($id);
-        $delivery->day = $request->input('day');
+     //   $delivery->day = $request->input('day');
         $delivery->to = $request->input('to');
         $delivery->from = $request->input('from');
 

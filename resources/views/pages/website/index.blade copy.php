@@ -47,7 +47,7 @@
             <div class="superNav border-bottom py-2  " style="background-color: #da291c; columns: white;"
                 data-aos="fade-up">
                 <marquee behavior="" direction="" style="color: white; font-weight: 600; font-size:17px">
-                    redapple is currently closed and will open shortly at 11:00 am for new orders.
+                    GINO GINELLES is currently closed and will open shortly at 11:00 am for new orders.
                 </marquee>
             </div>
             <nav id="navbar_top" class="navbar navbar-expand-lg bg-white  navbar-light p-4 shadow-sm "

@@ -251,7 +251,38 @@
                                     <td>{{ $order->order_type }}</td>
                                     <td>{{ $order->subtotal }}</td>
                                     <td>{{ $order->total }}</td>
-                                    <td>{{ $order->status }}</td>
+
+                                    <td class="product-category">
+
+                                        <form method="POST" action="{{ route('order.change.status') }}">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $order->id }}">
+
+                                            <!-- Default option -->
+                                            <select name="status" onchange="this.form.submit()" style="border: none;">
+                                                <option value="{{ $order->status }}" selected hidden>
+                                                    {{ strtoupper($order->status) }}</option>
+
+                                                <!-- Dropdown for selecting permissions -->
+
+                                                    <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>
+                                                        PENDING</option>
+
+                                                    <option value="delivered" {{ $order->status == 'delivered' ? 'selected' : '' }}>
+                                                        Delivered</option>
+
+                                                    <option value="picked" {{ $order->status == 'picked' ? 'selected' : '' }}>
+                                                        Picked</option>
+
+
+
+                                                <!-- Add other status options as needed -->
+                                            </select>
+                                        </form>
+
+
+
+                                    </td>
                                     {{-- <td><a href="{{ asset('storage/' . $audio->file_path) }}" download>Download</a></td> --}}
 
 
@@ -296,34 +327,47 @@
         });
     </script>
 
-    <script type="text/javascript">
-        var APP_URL = {!! json_encode(url('/')) !!}
+<script type="text/javascript">
+    var APP_URL = {!! json_encode(url('/')) !!}
 
-        $(".switch-input").change(function() {
+    // $(".switch-input").change(function() {
 
-            if (this.checked)
-                var status = 1;
-            else
-                var status = 0;
-            $.ajax({
-                url: "{{ route('order.index') }}",
-                type: 'GET',
-                /*dataType: 'json',*/
-                data: {
-                    'id': this.id,
-                    'status': status
-                },
-                success: function(response) {
-                    if (response) {
-                        toastr.success(response.message);
-                    } else {
-                        toastr.error(response.message);
-                    }
-                },
-                error: function(error) {
-                    toastr.error("Some error occured!");
-                }
-            });
-        });
-    </script>
+    //     if (this.checked)
+    //         var status = 1;
+    //     else
+    //         var status = 0;
+    //     $.ajax({
+    //         url: "{{ route('order.change.status') }}",
+    //         type: 'GET',
+    //         /*dataType: 'json',*/
+    //         data: {
+    //             'id': this.id,
+    //             'status': status
+    //         },
+    //         success: function(response) {
+
+    //             if (response) {
+    //                 toastr.success(response.message);
+    //             } else {
+    //                 toastr.error(response.message);
+    //             }
+    //         },
+    //         error: function(error) {
+    //             toastr.error("Some error occured!");
+    //         }
+    //     });
+    // });
+</script>
+<script src="{{ asset('app-assets/js/scripts/ui/data-list-view.js') }}"></script>
+<script>
+    $(function() {
+        $(".example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": []
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+    });
+</script>
 </x-default-layout>

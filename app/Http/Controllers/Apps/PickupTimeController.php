@@ -73,14 +73,14 @@ class PickupTimeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'to' => 'required',
-        //     'from' => 'required',
+         $request->validate([
+            'opening_time' => 'required',
+            'closing_time' => 'required',
 
-        // ]);
+         ]);
 
         $pickup = Pickuptime::find($id);
-        $pickup->day = $request->input('day');
+       // $pickup->day = $request->input('day');
         $pickup->opening_time = $request->input('opening_time');
         $pickup->closing_time = $request->input('closing_time');
 

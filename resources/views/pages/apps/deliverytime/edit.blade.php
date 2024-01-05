@@ -47,7 +47,7 @@
                             <!--end::Label-->
 
                             <!--begin::Input-->
-                            <input type="text" name="day" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Day" value="{{ $delivery->day }}" />
+                            <input type="text" name="day" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Day" value="{{ $delivery->day }}" disabled />
                             <!--end::Input-->
                         </div>
                         <div class="fv-row mb-7">
@@ -56,7 +56,7 @@
                             <!--end::Label-->
 
                             <!--begin::Input-->
-                            <input type="text" name="to" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter End Time" value="{{ $delivery->to }}" />
+                            <input type="time" name="to" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter End Time" value="{{ $delivery->to }}" />
                             <!--end::Input-->
                         </div>
                         <div class="fv-row mb-7">
@@ -65,7 +65,7 @@
                             <!--end::Label-->
 
                             <!--begin::Input-->
-                            <input type="text" name="from" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Start Time" value="{{ $delivery->from }}" />
+                            <input type="time" name="from" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Start Time" value="{{ $delivery->from }}" />
                             <!--end::Input-->
                         </div>
                         <!--begin::Actions-->

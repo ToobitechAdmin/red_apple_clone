@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
-
+use App\Models\Deliverytime;
+use App\Models\Pickuptime;
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
@@ -65,6 +66,8 @@ class CartController extends Controller
    // In your controller method
 public function addOrder(Request $request)
 {
+    $now= \Carbon\Carbon::now()->format('g:i') ;
+    $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
     $validator = Validator::make($request->all(), [
         'full_name' => 'required',
         'email' => 'required|email',
@@ -76,17 +79,28 @@ public function addOrder(Request $request)
     if ($validator->fails()) {
         return response()->json(['type' => 'error', 'message' => $validator->messages()->first()]);
     }
-    if (count(\Cart::getContent()) <= 0){
-        return response()->json(['type' => 'error', 'message' => 'Cart is Empty']);
+    $delivery_time = Deliverytime::where('day', $day)->where('from','<=',$now)->where('to','>=',$now)->first();
+    $pickup_time=Pickuptime::where('day', $day)->where('opening_time','<=',$now)->where('closing_time','>=',$now)->first();
+
+    if (!isset($delivery_time) || !isset($pickup_time) ) {
+        //return redirect()->route('website.home')->with('error', ' The Shop is not open yet you cannot place order');
+        return response()->json(['type' => 'error', 'message' => 'The Shop is not open yet you cannot place order']);
     }
-    $input = $request->all();
-
-    // Create a new order
-    $this->storeOrder($input);
+    // return response()->json(['type' => 'error', 'message' => 'Your order is placed successfully']);
 
 
-    return response()->json(['type' => 'success', 'message' => 'Order added successfully']);
-}
+    if (count(\Cart::getContent()) <= 0){
+            return response()->json(['type' => 'error', 'message' => 'Cart is Empty']);
+        }
+        $input = $request->all();
+
+        // Create a new order
+        $this->storeOrder($input);
+      //  return redirect()->route('website.home')->with('success', ' Your order is place successfully');
+       // $data['delivery_status'] = "OPEN NOW";
+       return response()->json(['type' => 'error', 'message' => 'Your order is placed successfully']);
+
+    }
 public function storeOrder($data){
 
     $data['total'] = \Cart::getTotal();

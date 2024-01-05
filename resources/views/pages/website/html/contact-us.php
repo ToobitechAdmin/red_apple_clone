@@ -69,7 +69,7 @@ transform: rotate(180deg);
     <div class="col-md-4 mt-5">
         <div class="cntbgp text-center">
             <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid cntimg">
-            <h5 class="pt-4">redapple</h5>
+            <h5 class="pt-4">GINO GINELLES</h5>
         </div>
 
     </div>

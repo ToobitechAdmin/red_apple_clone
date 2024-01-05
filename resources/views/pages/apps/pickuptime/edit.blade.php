@@ -47,7 +47,7 @@
                             <!--end::Label-->
 
                             <!--begin::Input-->
-                            <input type="text" name="day" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Day" value="{{ $pickup->day }}" />
+                            <input type="text" name="day" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Day" value="{{ $pickup->day }}" disabled />
                             <!--end::Input-->
                         </div>
                         <div class="fv-row mb-7">
@@ -56,7 +56,7 @@
                             <!--end::Label-->
 
                             <!--begin::Input-->
-                            <input type="text" name="opening_time" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Opening Time" value="{{ $pickup->opening_time }}" />
+                            <input type="time" name="opening_time" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Opening Time" value="{{ $pickup->opening_time }}" />
                             <!--end::Input-->
                         </div>
                         <div class="fv-row mb-7">
@@ -65,7 +65,7 @@
                             <!--end::Label-->
 
                             <!--begin::Input-->
-                            <input type="text" name="closing_time" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Closing Time" value="{{ $pickup->closing_time }}" />
+                            <input type="time" name="closing_time" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Closing Time" value="{{ $pickup->closing_time }}" />
                             <!--end::Input-->
                         </div>
                         <!--begin::Actions-->

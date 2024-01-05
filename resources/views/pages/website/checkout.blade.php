@@ -615,12 +615,13 @@
                         @endif
 
                         @if ($cachedData['deliverytype'] == 'Pickup')
-                        <div id="google-map" style="height: 200px; width: 100%;"></div>
+                            <div id="google-map" style="height: 200px; width: 100%;"></div>
 
-                        <div class="form-group">
-                            <input type="text" class="form-control address" id="field" placeholder="Complete Pickup Address *"
-                                value="{{ $cachedData['branch']->address ?? '' }}" hidden />
-                        </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control address" id="field"
+                                    placeholder="Complete Pickup Address *"
+                                    value="{{ $cachedData['branch']->address ?? '' }}" hidden />
+                            </div>
 
 
                             <div class="row">
@@ -835,6 +836,7 @@
                                                                 Delivery</span>
                                                         </a> --}}
                                                     </p>
+
                                                     {{-- <div class="collapse" id="collapseExample">
                                                         <div class="card card-body">
 
@@ -1058,10 +1060,15 @@
                 },
                 success: function(response) {
                     // Handle success if needed
-                    getCart('model')
-                    toastr.success(response.message);
-                    window.location.href =
+
+                    //getCart('model')
+                    if(response.message=="success"){
+                        toastr.success(response.message);
+                     window.location.href =
                         "{{ route('website.home') }}";
+                    }else{
+                        toastr.error(response.message);
+                    }
                 },
                 error: function(error) {
                     // Handle error if needed
@@ -1084,7 +1091,10 @@
             var mapElement = document.getElementById('google-map');
 
             // Set default coordinates (e.g., a central location)
-            var defaultLatLng = { lat: 0, lng: 0 };
+            var defaultLatLng = {
+                lat: 0,
+                lng: 0
+            };
 
             // Create a map with default coordinates
             var map = new google.maps.Map(mapElement, {
@@ -1094,7 +1104,9 @@
 
             // If address is available, use geocoder to get LatLng and update map
             if (address) {
-                geocoder.geocode({ 'address': address }, function (results, status) {
+                geocoder.geocode({
+                    'address': address
+                }, function(results, status) {
                     if (status === 'OK') {
                         var location = results[0].geometry.location;
 
@@ -1113,7 +1125,7 @@
                         });
 
                         // Open the info window when the marker is clicked
-                        marker.addListener('click', function () {
+                        marker.addListener('click', function() {
                             infowindow.open(map, marker);
                         });
                     } else {
@@ -1127,7 +1139,8 @@
         function loadScript() {
             var script = document.createElement('script');
             script.type = 'text/javascript';
-            script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCeeUZJDwiG1wIrvzJ2Lxmhn2zcoGPWXKQ&callback=initMap';
+            script.src =
+                'https://maps.googleapis.com/maps/api/js?key=AIzaSyCeeUZJDwiG1wIrvzJ2Lxmhn2zcoGPWXKQ&callback=initMap';
             document.body.appendChild(script);
         }
 

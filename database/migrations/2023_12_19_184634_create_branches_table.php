@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('city_id')->nullable();
             $table->string('name')->nullable();
             $table->string('address')->nullable();
-            $table->integer('number')->nullable();
+            $table->integer('number',16)->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

@@ -63,13 +63,14 @@
         $cachedData = cache('cache-data');
 
     @endphp
+
     <div class="container-fluid cnt">
 
         <div class="row">
             <div class="col-md-4 mt-5">
                 <div class="cntbgp text-center">
                     <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid cntimg">
-                    <h5 class="pt-4">redapple</h5>
+                    <h5 class="pt-4">GINO GINELLES</h5>
                 </div>
 
             </div>
@@ -109,7 +110,7 @@
 
                     <div class="schedul-upp">
                         <div><span class="redheading">Store Timings </span></div>
-                        <div><button type="button" class="btn btn-secondary btnsed"><span>CLOSED NOW</span></button></div>
+                        <div><button type="button" class="btn btn-secondary btnsed"><span> {{$data['pickup_status']}}</span></button></div>
                     </div>
 
                     <div class="table-responsive">
@@ -125,7 +126,7 @@
                             <tbody>
                                 <tr class="text-center">
                                     @foreach ($data['pickup'] as $key => $pickup)
-                                        <td>{{ $pickup->opening_time }} - {{ $pickup->closing_time }}</td>
+                                        <td>  {{ \Carbon\Carbon::parse($pickup->opening_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($pickup->closing_time)->format('g:i A') }}</td>
                                     @endforeach
 
                                 </tr>
@@ -136,7 +137,10 @@
 
                     <div class="schedul-upp">
                         <div><span class="redheading">Delivery Timings</span></div>
-                        <div><button type="button" class="btn btn-secondary btnsed"><span>CLOSED NOW</span></button></div>
+
+                        <div><button type="button" class="btn btn-secondary btnsed"><span>{{$data['delivery_status'] }}</span></button></div>
+
+
                     </div>
 
                     <div class="table-responsive">
@@ -151,7 +155,7 @@
                             <tbody>
                                 <tr class="text-center">
                                     @foreach ($data['delivery'] as $key => $delivery)
-                                        <td>{{ $delivery->from }} - {{ $delivery->to }}</td>
+                                    <td>  {{ \Carbon\Carbon::parse($delivery->from)->format('g:i A') }} - {{ \Carbon\Carbon::parse($delivery->to)->format('g:i A') }}</td>
                                     @endforeach
                                 </tr>
                             </tbody>

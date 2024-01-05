@@ -430,4 +430,23 @@ if (!function_exists('getIcon')) {
     {
         return theme()->getIcon($name, $class, $type, $tag);
     }
+
+    function navbarData(){
+        $now= \Carbon\Carbon::now()->format('g:i') ;
+            $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
+            $next_day = \Str::upper(\Carbon\Carbon::now()->addDays(1)->format('l'));
+            $pickup_time=App\Models\Pickuptime::where('day', $day)->where('opening_time','<=',$now)->where('closing_time','>=',$now)->first();
+            $next_pickup_time=App\Models\Pickuptime::where('day', $next_day)->first();
+            if (!isset($pickup_time)) {
+                $status['store_status'] = "CLOSE";
+                $status['reverse_status'] = "OPEN";
+                $status['time'] = $next_pickup_time->opening_time;
+            } else {
+                $status['store_status'] = "OPEN";
+                $status['reverse_status'] = "CLOSE";
+                $status['time'] = $pickup_time->closing_time;
+            }
+
+            return $status;
+    }
 }

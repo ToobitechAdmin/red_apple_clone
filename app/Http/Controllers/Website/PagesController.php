@@ -23,6 +23,21 @@ class PagesController extends Controller
             return redirect()->route('website.location');
         } else {
             $data = Category::with(['products'])->get();
+            // $now= \Carbon\Carbon::now()->format('g:i') ;
+            // $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
+            // $next_day = \Str::upper(\Carbon\Carbon::now()->addDays(1)->format('l'));
+            // $pickup_time=Pickuptime::where('day', $day)->where('opening_time','<=',$now)->where('closing_time','>=',$now)->first();
+            // $next_pickup_time=Pickuptime::where('day', $next_day)->first();
+            // if (!isset($pickup_time)) {
+            //     $status['store_status'] = "close";
+            //     $status['reverse_status'] = "open";
+            //     $status['time'] = $next_pickup_time->opening_time;
+            // } else {
+            //     $status['store_status'] = "open";
+            //     $status['reverse_status'] = "close";
+            //     $status['time'] = $pickup_time->closing_time;
+            // }
+
             return view('pages.website.index',compact('data'));
         }
     }
@@ -80,12 +95,29 @@ class PagesController extends Controller
     public function contactUs(Request $request)
     {
         $cachedData = cache('cache-data');
-
+        $now= \Carbon\Carbon::now()->format('g:i') ;
+        $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
         $data['city'] = City::all();
         $data['area'] = Area::all();
         $data['branch'] = Branch::with('city')->get();
         $data['pickup'] = Pickuptime::all();
         $data['delivery'] = Deliverytime::all();
+        // $delivery_time= $data['delivery']->where('day', $day)->where('from','<=',$now)->where('to','>=',$now);
+        // return $now;
+        $delivery_time = Deliverytime::where('day', $day)->where('from','<=',$now)->where('to','>=',$now)->first();
+        // $data['delivery_status'] = $delivery_time->isEmpty() ? "CLOSE NOW" : "OPEN NOW";
+        if (!isset($delivery_time)) {
+            $data['delivery_status'] = "CLOSE NOW";
+        } else {
+            $data['delivery_status'] = "OPEN NOW";
+        }
+        $pickup_time=Pickuptime::where('day', $day)->where('opening_time','<=',$now)->where('closing_time','>=',$now)->first();
+        if (!isset($pickup_time)) {
+            $data['pickup_status'] = "CLOSE NOW";
+        } else {
+            $data['pickup_status'] = "OPEN NOW";
+        }
+
         if ($cachedData['city_id']) {
             # code...
             $data['myCity']=City::where('id',$cachedData['city_id'])->with('area')->first();

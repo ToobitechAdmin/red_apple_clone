@@ -34,10 +34,10 @@
                             </li>
 
 
-                            <li class="nav-item  ">
+                            {{-- <li class="nav-item  ">
                                 <a class="nav-link" href="{{ route('website.profile') }}"><i class="fa-regular fa-user"></i> <span
                                         class="forspacing"></span> My Profile</a>
-                            </li>
+                            </li> --}}
 
                             <li class="nav-item  ">
                                 <!-- <a class="nav-link" href="#" ><i class="fa-regular fa-file-lines"></i> <span class="forspacing"></span> Shopping Info</a> -->
@@ -75,7 +75,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <p class="text-center">© 2023 redapple. All Rights Reserved.</p>
+                                <p class="text-center">© 2023 GINO GINELLES. All Rights Reserved.</p>
                             </div>
 
                             <div class="col-sm-12">

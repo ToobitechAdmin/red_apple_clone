@@ -57,7 +57,7 @@
                                         .image-input-placeholder {
                                             background-image: url('{{ image('svg/files/blank-image.svg') }}');
                                         }
-        
+
                                         [data-bs-theme="dark"] .image-input-placeholder {
                                             background-image: url('{{ image('svg/files/blank-image-dark.svg') }}');
                                         }

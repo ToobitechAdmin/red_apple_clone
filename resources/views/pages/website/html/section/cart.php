@@ -106,7 +106,7 @@
 
 						  <div class="container-fluid footer">
 						  <div class="row g-1">
-							  <div class="col-sm-12">Checkout is currently unavailable as redapple is closed and will open at 11:00 am . Please return
+							  <div class="col-sm-12">Checkout is currently unavailable as GINO GINELLES is closed and will open at 11:00 am . Please return
 								at 11:00 am to place your order while we keep your items safely in the cart.</div>
 								<p>please <strong> click here </strong> for our contact information</p>
 

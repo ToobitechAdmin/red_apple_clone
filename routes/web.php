@@ -16,6 +16,8 @@ use App\Http\Controllers\Apps\PickupTimeController;
 use App\Http\Controllers\Apps\TermAndConditionController;
 use App\Http\Controllers\Apps\PrivacyAndPolicyController;
 use App\Http\Controllers\Apps\OrderController;
+use App\Http\Controllers\Apps\ProfileController;
+use App\Http\Controllers\Apps\ReturnAndRefundController;
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\DashboardController;
@@ -101,9 +103,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('category-change-status', [CategoryController::class,'change_status'])->name('category.change.status');
 
 
+    Route::get('/my-profile', [UserManagementController::class,'myProfile'])->name('myprofile');
+    Route::get('/my-profile-update-email', [UserManagementController::class,'myProfileUpdateEmail'])->name('myprofileUpdateEmail');
+    Route::get('/my-profile-update-name', [UserManagementController::class,'myProfileUpdateName'])->name('myprofileUpdateName');
+    Route::get('/my-profile-update-password', [UserManagementController::class,'myProfileUpdatePassword'])->name('myprofileUpdatePassword');
 
     Route::resource('/tags', TagController::class);
-    Route::get('tag-change-status', [TagController::class,'change_status'])->name('tag.change.status');
+    Route::get('tag-change-status', [TagController::class,'profileUpdate'])->name('tag.change.status');
 
     Route::resource('/city', CityController::class);
    // Route::get('city-change-status', [TagController::class,'change_status'])->name('city.change.status');
@@ -118,6 +124,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('vendor/product', ProductController::class);
 
     Route::resource('/delivery-time', DeliveryTimeController::class);
+    Route::post('order-change-status', [OrderController::class,'change_status'])->name('order.change.status');
 
 
     Route::resource('/pickup-time', PickupTimeController::class);

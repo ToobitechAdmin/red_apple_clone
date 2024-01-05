@@ -207,7 +207,7 @@
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-success">Save</button>
                                                                                         <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
-                        <!-- <p class="text-center">© 2023 redapple. All Rights Reserved.</p>
+                        <!-- <p class="text-center">© 2023 GINO GINELLES. All Rights Reserved.</p>
                                                                                         <br>
                                                                                         <p class="text-center">Shop powered by ....</p> -->
                         <div class="container-fluid">

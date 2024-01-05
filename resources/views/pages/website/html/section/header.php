@@ -61,7 +61,7 @@
 			  <span class="me-3"><i class="fa-solid fa-file  text-muted me-2"></i><a class="text-muted" href="#">Policy</a></span>
 			  </div> -->
 			  <marquee behavior="" direction="" style="color: white; font-weight: 600; font-size:17px">
-			  redapple is currently closed and will open shortly at 11:00 am for new orders.
+			  GINO GINELLES is currently closed and will open shortly at 11:00 am for new orders.
 		   </marquee>
 		</div>
 		<nav id="navbar_top"  class="navbar navbar-expand-lg bg-white  navbar-light p-4 shadow-sm " data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
