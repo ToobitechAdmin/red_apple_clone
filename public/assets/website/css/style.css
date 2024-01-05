@@ -1406,6 +1406,12 @@ html, body {
     align-items: center;
     margin-top: 7px;
   }
+  .cart-mycart1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 7px;
+  }
   .descr {
     margin-top: 5px;
     color:white;

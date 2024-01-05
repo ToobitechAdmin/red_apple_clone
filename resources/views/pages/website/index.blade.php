@@ -258,15 +258,15 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-success">Save</button>
-                                                                                            <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
+                                                                                                <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
                         <!-- <p class="text-center">© 2023 GINO GINELLES. All Rights Reserved.</p>
-                                                                                            <br>
-                                                                                            <p class="text-center">Shop powered by ....</p> -->
+                                                                                                <br>
+                                                                                                <p class="text-center">Shop powered by ....</p> -->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="cart-mycart" id="cart-btns">
-                                        <div class="minus"  id="decreaseqty"><i class="fa-solid fa-circle-minus"
+                                    <div class="cart-mycart1" id="cart-btns">
+                                        <div class="minus" id="decreaseqty"><i class="fa-solid fa-circle-minus"
                                                 style="margin-right:5px"></i></div>
                                         <div class="rate1" id="qty">1</div>
                                         <input id="product_id" hidden type="hidden">
@@ -313,15 +313,22 @@
             // Click event for the minus button
             $('#decreaseqty').on('click', function() {
                 // Decrease rate, but not less than 1
+                var rate = $(this).parents('.cart-mycart1').children('#qty').text();
+
                 rate = Math.max(1, rate - 1);
-                updateRate();
+                $(this).parents('.cart-mycart1').children('#qty').text(rate)
+                // updateRate();
             });
 
             // Click event for the plus button
             $('#increseqty').on('click', function() {
                 // Increase rate
+                var rate = $(this).parents('.cart-mycart1').children('#qty').text();
                 rate++;
-                updateRate();
+
+
+                $(this).parents('.cart-mycart1').children('#qty').text(rate)
+                // updateRate();
             });
 
             // Function to update the displayed rate
@@ -334,6 +341,7 @@
                 var qty = $('#qty').text();
 
                 var product_id = $("#product_id").val();
+
                 $.ajax({
                     type: "POST",
                     url: "{{ route('website.add.to.cart') }}",
@@ -384,33 +392,33 @@
 
 
                             html += ` <tr data-product-id=${element.id}>
-                    <td class=" w-50">
-                        <div class="img-withdesc"> <img src="{{ asset('${element.attributes.image}') }}"
-                                class="img-fluid w-25" alt="">
-                            <div class="descr"> ${element.name}  </div>
-                        </div>
-                    </td>
-                    <td style="vertical-align: top;">
-                        <div class="cart-mycart1">
-                            <div class="minus" id="decreaseqty"><i class="fa-solid fa-circle-minus"
-                                    style="margin-right:5px"></i></div>
-                            <div class="rate1" id="qty">${element.quantity}</div>
-                            <div class="plus" id="increseqty"><i
-                                    class="fa-solid fa-circle-plus"style="margin-left:5px"></i>
-                            </div>
-                        </div>
-                    </td>
-                    <td style="vertical-align: top; ">
-                        <div style="margin-top:15px">${element.price}</div>
-                    </td>
+                            <td class=" w-50">
+                                <div class="img-withdesc"> <img src="{{ asset('${element.attributes.image}') }}"
+                                        class="img-fluid w-25" alt="">
+                                    <div class="descr"> ${element.name}  </div>
+                                </div>
+                            </td>
+                            <td style="vertical-align: top;">
+                                <div class="cart-mycart cart-mycart1">
+                                    <div class="minus"><i class="fa-solid fa-circle-minus"
+                                            style="margin-right:5px"></i></div>
+                                    <div class="rate1">${element.quantity}</div>
+                                    <div class="plus"><i
+                                            class="fa-solid fa-circle-plus"style="margin-left:5px"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="vertical-align: top; ">
+                                <div style="margin-top:9px;color: white;">${element.price}</div>
+                            </td>
 
-                    <td style="vertical-align: top; ">
-                        <div style="margin-top:15px" class="remove-cart"><span
-                                    class="badge badge-secondary"><i
-                                        class="fa-solid fa-trash"></i> remove</span></div>
-                    </td>
+                            <td style="vertical-align: top; ">
+                                <div style="margin-top:9px" class="remove-cart"><span
+                                            class="badge badge-secondary"><i
+                                                class="fa-solid fa-trash"></i> remove</span></div>
+                            </td>
 
-                </tr> `
+                        </tr> `
                         }
                     }
 
