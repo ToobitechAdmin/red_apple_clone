@@ -5,6 +5,19 @@
 @section('content')
     @php
         $cachedData = cache('cache-data');
+
+
+        if (isset($cachedData['area']->number)){
+
+            $whatappnumber = "https://wa.me/".$cachedData['area']->number ?? '';
+        }
+
+        if (isset($cachedData['branch']->number)){
+
+            $whatappnumber = "https://wa.me/".$cachedData['branch']->number ?? '';
+        }
+
+
     @endphp
     <!---Banner start--->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">

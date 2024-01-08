@@ -18,7 +18,8 @@
             </div>
         </div>
     </div>
-    <a  class="whats-app" href="https://wa.me/1234567890" target="_blank">
+
+    <a  class="whats-app" href={{ $whatappnumber??'' }} target="_blank">
     <i class="fa-brands fa-whatsapp my-float"></i>
         </a>
     </div>
