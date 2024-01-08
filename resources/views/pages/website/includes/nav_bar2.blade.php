@@ -85,7 +85,7 @@
 
                         @foreach ($data as $item)
                             <li class="nav-item" role="presentation">
-                                <a href="#onlineexc{{ $item->id }}" style="text-decoration: none;">
+                                <a href="#onlineexc{{ $item->id }}{{ $item->name }}" style="text-decoration: none;">
                                     <button class="nav-link" id="pills-home-tab " data-bs-toggle="pill"
                                         data-bs-target="#pills-home" type="button" role="tab"
                                         aria-controls="pills-home" aria-selected="true">{{ $item->name ?? '' }}</button>
@@ -121,7 +121,7 @@
 
                         @foreach ($data as $item)
                             <li class="nav-item lefttag" data-bs-dismiss="offcanvas" aria-label="Close">
-                                <a href="#onlineexc" class="nav-link text-truncate">
+                                <a href="#onlineexc{{ $item->id }}{{ $item->name }}" class="nav-link text-truncate">
                                     <i class="fs-5 bi-house"></i><span class="ms-1  d-sm-inline" id="leftagfont">{{ $item->name??'' }}</span>
                                 </a>
                             </li>

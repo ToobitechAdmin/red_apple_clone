@@ -33,7 +33,9 @@
 
 
     <style>
-
+        .field-req {
+            border: 2px solid red;
+        }
     </style>
 
 </head>
@@ -47,8 +49,8 @@
                 <div class="col-md-8" data-aos="fade-up">
                     <form id="regForm" data-aos="fade-up" data-aos-duration="1000">
                         <div class="text-center">
-                            <img src="{{ asset('assets/website/images/mainpagelogo1212121.png') }}" class="img-fluid w-25"
-                                srcset="" />
+                            <img src="{{ asset('assets/website/images/mainpagelogo1212121.png') }}"
+                                class="img-fluid w-25" srcset="" />
                         </div>
 
                         <div class="pt-2" style="overflow: auto;">
@@ -71,14 +73,14 @@
                 <div class="col-md-8">
                     <form id="regForm">
                         <div class="text-center">
-                            <img src="{{ asset('assets/website/images/mainpagelogo1212121.png') }}" class="img-fluid w-25"
-                                srcset="" />
+                            <img src="{{ asset('assets/website/images/mainpagelogo1212121.png') }}"
+                                class="img-fluid w-25" srcset="" />
                             <h1 id="register">Choose your Delivery Location</h1>
                         </div>
 
                         <div class="tab">
                             <h5>City</h5>
-                            <select id="city_input" class="form-select form-select-lg mb-3"
+                            <select id="city_input" class="form-select form-select-lg mb-3" required
                                 aria-label="form-select-lg example" required>
                                 <option value="">Select City</option>
                                 @forelse ($data['city'] as $item)
@@ -89,6 +91,7 @@
                                 @endforelse
 
                             </select>
+                            <span class="city-input-error d-none" style="color: red">*City Field Required</span>
                             {{-- <input list="city_list" id="city_input" name="city" required
                                 placeholder="Input City *" />
                             <datalist id="city_list">
@@ -104,7 +107,7 @@
                         <div class="tab">
                             <h5>What's your Area?</h5>
 
-                            <select id="area_input" class="form-select form-select-lg mb-3"
+                            <select id="area_input" class="field-req form-select form-select-lg mb-3"
                                 aria-label="form-select-lg example">
                                 {{-- @forelse ($data['city'] as $item)
                                     <option data-id='{{ $item->id }}' value="{{ $item->name }}">
@@ -114,13 +117,14 @@
                                 @endforelse --}}
 
                             </select>
+                            <span class="area-input-error " style="color: red">*Area Field Required</span>
                         </div>
 
                         <div style="overflow: auto;" id="nextprevious">
                             <div id="indexbtn" style="margin: auto;">
-                                <button type="button" class="mt-4" id="nextBtn" onclick="nextPrev(1)"><i
-                                        class="fa fa-angle-double-right" id="kkjk"> </i></button>
-                                <button type="button" class="mt-4" id="prevBtn" onclick="nextPrev(-1)"><i
+                                <button type="button" class="mt-4" id="nextBtn"><i class="fa fa-angle-double-right"
+                                        id="kkjk"> </i></button>
+                                <button type="button" class="mt-4" id="prevBtn"><i
                                         class="fa fa-angle-double-left"></i> Back</button>
                                 <button type="button" class="mt-4" id="prvoisform"><i
                                         class="fa fa-angle-double-left"> Back</i></button>
@@ -142,8 +146,8 @@
                 <div class="col-md-8">
                     <form id="regForm" onsubmit="return validateForm()">
                         <div class="text-center">
-                            <img src="{{ asset('assets/website/images/mainpagelogo1212121.png') }}" class="img-fluid w-25"
-                                srcset="" />
+                            <img src="{{ asset('assets/website/images/mainpagelogo1212121.png') }}"
+                                class="img-fluid w-25" srcset="" />
                             <h1 id="register">Choose your Pickup Location</h1>
                         </div>
 
@@ -166,6 +170,8 @@
                             @endforelse
 
                         </select>
+                        <span class="branch-input-error" style="color: red">*Branch Field Required</span>
+
 
                         <div class="btn-box">
                             <button type="button" id="Next1" class="nextBtn1">Next</button>
@@ -179,12 +185,13 @@
     <!---form2 close--->
 
     <body class="no-scroll-y" style="overflow-y: hidden;">
-        <section >
+        <section>
             <div id="preloader">
                 <div id="ctn-preloader" class="ctn-preloader">
                     <div class="animation-preloader text-center">
 
-                        <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25 mb-5" srcset="">
+                        <img src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid w-25 mb-5"
+                            srcset="">
                         <!-- <div class="spinner"></div> -->
                         <div class="txt-loading">
                             <!--<span data-text-preloader="L" class="letters-loading">-->
@@ -214,7 +221,8 @@
                             <!--<span data-text-preloader="G" class="letters-loading">-->
                             <!--	G-->
                             <!--</span>-->
-                            <img src="{{ asset('assets/website/images/Giff.gif') }}" class="img-fluid w-25 " srcset="">
+                            <img src="{{ asset('assets/website/images/Giff.gif') }}" class="img-fluid w-25 "
+                                srcset="">
 
                         </div>
                     </div>
@@ -264,14 +272,24 @@
         let city_id = null;
         let branch_id = null;
         $(document).on("change", "#city_list", function() {
-            alert('aaa')
+            // alert('aaa')
         });
 
         $('#city_input').change(function(e) {
             city = $(this).val();
+
             $("#area_input").empty();
+            if ($(this).val() == '' || $(this).val() == null) {
+                $('.city-input-error').removeClass('d-none');
+                $('#city_input').addClass('field-req');
+            } else {
+
+                $('.city-input-error').addClass('d-none');
+                $('#city_input').removeClass('field-req');
+            }
             var selectedOption = $(this).find(':selected');
             city_id = selectedOption.data('id');
+
             $.ajax({
                 type: "GET",
                 url: "{{ route('website.get.areas') }}",
@@ -280,6 +298,7 @@
                 },
 
                 success: function(response) {
+                    var default_value = "";
                     var html = `<option>Select Area</option>`;
                     response.forEach(element => {
                         html += `<option data-id='${element.id }' value="${ element.name }">
@@ -293,12 +312,31 @@
         });
         $('#area_input').change(function(e) {
             area = $(this).val();
+
+            if ($(this).val() == "Select Area" || $(this).val() == null || $(this).val() == '') {
+
+                $('.area-input-error').removeClass('d-none');
+                $('#area_input').addClass('field-req');
+
+            } else {
+                $('.area-input-error').addClass('d-none');
+                $('#area_input').removeClass('field-req');
+            }
             var selectedOption = $(this).find(':selected');
             area_id = selectedOption.data('id');
             e.preventDefault();
 
         });
         $('#brnach_input').change(function(e) {
+            if ($(this).val() == "Select Area" || $(this).val() == null || $(this).val() == '') {
+
+                $('.branch-input-error').removeClass('d-none');
+                $('#brnach_input').addClass('field-req');
+
+            } else {
+                $('.branch-input-error').addClass('d-none');
+                $('#brnach_input').removeClass('field-req');
+            }
             branch = $(this).val();
             var selectedOption = $(this).find(':selected');
             branch_id = selectedOption.data('id');
@@ -334,17 +372,55 @@
             })
 
             $('#Next1').click(function() {
-                saveData()
+                var  select_branch = $('#brnach_input').val();
+                if (select_branch == "Select Area" || select_branch == null || select_branch == '') {
 
-                window.open("{{ route('website.home') }}", "_self");
+                    $('.branch-input-error').removeClass('d-none');
+                    $('#brnach_input').addClass('field-req');
+
+                } else {
+                    $('.branch-input-error').addClass('d-none');
+                    $('#brnach_input').removeClass('field-req');
+                    saveData()
+
+                    window.open("{{ route('website.home') }}", "_self");
+                }
 
             });
 
             $("#nextBtn").click(function(e) {
 
+
+                var select_city = $('#city_input').val();
+                var select_area = $('#area_input').val();
+
+                if (!select_city) {
+
+                    $('.city-input-error').removeClass('d-none');
+                    $('#city_input').addClass('field-req');
+
+                } else if (!select_area) {
+
+                    $('.area-input-error').removeClass('d-none');
+                    $('#area_input').addClass('field-req');
+
+                } else {
+
+                    nextPrev(1)
+                }
                 e.preventDefault();
 
             });
+            $("#prevBtn").click(function(e) {
+                $('.city-input-error').addClass('d-none');
+                $('#city_input').removeClass('field-req');
+                $('#area_input').removeClass('field-req');
+                nextPrev(-1)
+                e.preventDefault();
+
+            });
+
+
         });
 
         $(document).ready(function() {
@@ -391,9 +467,12 @@
             x[currentTab].style.display = "none";
 
             currentTab = currentTab + n;
-
+            if (!area || !city) {
+                currentTab = 1
+            }
             if (currentTab >= x.length) {
                 document.getElementById("form2").style.display = "none";
+
                 saveData();
 
                 window.open("{{ route('website.home') }}", "_self");
