@@ -105,7 +105,7 @@
                                 <div class="ps-4 pb-0">
                                     <p class="iconheading p-0">Opening Hours</p>
                                     <div class="padddding">
-                                        <span class="iconspan">Fri 11:00 am - 12:00 am</span>
+                                        <span class="iconspan">{{\Carbon\Carbon::parse($pickup_time->opening_time)->format('g:i A')}} - {{\Carbon\Carbon::parse($pickup_time->closing_time)->format('g:i A')}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -183,16 +183,16 @@
             <div class="col-12" data-aos="zoom-out" data-aos-duration="500">
                 <i class="fa-solid fa-location-dot" style="color: #ee6826 ; font-size: 33px;"></i>
                 @if (isset($cachedData['area']->name))
-                    <span style="margin-left: 20px;" id="bodyspan">
+                    <a href="{{route('website.location')}}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
                         Delivering to: <strong> {{ $cachedData['city'] ?? '' }} |
                             {{ $cachedData['area']->name ?? '' }}
-                        </strong></span>
+                        </strong></a>
                 @endif
                 @if (isset($cachedData['branch']->name))
-                    <span style="margin-left: 20px;" id="bodyspan">
+                    <a href="{{route('website.location')}}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
                         Pickup from: <strong> {{ $cachedData['city'] ?? '' }} |
                             {{ $cachedData['branch']->name ?? '' }}
-                        </strong></span>
+                        </strong></a>
                 @endif
             </div>
         </div>

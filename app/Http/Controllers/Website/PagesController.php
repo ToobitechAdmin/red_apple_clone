@@ -23,10 +23,10 @@ class PagesController extends Controller
             return redirect()->route('website.location');
         } else {
             $data = Category::with(['products'])->get();
-            // $now= \Carbon\Carbon::now()->format('g:i') ;
-            // $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
+             $now= \Carbon\Carbon::now()->format('g:i') ;
+             $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
             // $next_day = \Str::upper(\Carbon\Carbon::now()->addDays(1)->format('l'));
-            // $pickup_time=Pickuptime::where('day', $day)->where('opening_time','<=',$now)->where('closing_time','>=',$now)->first();
+             $pickup_time=Pickuptime::where('day', $day)->where('opening_time','<=',$now)->where('closing_time','>=',$now)->first();
             // $next_pickup_time=Pickuptime::where('day', $next_day)->first();
             // if (!isset($pickup_time)) {
             //     $status['store_status'] = "close";
@@ -38,7 +38,7 @@ class PagesController extends Controller
             //     $status['time'] = $pickup_time->closing_time;
             // }
 
-            return view('pages.website.index',compact('data'));
+            return view('pages.website.index',compact('data','pickup_time'));
         }
     }
     public function location(Request $request)
