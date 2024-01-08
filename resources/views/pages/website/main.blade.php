@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Red Apple</title>
+    <title>GINO GINELLES</title>
     <link rel="icon" href="{{ asset('assets/website/images/mainpagelogo.png') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -465,11 +465,19 @@
             var x = document.getElementsByClassName("tab");
             if (n == 1 && !validateForm()) return false;
             x[currentTab].style.display = "none";
+            var select_city =$('#city_input').val();
+            var select_area =$('#area_input').val();
 
             currentTab = currentTab + n;
-            if (!area || !city) {
+            console.log(select_area);
+
+            if (select_area == "Select Area"  || !select_city ) {
+
                 currentTab = 1
+                console.log(currentTab);
             }
+            console.log(currentTab);
+            console.log(x.length);
             if (currentTab >= x.length) {
                 document.getElementById("form2").style.display = "none";
 

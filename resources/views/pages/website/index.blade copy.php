@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Red Apple Clone @yield('title')</title>
+    <title>GINO GINELLES @yield('title')</title>
     <link rel="icon" href="{{ asset('assets/website/images/mainpagelogo.png') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
