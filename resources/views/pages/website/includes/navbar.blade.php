@@ -1,13 +1,13 @@
 <!----nav end---->
 <div class="container-fluid">
     <div id="navbar_top">
-        <div class="superNav border-bottom   " style="background-color: #ee6826; columns: white;" data-aos="fade-up">
+        {{-- <div class="superNav border-bottom   " style="background-color: #ee6826; columns: white;" data-aos="fade-up">
             <marquee behavior="" direction="" style="color: white; font-weight: 600; font-size:17px">
                 GINO GINELLES is currently Close and will
                 Open
                 shortly at 11:11 for new orders.
             </marquee>
-        </div>
+        </div> --}}
         @if (isset($status['store_status']) && isset($status['reverse_status']) && isset($status['time']))
             <div class="superNav border-bottom  " style="background-color: #ee6826; columns: white;"
                 data-aos="fade-up">
