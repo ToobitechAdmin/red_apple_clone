@@ -1,8 +1,8 @@
 
-		
-		
+
+
 	<?php include('section/header.php') ?>
-	
+
 	 <!----nav end---->
 	 <!---home Start--->
 	 <!---Banner start--->
@@ -113,7 +113,7 @@
 <!----body banner menu---->
 
 <div class="container-fluid menu">
-   
+
         <div class="row g-4" data-aos="fade-up" data-aos-duration="1000">
             <!---column--->
 
@@ -121,11 +121,11 @@
                 <div class="item">
                     <div class="row">
                         <div class="col-6 col-md-6">
-							
+
                             <div><span>lorim ipsume</span></div>
                             <div class="bottem-text"><span>lorim ipsume</span></div>
                         </div>
-						
+
                         <div class="col-6 col-md-6">
                             <img src="images/1.jpg" class="img-fluid w-100" id="menuimg" srcset="" />
                         </div>
@@ -218,17 +218,17 @@
                 </div>
             </div>
         </div>
-    
+
 </div>
 
 <!---column--->
 
-				
+
 
 			</div>
 
 
-			
+
 
 		</div>
 	</div>
@@ -241,20 +241,20 @@
 		<div class="container-fluid bodybanner">
 			<div class="row">
 				<div class="col-12" data-aos="zoom-in" data-aos-duration="500">
-	
+
 					<h1>New Arrival</h1>
 				</div>
 			</div>
 		</div>
-	
+
 		<!----body banner menu---->
-	
+
 		<div class="container-fluid menu">
-		
+
 			<div class="row g-4"  data-aos="fade-up" data-aos-duration="1000">
-	
+
 					<!---column--->
-					
+
 				<div class="col-12 col-md-6 col-lg-4  ">
 					<div class="item">
 					<div class="row ">
@@ -269,11 +269,11 @@
 				</div>
 			</div>
 					<!---column--->
-	
-	
-	
+
+
+
 						<!---column--->
-			
+
 						<div class="col-12 col-md-6 col-lg-4  ">
 							<div class="item">
 							<div class="row ">
@@ -287,13 +287,13 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<!---column--->
-	
-	
-	
+
+
+
 					<!---column--->
-			
+
 					<div class="col-12 col-md-6 col-lg-4  ">
 						<div class="item">
 						<div class="row ">
@@ -308,9 +308,9 @@
 					</div>
 				</div>
 				<!---column--->
-	
+
 				<!---column--->
-			
+
 				<div class="col-12 col-md-6 col-lg-4  ">
 					<div class="item">
 					<div class="row ">
@@ -325,9 +325,9 @@
 				</div>
 			</div>
 			<!---column--->
-	
+
 			<!---column--->
-			
+
 			<div class="col-12 col-md-6 col-lg-4  ">
 				<div class="item">
 				<div class="row ">
@@ -342,10 +342,10 @@
 			</div>
 		</div>
 		<!---column--->
-	
-	
+
+
 		<!---column--->
-			
+
 		<div class="col-12 col-md-6 col-lg-4  ">
 			<div class="item">
 			<div class="row ">
@@ -360,14 +360,14 @@
 		</div>
 	</div>
 	<!---column--->
-	
-					
-	
-			
-	
-	
-				
-	
+
+
+
+
+
+
+
+
 			</div>
 		</div>
 
@@ -383,20 +383,20 @@
 			<div class="container-fluid bodybanner" id="onlineexc">
 				<div class="row">
 					<div class="col-12" data-aos="zoom-in" data-aos-duration="500">
-		
+
 						<h1>online exclusive deals</h1>
 					</div>
 				</div>
 			</div>
-		
+
 			<!----body banner menu---->
-		
+
 			<div class="container-fluid menu">
-			
+
 				<div class="row g-4" data-aos="fade-up" data-aos-duration="1000">
-		
+
 						<!---column--->
-						
+
 					<div class="col-12 col-md-6 col-lg-4  ">
 						<div class="item">
 						<div class="row ">
@@ -411,11 +411,11 @@
 					</div>
 				</div>
 						<!---column--->
-		
-		
-		
+
+
+
 							<!---column--->
-				
+
 							<div class="col-12 col-md-6 col-lg-4  ">
 								<div class="item">
 								<div class="row ">
@@ -430,11 +430,11 @@
 							</div>
 						</div>
 						<!---column--->
-		
-		
-		
+
+
+
 						<!---column--->
-				
+
 						<div class="col-12 col-md-6 col-lg-4  ">
 							<div class="item">
 							<div class="row ">
@@ -449,9 +449,9 @@
 						</div>
 					</div>
 					<!---column--->
-		
+
 					<!---column--->
-				
+
 					<div class="col-12 col-md-6 col-lg-4  ">
 						<div class="item">
 						<div class="row ">
@@ -466,9 +466,9 @@
 					</div>
 				</div>
 				<!---column--->
-		
+
 				<!---column--->
-				
+
 				<div class="col-12 col-md-6 col-lg-4  ">
 					<div class="item">
 					<div class="row ">
@@ -483,10 +483,10 @@
 				</div>
 			</div>
 			<!---column--->
-		
-		
+
+
 			<!---column--->
-				
+
 			<div class="col-12 col-md-6 col-lg-4  ">
 				<div class="item">
 				<div class="row ">
@@ -501,22 +501,22 @@
 			</div>
 		</div>
 		<!---column--->
-		
-						
-		
+
+
+
 					</div>
-		
-		
-					
-		
-			
+
+
+
+
+
 			</div>
 
 
 
 
 
-		
+
 
 	<!--model  for Man Menu ---->
 
@@ -562,18 +562,18 @@
 
 
 
-		
-		
-			
-			
-		
 
-			
+
+
+
+
+
+
 			<!-- model left side tag--->
 
 		<!--proe loader-->
 
-	  
+
 
 
 		<!--preloader--->
@@ -586,20 +586,20 @@
     <script src="js/main.js"></script>
 	<script src="js/script.js"></script>
 	<script>
-	
+
 
 
 	  $ (document).ready (function () {
 	$ (".modal a").not (".dropdown-toggle").on ("click", function () {
 		$ (".modal").modal ("hide");
-	
-	
+
+
 	});
 
-	
 
 
-	
+
+
 });
 
 wow = new WOW(

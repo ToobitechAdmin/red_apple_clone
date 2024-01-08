@@ -120,7 +120,14 @@
                                 <div class="ps-4 pb-0">
                                     <p class="iconheading p-0">Address</p>
                                     <div class="padddding">
-                                        <span class="iconspan">F-6 Markaz F 6 Markaz..</span>
+                                        <span class="iconspan">
+                                            @if (isset($cachedData['area']->address))
+                                                {{ $cachedData['area']->address ?? '' }}
+                                            @endif
+                                            @if (isset($cachedData['branch']->address))
+                                                {{ $cachedData['branch']->address ?? '' }}
+                                            @endif
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +142,14 @@
                                 <div class="ps-4 pb-0">
                                     <p class="iconheading p-0">Contact</p>
                                     <div class="padddding">
-                                        <span class="iconspan">(000) 000-000-000</span>
+                                        <span class="iconspan">
+                                            @if (isset($cachedData['area']->number))
+                                                {{ $cachedData['area']->number ?? '' }}
+                                            @endif
+                                            @if (isset($cachedData['branch']->number))
+                                                {{ $cachedData['branch']->number ?? '' }}
+                                            @endif
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -258,10 +272,10 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-success">Save</button>
-                                                                                                <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
+                                                                                                    <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
                         <!-- <p class="text-center">© 2023 GINO GINELLES. All Rights Reserved.</p>
-                                                                                                <br>
-                                                                                                <p class="text-center">Shop powered by ....</p> -->
+                                                                                                    <br>
+                                                                                                    <p class="text-center">Shop powered by ....</p> -->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
