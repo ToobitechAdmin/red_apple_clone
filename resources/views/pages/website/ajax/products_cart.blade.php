@@ -1,7 +1,8 @@
 @if (isset($data))
 
     @foreach ($data as $item)
-        <div class="container-fluid bodybanner">
+
+        <div class="container-fluid bodybanner" id="onlineexc{{ $item->id }}{{ $item->name }}">
             <div class="row" id="chatbazar">
                 <div class="col-12" data-aos="zoom-in" data-aos-duration="500">
                     <h1>{{ $item->name??'' }}</h1>
