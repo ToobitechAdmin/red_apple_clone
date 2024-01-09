@@ -29,6 +29,8 @@ use App\Http\Controllers\Website\CartController;
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Website\UserController;
 
+
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,7 +61,7 @@ use App\Http\Controllers\Website\UserController;
         Route::get('/policy_privacy', 'policyPrivacy')->name('policy.privacy');
         Route::get('/term_condition', 'termCondition')->name('term.condition');
         Route::get('/contact_us', 'contactUs')->name('contact_us');
-        Route::get('/address-page', 'location')->name('location');
+        Route::get('/order-type', 'location')->name('location');
         Route::get('/data-save','saveData')->name('data.save');
     });
     Route::controller(CartController::class)->name('website.')->group(function () {
@@ -139,6 +141,15 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
 Route::get('/error', function () {
     abort(500);
+});
+
+
+
+Route::get('/clear-cache', function () {
+   Artisan::call('cache:clear');
+   Artisan::call('route:clear');
+
+   return  redirect()->route('website.home');
 });
 
 Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);

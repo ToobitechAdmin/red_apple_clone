@@ -14,6 +14,8 @@ use App\Models\Refund;
 use App\Models\Pickuptime;
 use App\Models\Deliverytime;
 use Illuminate\Support\Facades\Cache;
+
+use Illuminate\Support\Facades\Artisan;
 class PagesController extends Controller
 {
 
@@ -46,6 +48,7 @@ class PagesController extends Controller
         $data['city'] = City::all();
         $data['area'] = Area::all();
         $data['branch'] = Branch::with('city')->get();
+        Artisan::call('cache:clear');
         return view('pages.website.main',compact('data'));
         if (!Cache::has('cache-data')) {
         } else {
