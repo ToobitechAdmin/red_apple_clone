@@ -14,7 +14,7 @@
                     @if (isset($status['pickup']['store_status']) && isset($status['pickup']['reverse_status']) && isset($status['pickup']['time']))
                         GINO GINELLES is currently {{ $status['pickup']['store_status'] ?? '' }} and will
                         {{ $status['pickup']['reverse_status'] ?? '' }}
-                        shortly at {{ \Carbon\Carbon::parse($status['pickup']['time'])->format('g:i A') }} for new orders Pickup.
+                        shortly at {{ \Carbon\Carbon::parse($status['pickup']['time'])->format('g:i A') }} {{ $status['pickup']['day'] }} for new orders Pickup.
                     @endif
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -40,7 +40,7 @@
                     @if (isset($status['delivery']['store_status']) && isset($status['delivery']['reverse_status']) && isset($status['delivery']['time']))
                         GINO GINELLES is currently {{ $status['delivery']['store_status'] ?? '' }} and will
                         {{ $status['delivery']['reverse_status'] ?? '' }}
-                        shortly at {{ \Carbon\Carbon::parse($status['delivery']['time'])->format('g:i A') }} for new orders Delivery.
+                        shortly at {{ \Carbon\Carbon::parse($status['delivery']['time'])->format('g:i A') }} {{ $status['delivery']['day'] }}  for new orders Delivery.
                     @endif
                 </marquee>
             </h1>

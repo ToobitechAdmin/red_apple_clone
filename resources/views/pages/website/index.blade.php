@@ -118,7 +118,11 @@
                                 <div class="ps-4 pb-0">
                                     <p class="iconheading p-0">Opening Hours</p>
                                     <div class="padddding">
-                                        <span class="iconspan">{{\Carbon\Carbon::parse($pickup_time->opening_time)->format('g:i A')}} - {{\Carbon\Carbon::parse($pickup_time->closing_time)->format('g:i A')}}</span>
+                                        @if (isset($pickup_time_home))
+
+                                            <span class="iconspan">{{\Carbon\Carbon::parse($pickup_time_home->opening_time)->format('g:i A')}} - {{\Carbon\Carbon::parse($pickup_time_home->closing_time)->format('g:i A')}}</span>
+
+                                        @endif
                                     </div>
                                 </div>
                             </div>
