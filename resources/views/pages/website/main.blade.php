@@ -372,7 +372,7 @@
             })
 
             $('#Next1').click(function() {
-                var  select_branch = $('#brnach_input').val();
+                var select_branch = $('#brnach_input').val();
                 if (select_branch == "Select Area" || select_branch == null || select_branch == '') {
 
                     $('.branch-input-error').removeClass('d-none');
@@ -462,35 +462,39 @@
 
         function nextPrev(n) {
 
+
             var x = document.getElementsByClassName("tab");
             if (n == 1 && !validateForm()) return false;
             x[currentTab].style.display = "none";
-            var select_city =$('#city_input').val();
-            var select_area =$('#area_input').val();
+            var select_city = $('#city_input').val();
+            var select_area = $('#area_input').val();
 
             currentTab = currentTab + n;
-            console.log(select_area);
+            if (n !== -1) {
 
-            if (select_area == "Select Area"  || !select_city ) {
+                if (select_area == "Select Area" || !select_city) {
 
-                currentTab = 1
-                console.log(currentTab);
+                    currentTab = 1
+                    console.log(currentTab);
+                }
+                if (n !== 1) {
+                    currentTab = 1
+                }
+                if (currentTab >= x.length) {
+                    document.getElementById("form2").style.display = "none";
+
+                    saveData();
+
+                    window.open("{{ route('website.home') }}", "_self");
+
+
+                    document.getElementById("nextprevious").style.display = "none";
+                    document.getElementById("all-steps").style.display = "none";
+                    document.getElementById("register").style.display = "none";
+                    document.getElementById("text-message").style.display = "none";
+                }
             }
-            console.log(currentTab);
-            console.log(x.length);
-            if (currentTab >= x.length) {
-                document.getElementById("form2").style.display = "none";
 
-                saveData();
-
-                window.open("{{ route('website.home') }}", "_self");
-
-
-                document.getElementById("nextprevious").style.display = "none";
-                document.getElementById("all-steps").style.display = "none";
-                document.getElementById("register").style.display = "none";
-                document.getElementById("text-message").style.display = "none";
-            }
 
             showTab(currentTab);
 
