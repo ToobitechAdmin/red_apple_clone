@@ -8,19 +8,46 @@
                 shortly at 11:11 for new orders.
             </marquee>
         </div> --}}
-        @if (isset($status['store_status']) && isset($status['reverse_status']) && isset($status['time']))
-            <div class="superNav border-bottom  " style="background-color: #ee6826; columns: white;"
-                data-aos="fade-up">
-                <marquee behavior="" direction="" style="color: white; font-weight: 600; font-size:17px">
-                    GINO GINELLES is currently {{ $status['store_status'] ?? '' }} and will
-                    {{ $status['reverse_status'] ?? '' }}
-                    shortly at {{ \Carbon\Carbon::parse($status['time'])->format('g:i A') }} for new orders.
-                </marquee>
-            </div>
-        @endif
 
-        <nav id="navbar_top" class="navbar navbar-expand-lg  px-2 shadow-sm " style="background : black !important" data-aos="fade-up"
-            data-aos-duration="1000" data-aos-delay="300">
+        <div class="superNav border-bottom  " style="background-color: #ee6826; columns: white;" data-aos="fade-up">
+            <marquee behavior="" direction="" style="color: white; font-weight: 600; font-size:17px">
+                    @if (isset($status['pickup']['store_status']) && isset($status['pickup']['reverse_status']) && isset($status['pickup']['time']))
+                        GINO GINELLES is currently {{ $status['pickup']['store_status'] ?? '' }} and will
+                        {{ $status['pickup']['reverse_status'] ?? '' }}
+                        shortly at {{ \Carbon\Carbon::parse($status['pickup']['time'])->format('g:i A') }} for new orders Pickup.
+                    @endif
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @if (isset($status['delivery']['store_status']) && isset($status['delivery']['reverse_status']) && isset($status['delivery']['time']))
+                        GINO GINELLES is currently {{ $status['delivery']['store_status'] ?? '' }} and will
+                        {{ $status['delivery']['reverse_status'] ?? '' }}
+                        shortly at {{ \Carbon\Carbon::parse($status['delivery']['time'])->format('g:i A') }} for new orders Delivery.
+                    @endif
+                </marquee>
+            </h1>
+        </div>
+
+        <nav id="navbar_top" class="navbar navbar-expand-lg  px-2 shadow-sm " style="background : black !important"
+            data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
 
             <div class="container-fluid">
 
