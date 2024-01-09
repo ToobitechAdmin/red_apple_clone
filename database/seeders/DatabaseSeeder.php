@@ -20,8 +20,10 @@ class DatabaseSeeder extends Seeder
             // ProductSeeder::class,
             // CategorySeeder::class,
             // CitySeeder::class,
-            DeliveryTimeSeeder::class,
-            PickupTimeSeeder::class,
+            // DeliveryTimeSeeder::class,
+            // PickupTimeSeeder::class,
+           AreaSeeder::class,
+           BranchSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

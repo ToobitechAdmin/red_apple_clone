@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\DeliveryTime;
+use App\Models\Deliverytime;
 use Carbon\Carbon;
 
 class PickupTimeSeeder extends Seeder
@@ -53,7 +53,7 @@ class PickupTimeSeeder extends Seeder
         ];
 
         foreach ($arr as $delivery) {
-            DeliveryTime::create($delivery);
+            Deliverytime::create($delivery);
         }
     }
 }
