@@ -1057,11 +1057,12 @@
                     // Handle success if needed
 
                     //getCart('model')
-                    if(response.message=="success"){
+                    if(response.type=="success"){
                         toastr.success(response.message);
                      window.location.href =
                         "{{ route('website.home') }}";
-                    }else{
+                    }
+                    if(response.type=="error"){
                         toastr.error(response.message);
                     }
                 },

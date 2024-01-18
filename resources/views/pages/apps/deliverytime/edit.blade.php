@@ -52,15 +52,6 @@
                         </div>
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="fw-semibold fs-6 mb-2" name="to">To</label>
-                            <!--end::Label-->
-
-                            <!--begin::Input-->
-                            <input type="time" name="to" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter End Time" value="{{ $delivery->to }}" />
-                            <!--end::Input-->
-                        </div>
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
                             <label class="fw-semibold fs-6 mb-2" name="from">From</label>
                             <!--end::Label-->
 
@@ -68,6 +59,16 @@
                             <input type="time" name="from" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Start Time" value="{{ $delivery->from }}" />
                             <!--end::Input-->
                         </div>
+                        <div class="fv-row mb-7">
+                            <!--begin::Label-->
+                            <label class="fw-semibold fs-6 mb-2" name="to">To</label>
+                            <!--end::Label-->
+
+                            <!--begin::Input-->
+                            <input type="time" name="to" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter End Time" value="{{ $delivery->to }}" />
+                            <!--end::Input-->
+                        </div>
+
                         <!--begin::Actions-->
                         <div class="text-center pt-10 mb-5">
                             <button type="submit" class="btn btn-primary">

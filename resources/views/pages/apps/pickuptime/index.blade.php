@@ -245,8 +245,8 @@
                             </td>
 
                             <td>{{ $pickup->day }}</td>
-                            <td>{{ $pickup->opening_time }}</td>
-                            <td>{{ $pickup->closing_time }}</td>
+                            <td>{{\Carbon\Carbon::parse($pickup->opening_time)->format('g:i A')}}</td>
+                            <td>{{\Carbon\Carbon::parse($pickup->closing_time)->format('g:i A')}}</td>
 
                             <td class="actions">
                                 {{-- <form action="{{ route('pickup-time.destroy', $pickup->id) }}" method="post"
