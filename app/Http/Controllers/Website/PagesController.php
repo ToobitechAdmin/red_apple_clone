@@ -14,6 +14,7 @@ use App\Models\Refund;
 use App\Models\Pickuptime;
 use App\Models\Deliverytime;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Artisan;
 class PagesController extends Controller
@@ -21,7 +22,15 @@ class PagesController extends Controller
 
     public function index(Request $request)
     {
-        if (!Cache::has('cache-data')) {
+        $expirationTime = now()->addDays(2);
+        if (now()->gt($expirationTime)) {
+            session()->forget('cached-data');
+            session()->forget('cached-data-expiration');
+
+
+        }
+        if (!session()->has('cached-data')) {
+
             return redirect()->route('website.location');
         } else {
             $data = Category::with(['products'])->get();
@@ -50,7 +59,7 @@ class PagesController extends Controller
         $data['branch'] = Branch::with('city')->get();
         Artisan::call('cache:clear');
         return view('pages.website.main',compact('data'));
-        if (!Cache::has('cache-data')) {
+        if (!session()->has('cached-data')) {
         } else {
             $data = Category::with(['products'])->get();
             return redirect()->route('website.home');
@@ -97,7 +106,8 @@ class PagesController extends Controller
     }
     public function contactUs(Request $request)
     {
-        $cachedData = cache('cache-data');
+        // $cachedData = cache('cache-data');
+        $cachedData = session()->get('cached-data');
         $now= \Carbon\Carbon::now()->format('g:i') ;
         $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
         $data['city'] = City::all();
@@ -147,11 +157,17 @@ class PagesController extends Controller
             $data['branch'] = Branch::find($request->branch_id);
         }
 
-        Cache::put('cache-data', $data, now()->addDays(2));
-        $cachedData = Cache::get('cache-data');
-        //  return $cachedData['deliverytype'];
+        // Cache::put('cache-data', $data, now()->addDays(2));
+        // $cachedData = Cache::get('cache-data');
+        $expirationTime = now()->addDays(2);
+
+        session()->put('cached-data', $data);
+        session()->put('cached-data-expiration', $expirationTime);
+
+
+
         return 'save data';
-        # code...
+
     }
 
     public function getCart()

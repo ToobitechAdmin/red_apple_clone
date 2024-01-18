@@ -362,7 +362,8 @@
 @endsection
 @section('content')
     @php
-        $cachedData = cache('cache-data');
+        // $cachedData = cache('cache-data');
+        $cachedData = session()->get('cached-data');
 
     @endphp
     <div class="container-fluid checkout">
