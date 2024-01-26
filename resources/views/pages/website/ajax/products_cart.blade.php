@@ -27,6 +27,7 @@
                                         <img src="{{ asset($product->image) }}"
                                             class="img-fluid w-50" id="menuimg" srcset="" />
                                     </div>
+
                                 </div>
                             </div>
                         </div>

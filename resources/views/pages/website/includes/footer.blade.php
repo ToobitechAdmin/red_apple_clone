@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div id="allright">
-                <span class="text-white">© 2023 GINO GINELLES. All Rights Reserved.</span>
+                <span class="text-white">© {{ date('Y') }} GINO GINELLES. All Rights Reserved.</span>
                 </div>
             </div>
             <div class="col-sm-4">

@@ -7,16 +7,13 @@
         // $cachedData = cache('cache-data');
         $cachedData = session()->get('cached-data');
 
-        if (isset($cachedData['area']->number)){
-
-            $whatappnumber = "https://wa.me/".$cachedData['area']->number ?? '';
+        if (isset($cachedData['area']->number)) {
+            $whatappnumber = 'https://wa.me/' . $cachedData['area']->number ?? '';
         }
 
-        if (isset($cachedData['branch']->number)){
-
-            $whatappnumber = "https://wa.me/".$cachedData['branch']->number ?? '';
+        if (isset($cachedData['branch']->number)) {
+            $whatappnumber = 'https://wa.me/' . $cachedData['branch']->number ?? '';
         }
-
 
     @endphp
     <!---Banner start--->
@@ -28,13 +25,25 @@
                 aria-label="Slide 2"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100 "
-                    alt="...">
-            </div>
+            @if (isset($slider[0]))
+
+                @foreach ($slider as $key => $item)
+                    @php
+                        $img = $item->image;
+                    @endphp
+                    <div class="carousel-item @if ($key == 0) active @endif">
+
+                        <img src="{{ asset($img) }}" class="img-fluid d-block w-100" alt="...">
+                        {{-- <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100" alt="..."> --}}
+                    </div>
+                @endforeach
+            @else
+                <div class="carousel-item active">
+                    <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100"
+                        alt="...">
+                </div>
+            @endif
+
 
         </div>
         {{-- <div class="container-fluid banner-bottom" data-aos="zoom-in">
@@ -119,9 +128,10 @@
                                     <p class="iconheading p-0">Opening Hours</p>
                                     <div class="padddding">
                                         @if (isset($pickup_time_home))
-
-                                            <span class="iconspan">{{\Carbon\Carbon::parse($pickup_time_home->opening_time)->format('g:i A')}} - {{\Carbon\Carbon::parse($pickup_time_home->closing_time)->format('g:i A')}}</span>
-
+                                            <span
+                                                class="iconspan">{{ \Carbon\Carbon::parse($pickup_time_home->opening_time)->format('g:i A') }}
+                                                -
+                                                {{ \Carbon\Carbon::parse($pickup_time_home->closing_time)->format('g:i A') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -200,13 +210,13 @@
             <div class="col-12" data-aos="zoom-out" data-aos-duration="500">
                 <i class="fa-solid fa-location-dot" style="color: #ee6826 ; font-size: 33px;"></i>
                 @if (isset($cachedData['area']->name))
-                    <a href="{{route('website.location')}}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
+                    <a href="{{ route('website.location') }}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
                         Delivering to: <strong> {{ $cachedData['city'] ?? '' }} |
                             {{ $cachedData['area']->name ?? '' }}
                         </strong></a>
                 @endif
                 @if (isset($cachedData['branch']->name))
-                    <a href="{{route('website.location')}}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
+                    <a href="{{ route('website.location') }}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
                         Pickup from: <strong> {{ $cachedData['city'] ?? '' }} |
                             {{ $cachedData['branch']->name ?? '' }}
                         </strong></a>
@@ -278,21 +288,18 @@
                                 </div> --}}
 
 
-                            {{-- <h5 class="mt-2">Special instructions</h5>
-                                <small class="muted">Any specific preferences? Let us know.</small>
-                                <div class="mt-2">
+                            <h5 class="mt-2" style="color: white; ">Special instructions</h5>
+                            <small class="muted" id="product-description"></small>
 
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div> --}}
 
                         </div>
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-success">Save</button>
-                                                                                                    <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
+                                                                                                                <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
                         <!-- <p class="text-center">© 2023 GINO GINELLES. All Rights Reserved.</p>
-                                                                                                    <br>
-                                                                                                    <p class="text-center">Shop powered by ....</p> -->
+                                                                                                                <br>
+                                                                                                                <p class="text-center">Shop powered by ....</p> -->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
@@ -333,6 +340,8 @@
             $('#model_product_image').attr('src', product.image);
             $('#model_product_price').text('Rs. ' + product.price);
             $('#model_product_price').text('Rs. ' + product.price);
+            $('#product-description').text(product.description);
+
             $('#product_id').val(product.id);
 
         }

@@ -63,6 +63,7 @@ use Illuminate\Support\Facades\Artisan;
         Route::get('/contact_us', 'contactUs')->name('contact_us');
         Route::get('/order-type', 'location')->name('location');
         Route::get('/data-save','saveData')->name('data.save');
+        Route::get('/search-product','searchProduct')->name('search.product');
     });
     Route::controller(CartController::class)->name('website.')->group(function () {
         Route::post('add-to-cart/', 'addToCart')->name('add.to.cart');

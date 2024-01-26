@@ -50,7 +50,6 @@
 
         $cachedData = cache('cache-data');
 
-
     @endphp
 
     {{-- @dd($cart->count()) --}}
@@ -140,6 +139,67 @@
     <script src="{{ asset('assets/website/js/script.js') }}"></script>
     <script>
         $(document).ready(function() {
+            function searchProduct(search) {
+                $.ajax({
+                    type: "get",
+                    url: "{{ route('website.search.product') }}",
+                    data: {
+                        search: search
+                    },
+
+                    success: function(response) {
+                        var $productList = $(".product-list");
+
+                        $productList.empty(); // Clear existing content
+
+                        $.each(response, function(index, element) {
+                            // Create a new list item
+                            var $listItem = $("<li>")
+                                .attr("id", "lisearch")
+                                .attr("data-toggle", "modal")
+                                .attr("data-target", "#myModalmoreproduct-deltails")
+                                .text(element.name);
+
+                            // Attach click event handler using 'on'
+                            $listItem.on("click", function() {
+                                productDetails(element);
+                                $productList.addClass('d-none');
+                                $("#search-field").val('')
+                                $("#searchInputmb").val('')
+                            });
+
+                            // Append the list item to the product list
+                            $productList.append($listItem);
+                        });
+
+                        $productList.removeClass('d-none');
+                    }
+                });
+            }
+            $(document).on("click", "#search", function() {
+                var keyword = $("#search-field").val();
+
+                if (keyword) {
+                    searchProduct(keyword)
+                } else {
+                    $(".product-list").addClass('d-none');
+                }
+
+            });
+            $(document).on("click", "#search-field-small", function() {
+                var keyword = $("#searchInputmb").val();
+
+                if (keyword) {
+
+                    $(".product-list").removeClass('d-none');
+                    searchProduct(keyword)
+                } else {
+                    $(".product-list").addClass('d-none');
+                }
+
+            });
+
+
             function getCart(type) {
 
                 $.ajax({
@@ -269,7 +329,7 @@
                 $(this).parent('.cart-mycart').children('.rate1').text(rate);
             });
 
-            $('.cart').click(function (e) {
+            $('.cart').click(function(e) {
                 getCart('model');
                 e.preventDefault();
 
