@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
-
+use Validator;
 class ProductController extends Controller
 {
     public function productList()
@@ -42,14 +42,19 @@ class ProductController extends Controller
      */
         public function store(Request $request)
     {
-        $request->validate([
+         
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'title' => 'required',
+            'title' => 'nullable',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'description' => 'nullable',
             'price' => 'required|numeric',
+            ]);
 
-        ]);
+            if($validator->fails()){
+                return redirect()->back()->with(['message'=>$validator->errors()->first(),'type'=>'error']); 
+
+            }
 
         if ($request->hasFile('image')) {
             $img = time() . $request->file('image')->getClientOriginalName();
@@ -67,7 +72,9 @@ class ProductController extends Controller
 
         ]);
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully');
+        return redirect()->route('products.index')
+         ->with(['message'=>'Product created successfully','type'=>'success']);
+        
     }
 
     /**
@@ -88,7 +95,7 @@ class ProductController extends Controller
         // Delete the image record from the database
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully');
+        return redirect()->route('products.index')->with(['message'=>'Product deleted successfully','type'=>'success']);
     }
 
     /**
@@ -110,6 +117,9 @@ class ProductController extends Controller
 
 
         $product = Product::find($id);
+        if(!isset($product)){
+            return redirect()->back()->with(['message'=>'Data Not Found','type'=>'error']);
+        }
         $product->name = $request->input('name');
 
         $product->title = $request->input('title');
@@ -134,7 +144,7 @@ class ProductController extends Controller
         $product->category_id=$request->input('category_id');
         $product->save();
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully');
+        return redirect()->route('products.index')->with(['message'=>'Product updated successfully','type'=>'success']);
     }
 
 

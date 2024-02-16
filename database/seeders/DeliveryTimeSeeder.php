@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\PickupTime;
+use App\Models\Pickuptime;
 use Carbon\Carbon;
 
 class DeliveryTimeSeeder extends Seeder

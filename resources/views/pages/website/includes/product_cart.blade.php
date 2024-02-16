@@ -53,8 +53,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6"><button type="button" class="btn btn-danger" id="cartdangerbtn">ADD
-                                    TO CART <span><i class="fa-solid fa-arrow-right abc" style="float:right"></i></span>
+                            <div class="col-md-6"><button type="button" class="btn btn-danger" id="cartdangerbtn">
+                                ADD TO CART <span><i class="fa-solid fa-arrow-right abc" style="float:right"></i></span>
                                 </button></div>
 
 

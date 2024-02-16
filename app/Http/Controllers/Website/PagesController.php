@@ -5,28 +5,48 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Slider;
 use App\Models\City;
 use App\Models\Area;
 use App\Models\Branch;
 use App\Models\Privacy;
+use App\Models\Product;
 use App\Models\Term;
 use App\Models\Refund;
 use App\Models\Pickuptime;
 use App\Models\Deliverytime;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
+
+use Illuminate\Support\Facades\Artisan;
 class PagesController extends Controller
 {
+    public function searchProduct(Request $request){
+
+        $data = Product::where('name', 'like', '%' . $request->search . '%')
+        ->take(10)
+        ->get();
+        return $data;
+    }
 
     public function index(Request $request)
     {
-        if (!Cache::has('cache-data')) {
+        $expirationTime = now()->addDays(2);
+        if (now()->gt($expirationTime)) {
+            session()->forget('cached-data');
+            session()->forget('cached-data-expiration');
+
+
+        }
+        if (!session()->has('cached-data')) {
+
             return redirect()->route('website.location');
         } else {
             $data = Category::with(['products'])->get();
-             $now= \Carbon\Carbon::now()->format('g:i') ;
-             $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
+            $now= \Carbon\Carbon::now()->format('g:i') ;
+            $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
             // $next_day = \Str::upper(\Carbon\Carbon::now()->addDays(1)->format('l'));
-             $pickup_time=Pickuptime::where('day', $day)->where('opening_time','<=',$now)->where('closing_time','>=',$now)->first();
+            $pickup_time_home=Pickuptime::where('day', $day)->first();
             // $next_pickup_time=Pickuptime::where('day', $next_day)->first();
             // if (!isset($pickup_time)) {
             //     $status['store_status'] = "close";
@@ -37,8 +57,9 @@ class PagesController extends Controller
             //     $status['reverse_status'] = "close";
             //     $status['time'] = $pickup_time->closing_time;
             // }
+            $slider = Slider::where('status',1)->get();
 
-            return view('pages.website.index',compact('data','pickup_time'));
+            return view('pages.website.index',compact('data','pickup_time_home','slider'));
         }
     }
     public function location(Request $request)
@@ -46,8 +67,9 @@ class PagesController extends Controller
         $data['city'] = City::all();
         $data['area'] = Area::all();
         $data['branch'] = Branch::with('city')->get();
+        Artisan::call('cache:clear');
         return view('pages.website.main',compact('data'));
-        if (!Cache::has('cache-data')) {
+        if (!session()->has('cached-data')) {
         } else {
             $data = Category::with(['products'])->get();
             return redirect()->route('website.home');
@@ -94,7 +116,8 @@ class PagesController extends Controller
     }
     public function contactUs(Request $request)
     {
-        $cachedData = cache('cache-data');
+        // $cachedData = cache('cache-data');
+        $cachedData = session()->get('cached-data');
         $now= \Carbon\Carbon::now()->format('g:i') ;
         $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
         $data['city'] = City::all();
@@ -144,11 +167,17 @@ class PagesController extends Controller
             $data['branch'] = Branch::find($request->branch_id);
         }
 
-        Cache::put('cache-data', $data, now()->addDays(2));
-        $cachedData = Cache::get('cache-data');
-        //  return $cachedData['deliverytype'];
+        // Cache::put('cache-data', $data, now()->addDays(2));
+        // $cachedData = Cache::get('cache-data');
+        $expirationTime = now()->addDays(2);
+
+        session()->put('cached-data', $data);
+        session()->put('cached-data-expiration', $expirationTime);
+
+
+
         return 'save data';
-        # code...
+
     }
 
     public function getCart()

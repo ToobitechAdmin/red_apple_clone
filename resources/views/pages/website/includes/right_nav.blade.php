@@ -75,7 +75,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <p class="text-center">© 2023 GINO GINELLES. All Rights Reserved.</p>
+                                <p class="text-center">© {{ date('Y') }} GINO GINELLES. All Rights Reserved.</p>
                             </div>
 
                             <div class="col-sm-12">
