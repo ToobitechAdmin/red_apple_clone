@@ -28,13 +28,24 @@
                 aria-label="Slide 2"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100 "
-                    alt="...">
-            </div>
+            
+            @if (isset($slider[0]))
+
+                @foreach ($slider as $key => $item)
+                    @php
+                        $img = $item->image;
+                    @endphp
+                    <div class="carousel-item @if ($key == 0) active @endif">
+
+                        <img src="{{ asset($img) }}" class="img-fluid d-block w-100" alt="...">
+                        {{-- <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100" alt="..."> --}}
+                    </div>
+                @endforeach
+            @else
+                <div class="carousel-item active">
+                    <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100" alt="...">
+                </div>
+            @endif
 
         </div>
         {{-- <div class="container-fluid banner-bottom" data-aos="zoom-in">
@@ -197,7 +208,7 @@
 
     <div class="container-fluid main">
         <div class="row">
-            <div class="col-12" data-aos="zoom-out" data-aos-duration="500">
+            <div class="col-12 d-flex justify-content-center align-items-center" data-aos="zoom-out" data-aos-duration="500">
                 <i class="fa-solid fa-location-dot" style="color: #ee6826 ; font-size: 33px;"></i>
                 @if (isset($cachedData['area']->name))
                     <a href="{{route('website.location')}}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
@@ -249,7 +260,7 @@
                         <div class="row  p-3">
 
                             <img id="model_product_image" src="{{ asset('assets/website/images/pp2.png') }}"
-                                class="img-fluid w-50 " style="margin:auto">
+                                class="img-fluid w-100 " style="margin:auto">
 
                             <div class="namerate ">
                                 <div id="model_product_name" class="name"><br>
@@ -278,12 +289,8 @@
                                 </div> --}}
 
 
-                            {{-- <h5 class="mt-2">Special instructions</h5>
-                                <small class="muted">Any specific preferences? Let us know.</small>
-                                <div class="mt-2">
-
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div> --}}
+                            <h5 class="mt-2" style="color: white; ">Special instructions</h5>
+                            <small class="muted" id="product-description"></small>
 
                         </div>
                     </div>
@@ -306,12 +313,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6"><button type="button" class="btn btn-danger" id="addtocart_btn"
-                                        class="close " data-dismiss="modal">ADD
-                                        TO CART <span><i class="fa-solid fa-arrow-right abc"
-                                                style="float:right"></i></span>
-                                    </button></div>
-
+                                <div class="col-md-6">
+                                    <div class="row">
+                                    <button type="button" class="btn btn-danger" id="addtocart_btn" class="close " data-dismiss="modal">
+                                        ADD TO CART <span><i class="fa-solid fa-arrow-right abc" style="margin-left:20px"></i></span>
+                                    </button>
+                                </div>
+                            </div>
 
                             </div>
                         </div>
@@ -325,6 +333,13 @@
     {{-- End::Product Details Model --}}
 @endsection
 @section('script')
+<script>
+     $('.close').click(function (e) { 
+         $('#myModalcart').modal('hide');
+    
+    });
+</script>
+
     <script>
         function productDetails(product) {
 
@@ -333,6 +348,7 @@
             $('#model_product_image').attr('src', product.image);
             $('#model_product_price').text('Rs. ' + product.price);
             $('#model_product_price').text('Rs. ' + product.price);
+            $('#product-description').text(product.description);
             $('#product_id').val(product.id);
 
         }
@@ -387,7 +403,7 @@
                     success: function(response) {
                         $('#myModalcart').modal('show');
                         getCart1('model');
-
+    
                         toastr.success(response.message);
                     },
                     error: function(xhr, status, error) {
@@ -422,8 +438,8 @@
                             const element = items[key];
 
 
-                            html += ` <tr data-product-id=${element.id}>
-                            <td class=" w-50">
+                            html += ` <tr data-product-id=${element.id} >
+                            <td class="w-50">
                                 <div class="img-withdesc"> <img src="{{ asset('${element.attributes.image}') }}"
                                         class="img-fluid w-25" alt="">
                                     <div class="descr"> ${element.name}  </div>

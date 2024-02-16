@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Slider;
 use App\Models\City;
 use App\Models\Area;
 use App\Models\Branch;
 use App\Models\Privacy;
+use App\Models\Product;
 use App\Models\Term;
 use App\Models\Refund;
 use App\Models\Pickuptime;
@@ -19,6 +21,13 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Artisan;
 class PagesController extends Controller
 {
+    public function searchProduct(Request $request){
+
+        $data = Product::where('name', 'like', '%' . $request->search . '%')
+        ->take(10)
+        ->get();
+        return $data;
+    }
 
     public function index(Request $request)
     {
@@ -34,10 +43,10 @@ class PagesController extends Controller
             return redirect()->route('website.location');
         } else {
             $data = Category::with(['products'])->get();
-             $now= \Carbon\Carbon::now()->format('g:i') ;
-             $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
+            $now= \Carbon\Carbon::now()->format('g:i') ;
+            $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
             // $next_day = \Str::upper(\Carbon\Carbon::now()->addDays(1)->format('l'));
-             $pickup_time_home=Pickuptime::where('day', $day)->first();
+            $pickup_time_home=Pickuptime::where('day', $day)->first();
             // $next_pickup_time=Pickuptime::where('day', $next_day)->first();
             // if (!isset($pickup_time)) {
             //     $status['store_status'] = "close";
@@ -48,8 +57,9 @@ class PagesController extends Controller
             //     $status['reverse_status'] = "close";
             //     $status['time'] = $pickup_time->closing_time;
             // }
+            $slider = Slider::where('status',1)->get();
 
-            return view('pages.website.index',compact('data','pickup_time_home'));
+            return view('pages.website.index',compact('data','pickup_time_home','slider'));
         }
     }
     public function location(Request $request)

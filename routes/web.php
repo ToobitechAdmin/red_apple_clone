@@ -31,6 +31,8 @@ use App\Http\Controllers\Website\UserController;
 
 
 use Illuminate\Support\Facades\Artisan;
+
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,7 +64,9 @@ use Illuminate\Support\Facades\Artisan;
         Route::get('/term_condition', 'termCondition')->name('term.condition');
         Route::get('/contact_us', 'contactUs')->name('contact_us');
         Route::get('/order-type', 'location')->name('location');
+        Route::get('/order-type', 'location')->name('location');
         Route::get('/data-save','saveData')->name('data.save');
+        Route::get('/search-product','searchProduct')->name('search.product');
     });
     Route::controller(CartController::class)->name('website.')->group(function () {
         Route::post('add-to-cart/', 'addToCart')->name('add.to.cart');
@@ -142,8 +146,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 Route::get('/error', function () {
     abort(500);
 });
-
-
 
 Route::get('/clear-cache', function () {
    Artisan::call('cache:clear');
