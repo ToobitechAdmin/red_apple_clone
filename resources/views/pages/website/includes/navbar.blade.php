@@ -132,8 +132,8 @@
             </h1>
         </div>
 
-        <nav id="navbar_top" class="navbar navbar-expand-lg  px-4 shadow-sm " style="background : black !important"
-            data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+        <nav id="navbar_top" class="navbar navbar-expand-lg  px-2 shadow-sm " style="background : black !important" data-aos="fade-up"
+            data-aos-duration="1000" data-aos-delay="300">
 
             <div class="container-fluid">
 
@@ -142,9 +142,9 @@
                             <img
                             src="{{ asset('assets/website/images/mainpagelogo.png') }}" class="img-fluid "
                             id="main-logo">
-                            
-                            </a> 
-                            
+
+                            </a>
+
                             <i class="fa-solid fa-cart-shopping me-1 d-lg-none"
                         style="color: #ee6826; cursor:pointer" data-toggle="modal" data-target="#myModalcart"></i>
                     <i class="fa-solid fa-bars-staggered d-lg-none" style="color: #ee6826; cursor:pointer"

@@ -53,7 +53,7 @@ class DeliveryTimeSeeder extends Seeder
         ];
 
         foreach ($arr as $pickup) {
-            PickupTime::create($pickup);
+            Pickuptime::create($pickup);
         }
     }
 }
