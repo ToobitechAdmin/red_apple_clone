@@ -209,15 +209,15 @@
                                             <!--end::Label-->
                                             <div class="input-group mb-5">
                                                 <span class="input-group-text" id="">S</span>
-                                                <input type="text" class="form-control" placeholder="Small" aria-label="Small" aria-describedby="basic-addon2"/>
+                                                <input type="text" class="form-control" name="small_price" placeholder="Small" aria-label="Small" aria-describedby="basic-addon2"/>
                                             </div>
                                             <div class="input-group mb-5">
                                                 <span class="input-group-text" id="">M</span>
-                                                <input type="text" class="form-control" placeholder="Medium" aria-label="Medium" aria-describedby="basic-addon1"/>
+                                                <input type="text" class="form-control" name="medium_price" placeholder="Medium" aria-label="Medium" aria-describedby="basic-addon1"/>
                                             </div>
                                             <div class="input-group mb-5">
                                                 <span class="input-group-text" id="">L</span>
-                                                <input type="text" class="form-control" placeholder="Large" aria-label="Large" aria-describedby="basic-addon3"/>
+                                                <input type="text" class="form-control" name="large_price" placeholder="Large" aria-label="Large" aria-describedby="basic-addon3"/>
                                             </div>
 
                                             <!--end::Input-->

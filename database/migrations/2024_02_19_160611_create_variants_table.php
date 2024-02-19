@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('product_id')->nullable();
             $table->string('size')->nullable();
-            $table->enum('type', ['S','M','L'])->nullable()->default(['L']);
-            $table->decimal('price',16, 2);
+            $table->enum('type', ['S','M','L'])->nullable()->default('L');
+            $table->decimal('price',16, 2)->nullable();
 
             $table->timestamps();
         });

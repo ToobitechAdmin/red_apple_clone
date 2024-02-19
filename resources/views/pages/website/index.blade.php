@@ -7,16 +7,13 @@
         // $cachedData = cache('cache-data');
         $cachedData = session()->get('cached-data');
 
-        if (isset($cachedData['area']->number)){
-
-            $whatappnumber = "https://wa.me/".$cachedData['area']->number ?? '';
+        if (isset($cachedData['area']->number)) {
+            $whatappnumber = 'https://wa.me/' . $cachedData['area']->number ?? '';
         }
 
-        if (isset($cachedData['branch']->number)){
-
-            $whatappnumber = "https://wa.me/".$cachedData['branch']->number ?? '';
+        if (isset($cachedData['branch']->number)) {
+            $whatappnumber = 'https://wa.me/' . $cachedData['branch']->number ?? '';
         }
-
 
     @endphp
     <!---Banner start--->
@@ -43,7 +40,8 @@
                 @endforeach
             @else
                 <div class="carousel-item active">
-                    <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100" alt="...">
+                    <img src="{{ asset('assets/website/images/carosle1.png') }}" class="img-fluid d-block w-100"
+                        alt="...">
                 </div>
             @endif
 
@@ -130,9 +128,10 @@
                                     <p class="iconheading p-0">Opening Hours</p>
                                     <div class="padddding">
                                         @if (isset($pickup_time_home))
-
-                                            <span class="iconspan">{{\Carbon\Carbon::parse($pickup_time_home->opening_time)->format('g:i A')}} - {{\Carbon\Carbon::parse($pickup_time_home->closing_time)->format('g:i A')}}</span>
-
+                                            <span
+                                                class="iconspan">{{ \Carbon\Carbon::parse($pickup_time_home->opening_time)->format('g:i A') }}
+                                                -
+                                                {{ \Carbon\Carbon::parse($pickup_time_home->closing_time)->format('g:i A') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -208,16 +207,17 @@
 
     <div class="container-fluid main">
         <div class="row">
-            <div class="col-12 d-flex justify-content-center align-items-center" data-aos="zoom-out" data-aos-duration="500">
+            <div class="col-12 d-flex justify-content-center align-items-center" data-aos="zoom-out"
+                data-aos-duration="500">
                 <i class="fa-solid fa-location-dot" style="color: #ee6826 ; font-size: 33px;"></i>
                 @if (isset($cachedData['area']->name))
-                    <a href="{{route('website.location')}}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
+                    <a href="{{ route('website.location') }}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
                         Delivering to: <strong> {{ $cachedData['city'] ?? '' }} |
                             {{ $cachedData['area']->name ?? '' }}
                         </strong></a>
                 @endif
                 @if (isset($cachedData['branch']->name))
-                    <a href="{{route('website.location')}}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
+                    <a href="{{ route('website.location') }}" class="btn btn" style="margin-left: 20px;" id="bodyspan">
                         Pickup from: <strong> {{ $cachedData['city'] ?? '' }} |
                             {{ $cachedData['branch']->name ?? '' }}
                         </strong></a>
@@ -270,23 +270,13 @@
                             </div>
                             <div class="mt-3 new2"></div>
                             <h5>Options</h5>
+
+                            <div id="variants">
                                 <h5>Select</h5>
 
 
-                                <div class="form-check ml-3">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1" checked>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        White
-                                    </label>
-                                </div>
-                            <div class="form-check  ml-3">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Red
-                                    </label>
-                                </div>
+
+                            </div>
 
 
                             <h5 class="mt-2" style="color: white; ">Special instructions</h5>
@@ -296,10 +286,10 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-success">Save</button>
-                                                                                                    <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
+                                                                                                            <button type="button" class="btn btn-default close-btn" data-dismiss="modal">Close</button> -->
                         <!-- <p class="text-center">© 2023 GINO GINELLES. All Rights Reserved.</p>
-                                                                                                    <br>
-                                                                                                    <p class="text-center">Shop powered by ....</p> -->
+                                                                                                            <br>
+                                                                                                            <p class="text-center">Shop powered by ....</p> -->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
@@ -315,11 +305,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
-                                    <button type="button" class="btn btn-danger" id="addtocart_btn" class="close " data-dismiss="modal">
-                                        ADD TO CART <span><i class="fa-solid fa-arrow-right abc" style="margin-left:20px"></i></span>
-                                    </button>
+                                        <button type="button" class="btn btn-danger" id="addtocart_btn" class="close "
+                                            data-dismiss="modal">
+                                            ADD TO CART <span><i class="fa-solid fa-arrow-right abc"
+                                                    style="margin-left:20px"></i></span>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
 
                             </div>
                         </div>
@@ -333,16 +325,15 @@
     {{-- End::Product Details Model --}}
 @endsection
 @section('script')
-<script>
-     $('.close').click(function (e) {
-         $('#myModalcart').modal('hide');
+    <script>
+        $('.close').click(function(e) {
+            $('#myModalcart').modal('hide');
 
-    });
-</script>
+        });
+    </script>
 
     <script>
         function productDetails(product) {
-
             $('#model_product_name').text(product.name);
             $('#model_product_price').text(product.price);
             $('#model_product_image').attr('src', product.image);
@@ -350,6 +341,22 @@
             $('#model_product_price').text('Rs. ' + product.price);
             $('#product-description').text(product.description);
             $('#product_id').val(product.id);
+            var variants = product.variants
+            var options = '';
+            for (let index = 0; index < product.variants.length; index++) {
+                const element = variants[index];
+                options += `<div class="form-check  ml-3">
+                        <input class="form-check-input" checked type="radio" name="variants[]" data-varient-id=${variants[index].id}
+                            id="flexRadioDefault${index}">
+                        <label class="form-check-label" for="flexRadioDefault${index}">
+                            ${variants[index].type} (${variants[index].price})
+                        </label>
+                    </div>`;
+            }
+
+            $("#variants").html('');
+            $("#variants").html(options);
+
 
         }
 
@@ -388,13 +395,24 @@
                 var qty = $('#qty').text();
 
                 var product_id = $("#product_id").val();
-
+                var variant_id = null;
+                var selectedRadioButton = $('input[name="variants[]"]:checked');
+                if (selectedRadioButton.length > 0) {
+                    // If a radio button is selected, retrieve its data-variant-id
+                    variant_id = selectedRadioButton.attr('data-varient-id');
+                    console.log("Selected data-variant-id:", variant_id);
+                } else {
+                    // If no radio button is selected, set variant_id to null
+                    variant_id = null;
+                    console.log("No variant selected.");
+                }
                 $.ajax({
                     type: "POST",
                     url: "{{ route('website.add.to.cart') }}",
                     data: {
                         qty: qty,
-                        product_id: product_id
+                        product_id: product_id,
+                        variant_id: variant_id
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

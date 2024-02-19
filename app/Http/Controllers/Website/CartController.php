@@ -9,6 +9,8 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Deliverytime;
 use App\Models\Pickuptime;
+use App\Models\Variant;
+
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
@@ -40,6 +42,7 @@ class CartController extends Controller
     public function cart(Request $request)
     {
         $data['cart']['item'] = \Cart::getContent();
+        // dd($data['cart']['item']);
         $data['cart']['subtotal'] =\Cart::getSubTotal();
         $data['cart']['total'] =\Cart::getTotal();
         $data['cart']['total_item'] =$data['cart']['item']->count();
@@ -49,15 +52,20 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
 
+        if ($request->variant_id) {
+            # code...
+            $variant = Variant::find($request->variant_id);
+        }
         $product = Product::find($request->product_id);
-
         \Cart::add(array(
-            'id' =>  $product->id,
-            'name' => $product->name,
+            'id' =>  $variant->id??$product->id,
+            'name' => $product->name."(".$variant->type??null.")",
+            'size'=>$variant->type??null,
             'price' => $product->price,
             'quantity' => $request->qty,
             'attributes' => array(
                 'image' => $product->image,
+                'product_id' => $product->id,
             )
         ));
         return array('status'=>'true','message'=>"Add To Cart");

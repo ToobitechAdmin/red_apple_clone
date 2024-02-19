@@ -80,13 +80,46 @@
                             <input type="text" name="description" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Description" value="{{ $product->description }}" />
                             <!--end::Input-->
                         </div>
-                        <div class="fv-row mb-7">
+                        {{-- <div class="fv-row mb-7">
                             <!--begin::Label-->
                             <label class=" fw-semibold fs-6 mb-2" name="price">Price</label>
                             <!--end::Label-->
 
                             <!--begin::Input-->
                             <input type="text" name="price" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Price" value="{{ $product->price }}" />
+                            <!--end::Input-->
+                        </div> --}}
+                        <div class="fv-row mb-7">
+                            <!--begin::Label-->
+                            <label class="required fw-semibold fs-6 mb-2">Variants</label>
+                            <!--end::Label-->
+                            @foreach ($product->variants as $item)
+
+                                @if ($item->type === "S")
+
+                                    <div class="input-group mb-5">
+                                        <span class="input-group-text" id="">S</span>
+                                        <input type="hidden" name="variant_ids[]" value="{{ $item->id }}">
+                                        <input type="text" class="form-control" name="small_price" placeholder="Small" value="{{ $item->price }}" aria-label="Small" aria-describedby="basic-addon2"/>
+                                    </div>
+                                @endif
+                                @if ($item->type === "M")
+
+                                    <div class="input-group mb-5">
+                                        <span class="input-group-text" id="">M</span>
+                                        <input type="hidden" name="variant_ids[]" value="{{ $item->id }}">
+                                        <input type="text" class="form-control" name="medium_price" placeholder="Medium" value="{{ $item->price }}" aria-label="Medium" aria-describedby="basic-addon2"/>
+                                    </div>
+                                @endif
+                                @if ($item->type === "L")
+
+                                    <div class="input-group mb-5">
+                                        <span class="input-group-text" id="">M</span>
+                                        <input type="hidden" name="variant_ids[]" value="{{ $item->id }}">
+                                        <input type="text" class="form-control" name="large_price" placeholder="Large" value="{{ $item->price }}" aria-label="Large" aria-describedby="basic-addon2"/>
+                                    </div>
+                                @endif
+                            @endforeach
                             <!--end::Input-->
                         </div>
                         <div class="form-group">

@@ -9,4 +9,13 @@ class Product extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    /**
+     * Get all of the comments for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function variants()
+    {
+        return $this->hasMany(Variant::class);
+    }
 }

@@ -23,7 +23,7 @@ class PagesController extends Controller
 {
     public function searchProduct(Request $request){
 
-        $data = Product::where('name', 'like', '%' . $request->search . '%')
+        $data = Product::with('variants')->where('name', 'like', '%' . $request->search . '%')
         ->take(10)
         ->get();
         return $data;
@@ -42,7 +42,7 @@ class PagesController extends Controller
 
             return redirect()->route('website.location');
         } else {
-            $data = Category::with(['products'])->get();
+            $data = Category::with(['products','products.variants'])->get();
             $now= \Carbon\Carbon::now()->format('g:i') ;
             $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
             // $next_day = \Str::upper(\Carbon\Carbon::now()->addDays(1)->format('l'));

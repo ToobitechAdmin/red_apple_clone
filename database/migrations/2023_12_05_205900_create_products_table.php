@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('slug')->nullable();
             $table->integer('category_id')->nullable();
-            $table->decimal('price',11, 2);
+            $table->decimal('price',11, 2)->nullable();
             $table->string('status')->nullable()->default(1);
             $table->timestamps();
         });
