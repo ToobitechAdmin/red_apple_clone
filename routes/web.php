@@ -31,8 +31,6 @@ use App\Http\Controllers\Website\UserController;
 
 
 use Illuminate\Support\Facades\Artisan;
-
-use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,7 +61,6 @@ use Illuminate\Support\Facades\Artisan;
         Route::get('/policy_privacy', 'policyPrivacy')->name('policy.privacy');
         Route::get('/term_condition', 'termCondition')->name('term.condition');
         Route::get('/contact_us', 'contactUs')->name('contact_us');
-        Route::get('/order-type', 'location')->name('location');
         Route::get('/order-type', 'location')->name('location');
         Route::get('/data-save','saveData')->name('data.save');
         Route::get('/search-product','searchProduct')->name('search.product');
