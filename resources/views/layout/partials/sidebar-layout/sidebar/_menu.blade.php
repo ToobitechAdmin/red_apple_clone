@@ -9,33 +9,16 @@
         <div class="menu menu-column menu-rounded menu-sub-indention px-3 fw-semibold fs-6" id="#kt_app_sidebar_menu"
             data-kt-menu="true" data-kt-menu-expand="false">
             <!--begin:Menu item-->
-            <div data-kt-menu-trigger="click"
-                class="menu-item menu-accordion {{ request()->routeIs('dashboard') ? 'here show' : '' }}">
+            <div class="menu-item">
                 <!--begin:Menu link-->
-                <span class="menu-link">
+                <a class="menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
+                    href="{{ route('dashboard') }}">
                     <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
                     <span class="menu-title">Dashboards</span>
-                    <span class="menu-arrow"></span>
-                </span>
+                </a>
                 <!--end:Menu link-->
-                <!--begin:Menu sub-->
-                <div class="menu-sub menu-sub-accordion">
-                    <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
-                            href="{{ route('dashboard') }}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">Default</span>
-                        </a>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
-                </div>
-                <!--end:Menu sub-->
             </div>
+
             <!--end:Menu item-->
             <!--begin:Menu item-->
             <div class="menu-item pt-5">
@@ -233,118 +216,120 @@
                 </div>
             </div>
             <div data-kt-menu-trigger="click"
-            class="menu-item menu-accordion {{ request()->routeIs('delivery-time.*') ? 'here show' : '' }} {{ request()->routeIs('pickup-time.*') ? 'here show' : '' }}">
-            <!--begin:Menu link-->
-            <span class="menu-link">
-                <span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>
-                <span class="menu-title">Time Management</span>
-                <span class="menu-arrow"></span>
-            </span>
-            <!--end:Menu link-->
-            <!--begin:Menu sub-->
-            <div class="menu-sub menu-sub-accordion">
-                <!--begin:Menu item-->
-                <div class="menu-item">
-                    <!--begin:Menu link-->
-                    <a class="menu-link {{ request()->routeIs('delivery-time.*') ? 'active' : '' }}"
-                        href="{{ route('delivery-time.index') }}">
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <span class="menu-title">Delivery Time</span>
-                    </a>
-                    <!--end:Menu link-->
+                class="menu-item menu-accordion {{ request()->routeIs('delivery-time.*') ? 'here show' : '' }} {{ request()->routeIs('pickup-time.*') ? 'here show' : '' }}">
+                <!--begin:Menu link-->
+                <span class="menu-link">
+                    <span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>
+                    <span class="menu-title">Time Management</span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <!--end:Menu link-->
+                <!--begin:Menu sub-->
+                <div class="menu-sub menu-sub-accordion">
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link {{ request()->routeIs('delivery-time.*') ? 'active' : '' }}"
+                            href="{{ route('delivery-time.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Delivery Time</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
                 </div>
-                <!--end:Menu item-->
-            </div>
-            <!--end:Menu sub-->
-            <div class="menu-sub menu-sub-accordion">
-                <!--begin:Menu item-->
-                <div class="menu-item">
-                    <!--begin:Menu link-->
+                <!--end:Menu sub-->
+                <div class="menu-sub menu-sub-accordion">
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
 
-                    <a class="menu-link {{ request()->routeIs('pickup-time.*') ? 'active' : '' }}"
-                        href="{{ route('pickup-time.index') }}">
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <span class="menu-title">Pickup Time</span>
-                    </a>
-                    <!--end:Menu link-->
+                        <a class="menu-link {{ request()->routeIs('pickup-time.*') ? 'active' : '' }}"
+                            href="{{ route('pickup-time.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Pickup Time</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
                 </div>
-                <!--end:Menu item-->
-            </div>
-            <div data-kt-menu-trigger="click"
-            class="menu-item menu-accordion {{ request()->routeIs('privacy-policy.*') ? 'here show' : '' }} {{ request()->routeIs('return-refund.*') ? 'here show' : '' }} {{ request()->routeIs('term-condition.*') ? 'here show' : '' }}">
-            <!--begin:Menu link-->
-            <span class="menu-link">
-                <span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>
-                <span class="menu-title">Shopping Info</span>
-                <span class="menu-arrow"></span>
-            </span>
-            <!--end:Menu link-->
-            <!--begin:Menu sub-->
-            <div class="menu-sub menu-sub-accordion">
-                <!--begin:Menu item-->
-                <div class="menu-item">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ request()->routeIs('privacy-policy.*') ? 'here show' : '' }} {{ request()->routeIs('return-refund.*') ? 'here show' : '' }} {{ request()->routeIs('term-condition.*') ? 'here show' : '' }}">
                     <!--begin:Menu link-->
-                    <a class="menu-link {{ request()->routeIs('privacy-policy.*') ? 'active' : '' }}"
-                        href="{{ route('privacy-policy.index') }}">
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <span class="menu-title">Privacy Policy</span>
-                    </a>
+                    <span class="menu-link">
+                        <span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>
+                        <span class="menu-title">Shopping Info</span>
+                        <span class="menu-arrow"></span>
+                    </span>
                     <!--end:Menu link-->
-                </div>
-                <!--end:Menu item-->
-            </div>
-            <!--end:Menu sub-->
-            <div class="menu-sub menu-sub-accordion">
-                <!--begin:Menu item-->
-                <div class="menu-item">
-                    <!--begin:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link {{ request()->routeIs('privacy-policy.*') ? 'active' : '' }}"
+                                href="{{ route('privacy-policy.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Privacy Policy</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                    </div>
+                    <!--end:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
 
-                    <a class="menu-link {{ request()->routeIs('term-condition.*') ? 'active' : '' }}"
-                        href="{{ route('term-condition.index') }}">
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <span class="menu-title">Term And Condition</span>
-                    </a>
-                    <!--end:Menu link-->
+                            <a class="menu-link {{ request()->routeIs('term-condition.*') ? 'active' : '' }}"
+                                href="{{ route('term-condition.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Term And Condition</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                    </div>
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link {{ request()->routeIs('return-refund.*') ? 'active' : '' }}"
+                                href="{{ route('return-refund.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Return And Refund</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                    </div>
                 </div>
-                <!--end:Menu item-->
             </div>
-            <div class="menu-sub menu-sub-accordion">
-                <!--begin:Menu item-->
-                <div class="menu-item">
-                    <!--begin:Menu link-->
-                    <a class="menu-link {{ request()->routeIs('return-refund.*') ? 'active' : '' }}"
-                        href="{{ route('return-refund.index') }}">
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <span class="menu-title">Return And Refund</span>
-                    </a>
-                    <!--end:Menu link-->
-                </div>
-                <!--end:Menu item-->
-            </div>
-        </div>
-        </div>
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link {{ request()->routeIs('order.*') ? 'active' : '' }}" href="{{ route('order.index') }}">
-                <span class="menu-icon">{!! getIcon('rocket', 'fs-2') !!}</span>
-                <span class="menu-title">Orders</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
             <div class="menu-item">
                 <!--begin:Menu link-->
-                <a class="menu-link {{ request()->routeIs('slider.*') ? 'active' : '' }}" href="{{ route('slider.index') }}">
-                    <span class="menu-icon">{!! getIcon('rocket', 'fs-2') !!}</span>
+                <a class="menu-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
+                    href="{{ route('order.index') }}">
+                    <span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>
+                    <span class="menu-title">Orders</span>
+                </a>
+                <!--end:Menu link-->
+            </div>
+            <div class="menu-item">
+                <!--begin:Menu link-->
+                <a class="menu-link {{ request()->routeIs('slider.*') ? 'active' : '' }}"
+                    href="{{ route('slider.index') }}">
+                    <span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>
                     <span class="menu-title">Add Sliders</span>
                 </a>
                 <!--end:Menu link-->

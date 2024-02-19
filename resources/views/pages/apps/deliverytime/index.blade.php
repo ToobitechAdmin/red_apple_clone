@@ -158,17 +158,6 @@
                                         </div>
                                         <div class="fv-row mb-7">
                                             <!--begin::Label-->
-                                            <label class="required fw-semibold fs-6 mb-2" name="to">TO</label>
-                                            <!--end::Label-->
-
-                                            <!--begin::Input-->
-                                            <input type="text" name="to"
-                                                class="form-control form-control-solid mb-3 mb-lg-0"
-                                                placeholder="Enter end time" />
-                                            <!--end::Input-->
-                                        </div>
-                                        <div class="fv-row mb-7">
-                                            <!--begin::Label-->
                                             <label class="required fw-semibold fs-6 mb-2" name="from">From</label>
                                             <!--end::Label-->
 
@@ -178,6 +167,18 @@
                                                 placeholder="Enter start time" />
                                             <!--end::Input-->
                                         </div>
+                                        <div class="fv-row mb-7">
+                                            <!--begin::Label-->
+                                            <label class="required fw-semibold fs-6 mb-2" name="to">TO</label>
+                                            <!--end::Label-->
+
+                                            <!--begin::Input-->
+                                            <input type="text" name="to"
+                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                placeholder="Enter end time" />
+                                            <!--end::Input-->
+                                        </div>
+
                                         <!--end::Roles-->
                                     </div>
                                     <!--end::Input group-->
@@ -248,8 +249,8 @@
                             </td>
 
                             <td>{{ $delivery->day }}</td>
-                            <td>{{ $delivery->from }}</td>
-                            <td>{{ $delivery->to }}</td>
+                            <td>{{\Carbon\Carbon::parse($delivery->from)->format('g:i A')}}</td>
+                            <td>{{\Carbon\Carbon::parse($delivery->to)->format('g:i A')}}</td>
 
                             <td class="actions">
                                 {{-- <form action="{{ route('delivery-time.destroy', $delivery->id) }}" method="post"

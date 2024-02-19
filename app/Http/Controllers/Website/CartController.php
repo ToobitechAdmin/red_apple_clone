@@ -66,7 +66,7 @@ class CartController extends Controller
    // In your controller method
 public function addOrder(Request $request)
 {
-    $now= \Carbon\Carbon::now()->format('g:i') ;
+    $now= \Carbon\Carbon::now();
     $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
     $validator = Validator::make($request->all(), [
         'full_name' => 'required',
@@ -81,10 +81,20 @@ public function addOrder(Request $request)
     }
     $delivery_time = Deliverytime::where('day', $day)->where('from','<=',$now)->where('to','>=',$now)->first();
     $pickup_time=Pickuptime::where('day', $day)->where('opening_time','<=',$now)->where('closing_time','>=',$now)->first();
+    $order_type=$request->order_type;
 
-    if (!isset($delivery_time) || !isset($pickup_time) ) {
-        //return redirect()->route('website.home')->with('error', ' The Shop is not open yet you cannot place order');
-        return response()->json(['type' => 'error', 'message' => 'The Shop is not open yet you cannot place order']);
+    // if ((!isset($delivery_time) || $order_type != "Delivery") && $order_type != "Pickup") {
+    //     return response()->json(['type' => 'error', 'message' => 'Shop is closed for delivery.']);
+    // } elseif (!isset($pickup_time) && $order_type != "Pickup") {
+    //     return response()->json(['type' => 'error', 'message' => 'Shop is closed for pickup.']);
+    // }
+
+    if (!isset($delivery_time) && $order_type == "Delivery") {
+        return response()->json(['type' => 'error', 'message' => 'Shop is closed for delivery.']);
+    }
+
+    if (!isset($pickup_time) && $order_type == "Pickup") {
+        return response()->json(['type' => 'error', 'message' => 'Shop is closed for pickup.']);
     }
     // return response()->json(['type' => 'error', 'message' => 'Your order is placed successfully']);
 
@@ -96,9 +106,9 @@ public function addOrder(Request $request)
 
         // Create a new order
         $this->storeOrder($input);
-      //  return redirect()->route('website.home')->with('success', ' Your order is place successfully');
-       // $data['delivery_status'] = "OPEN NOW";
-       return response()->json(['type' => 'error', 'message' => 'Your order is placed successfully']);
+        return response()->json(['type' => 'success', 'message' => 'Your order is placed successfully']);
+    //    return redirect()->route('website.home')->with('success', ' Your order is place successfully');
+
 
     }
 public function storeOrder($data){

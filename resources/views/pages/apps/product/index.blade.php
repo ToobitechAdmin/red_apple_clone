@@ -151,7 +151,7 @@
 
                                             <!--begin::Input-->
                                             <input type="file" name="image"
-                                                class="form-control form-control-solid mb-3 mb-lg-0" />
+                                                class="form-control form-control-solid mb-3 mb-lg-0" required/>
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->
@@ -176,7 +176,7 @@
                                             <!--begin::Input-->
                                             <input type="text" name="name"
                                                 class="form-control form-control-solid mb-3 mb-lg-0"
-                                                placeholder="Enter Name" />
+                                                placeholder="Enter Name" required/>
                                             <!--end::Input-->
                                         </div>
 
@@ -200,7 +200,7 @@
                                             <!--begin::Input-->
                                             <input type="text" name="price"
                                                 class="form-control form-control-solid mb-3 mb-lg-0"
-                                                placeholder="Enter Price" />
+                                                placeholder="Enter Price" required/>
                                             <!--end::Input-->
                                         </div>
                                         <div class="form-group">

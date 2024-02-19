@@ -55,19 +55,23 @@
 
 
 
-<div class="container-fluid bg-white mt-4">
+<div class="container-fluid bg-white ">
 
     <div class="row" id="fortagesss" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300"
         data-aos-once="true">
 
-        <div class="col-1 dd" style="width: 40px !important;">
+        <!--<div class="dd" style="width: 40px !important;">-->
+        <!--    <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">-->
+        <!--        <i class="fa-solid fa-bars-staggered" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>-->
+        <!--    </button>-->
+        <!--</div>-->
+        <div class="col-12" id="col11">
+            <div class="d-flex">
+            <div class="dd" style="width: 40px !important;">
             <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
                 <i class="fa-solid fa-bars-staggered" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
-
-
             </button>
-        </div>
-        <div class="col-11" id="col11">
+            </div>
             <div class="tab-scroller">
                 <i class="tab-scroller-arrow left-arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -103,7 +107,7 @@
                 </ul>
             </div>
         </div>
-
+        </div>
     </div>
 </div>
 

@@ -25,7 +25,7 @@
                                     </div>
                                     <div class="col-6 col-md-6">
                                         <img src="{{ asset($product->image) }}"
-                                            class="img-fluid w-50" id="menuimg" srcset="" />
+                                            class="img-fluid w-100" id="menuimg" srcset="" />
                                     </div>
                                 </div>
                             </div>

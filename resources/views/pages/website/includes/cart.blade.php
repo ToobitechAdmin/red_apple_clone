@@ -1,3 +1,11 @@
+<style>
+@media screen and (max-width: 767px) {
+   tr {
+    display: flex;
+}
+}
+   
+</style>
 <div class="container">
     <!-- Modal -->
     <div class="modal right fade" id="myModalcart" role="dialog">
@@ -5,10 +13,13 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
+                    
                     <h4 class="modal-title menu" style="float: left;">Your Cart</h4>
                     <h4 class="modal-title menu" style="float: left;">
                         Total items: <span id="cart_model_total_item">0</span> </h4>
-                    <button type="button" class="close " data-dismiss="modal">&times;</button>
+                    <!--<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" >&times;</button>-->
+                    <button type="button" class="close " data-dismiss="modal" >&times;</button>
+                     
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -25,7 +36,7 @@
                                     </thead>
                                     <tbody id="cart_model_items">
                                         <tr>
-                                            <td class=" w-50">
+                                            <td class="w-50">
                                                 <div class="img-withdesc"> <img src="{{ asset('assets/website/images/mainpagelogo.png') }}"
                                                         class="img-fluid w-25" alt="">
                                                     <div class="descr"> meethi puri <span
@@ -56,21 +67,25 @@
                 <div class="modal-footer">
                     <div class="container-fluid footer">
                         <div class="row g-1">
-                            <div class="col-sm-6">Subtotal</div>
-                            <div class="col-sm-6 float-end"><span id="cart_model_subtotal">0.00</span></div>
-
+                            <div class="d-flex justify-content-between">
+                            <div class="">Subtotal</div>
+                            <div class=""><span id="cart_model_subtotal">0.00</span></div>
+                            </div>
                             {{-- <div class="col-sm-6">Tip</div>
                             <div class="col-sm-6 float-end">0</div> --}}
 
-
-                            <div class="col-sm-6">Delivery fee</div>
-                            <div class="col-sm-6 float-end">to be calculated</div>
-
-                            <div class="col-sm-6">
+                            <div class="d-flex justify-content-between">
+                            <div class="">Delivery fee</div>
+                            <div class="">to be calculated</div>
+                            </div>
+                            
+                             <div class="d-flex justify-content-between">
+                            <div class="">
                                 <h4>Total</h4>
                             </div>
-                            <div class="col-sm-6 float-end" >
+                            <div class="" >
                                 <h4>Rs. <span id="cart_model_total">0.00</span></h4>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -80,12 +95,18 @@
                 <div class="modal-footer1">
                     <div class="container-fluid footer">
                         <div class="row g-1">
-                            <div class="col-sm-12">Checkout is currently unavailable as GINO GINELLES is closed and will open
-                                at 11:00 am . Please return
-                                at 11:00 am to place your order while we keep your items safely in the cart.</div>
-                            <p>please <strong> click here </strong> for our contact information</p>
+                            <!--<div class="col-sm-12">-->
+                            <!--    Checkout is currently unavailable as GINO GINELLES is closed and will open-->
+                            <!--    at 11:00 am . Please return-->
+                            <!--    at 11:00 am to place your order while we keep your items safely in the cart.</div>-->
+                            <!--<p>please <strong> click here </strong> for our contact information
+                            style="float:right; margin-left:20px"
+                            </p>-->
+                                    <a href="{{route('website.checkout')}}"  class="btn btn-danger " id="addtocart_btn">
+                                    PROCEED TO CHECK OUT <span><i class=" fa-solid fa-arrow-right abc" ></i></span>
+                                    </a>
 
-                        </div>
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
@@ -95,3 +116,7 @@
 </div>
 
 </div>
+
+
+
+

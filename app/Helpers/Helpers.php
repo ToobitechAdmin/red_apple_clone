@@ -432,19 +432,73 @@ if (!function_exists('getIcon')) {
     }
 
     function navbarData(){
-        $now= \Carbon\Carbon::now()->format('g:i') ;
+            $now= \Carbon\Carbon::now();
             $day=\Str::upper(\Carbon\Carbon::now()->format('l'));
             $next_day = \Str::upper(\Carbon\Carbon::now()->addDays(1)->format('l'));
             $pickup_time=App\Models\Pickuptime::where('day', $day)->where('opening_time','<=',$now)->where('closing_time','>=',$now)->first();
+            $today_pickup_time=App\Models\Pickuptime::where('day', $day)->where('opening_time','>=',$now)->first();
             $next_pickup_time=App\Models\Pickuptime::where('day', $next_day)->first();
+
+            $delivery_time=App\Models\Deliverytime::where('day', $day)->where('from','<=',$now)->where('to','>=',$now)->first();
+            $today_delivery_time=App\Models\Deliverytime::where('day', $day)->where('from','>=',$now)->first();
+            $next_delivery_time=App\Models\Deliverytime::where('day', $next_day)->first();
             if (!isset($pickup_time)) {
-                $status['store_status'] = "CLOSE";
-                $status['reverse_status'] = "OPEN";
-                $status['time'] = $next_pickup_time->opening_time;
+                $status['pickup']['store_status'] = "CLOSE";
+                $status['pickup']['reverse_status'] = "OPEN";
+
+                if(isset($today_pickup_time)){
+
+                    $status['pickup']['day']  = "Today";
+                    $status['pickup']['time'] = $today_pickup_time->opening_time;
+                }else{
+                    $status['pickup']['day']  = "Tomorrow";
+                    $status['pickup']['time'] = $next_pickup_time->opening_time;
+                }
+
             } else {
-                $status['store_status'] = "OPEN";
-                $status['reverse_status'] = "CLOSE";
-                $status['time'] = $pickup_time->closing_time;
+                $status['pickup']['store_status'] = "OPEN";
+                $status['pickup']['reverse_status'] = "CLOSE";
+
+                if(isset($today_pickup_time)){
+
+                    $status['pickup']['day']  = "Today";
+                    $status['pickup']['time'] = $today_pickup_time->opening_time;
+                }elseif ($pickup_time) {
+                    $status['pickup']['day']  = "Today";
+                    $status['pickup']['time'] = $pickup_time->closing_time;
+                }else{
+                    $status['pickup']['day']  = "Tomorrow";
+                    $status['pickup']['time'] = $next_pickup_time->opening_time;
+                }
+            }
+
+            if (!isset($delivery_time)) {
+                $status['delivery']['store_status'] = "CLOSE";
+                $status['delivery']['reverse_status'] = "OPEN";
+                if(isset($today_delivery_time)){
+
+                    $status['delivery']['day']  = "Today";
+                    $status['delivery']['time'] = $today_delivery_time->from;
+                }else{
+                    $status['delivery']['day']  = "Tomorrow";
+                    $status['delivery']['time'] = $next_delivery_time->from;
+                }
+
+            } else {
+                $status['delivery']['store_status'] = "OPEN";
+                $status['delivery']['reverse_status'] = "CLOSE";
+                if(isset($today_delivery_time)){
+
+                    $status['delivery']['day']  = "Today";
+                    $status['delivery']['time'] = $today_delivery_time->from;
+                }elseif ($delivery_time) {
+                    $status['delivery']['day']  = "Today";
+                    $status['delivery']['time'] = $delivery_time->to;
+                }else{
+                    $status['delivery']['day']  = "Tomorrow";
+                    $status['delivery']['time'] = $next_delivery_time->from;
+                }
+
             }
 
             return $status;

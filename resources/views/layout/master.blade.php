@@ -16,7 +16,7 @@
     <link rel="canonical" href="" />
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}" /> --}}
     <script src="{{ asset('assets/js/ckeditor/ckeditor.js') }}"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     {!! includeFavicon() !!}
 
     <!--begin::Fonts-->

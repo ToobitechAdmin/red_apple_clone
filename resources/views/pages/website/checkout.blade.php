@@ -362,7 +362,8 @@
 @endsection
 @section('content')
     @php
-        $cachedData = cache('cache-data');
+        // $cachedData = cache('cache-data');
+        $cachedData = session()->get('cached-data');
 
     @endphp
     <div class="container-fluid checkout">
@@ -1057,11 +1058,12 @@
                     // Handle success if needed
 
                     //getCart('model')
-                    if(response.message=="success"){
+                    if(response.type=="success"){
                         toastr.success(response.message);
                      window.location.href =
                         "{{ route('website.home') }}";
-                    }else{
+                    }
+                    if(response.type=="error"){
                         toastr.error(response.message);
                     }
                 },

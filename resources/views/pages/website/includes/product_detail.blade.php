@@ -18,7 +18,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <div class="row  p-3">
+                    <div class="row">
 
                         <img src="{{ asset('assets/website/images/pp2.png') }}" class="img-fluid w-50 "
                             style="margin:auto">
@@ -76,8 +76,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6"><button type="button" class="btn btn-danger" id="cartdangerbtn">ADD
-                                    TO CART <span><i class="fa-solid fa-arrow-right abc" style="float:right"></i></span>
+                            <div class="col-md-6"><button type="button" class="btn btn-danger" id="cartdangerbtn">
+                                ADD TO CART <span><i class="fa-solid fa-arrow-right abc" style="float:right"></i></span>
                                 </button></div>
 
 
