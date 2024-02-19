@@ -151,7 +151,7 @@
 
                                             <!--begin::Input-->
                                             <input type="file" name="image"
-                                                class="form-control form-control-solid mb-3 mb-lg-0" required/>
+                                                class="form-control form-control-solid mb-3 mb-lg-0" required />
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->
@@ -176,7 +176,7 @@
                                             <!--begin::Input-->
                                             <input type="text" name="name"
                                                 class="form-control form-control-solid mb-3 mb-lg-0"
-                                                placeholder="Enter Name" required/>
+                                                placeholder="Enter Name" required />
                                             <!--end::Input-->
                                         </div>
 
@@ -192,7 +192,7 @@
                                                 placeholder="Write something about product" />
                                             <!--end::Input-->
                                         </div>
-                                        <div class="fv-row mb-7">
+                                        {{-- <div class="fv-row mb-7 has-no-varient">
                                             <!--begin::Label-->
                                             <label class="required fw-semibold fs-6 mb-2" name="price">Price</label>
                                             <!--end::Label-->
@@ -200,7 +200,26 @@
                                             <!--begin::Input-->
                                             <input type="text" name="price"
                                                 class="form-control form-control-solid mb-3 mb-lg-0"
-                                                placeholder="Enter Price" required/>
+                                                placeholder="Enter Price" required />
+                                            <!--end::Input-->
+                                        </div> --}}
+                                        <div class="fv-row mb-7">
+                                            <!--begin::Label-->
+                                            <label class="required fw-semibold fs-6 mb-2">Variants</label>
+                                            <!--end::Label-->
+                                            <div class="input-group mb-5">
+                                                <span class="input-group-text" id="">S</span>
+                                                <input type="text" class="form-control" placeholder="Small" aria-label="Small" aria-describedby="basic-addon2"/>
+                                            </div>
+                                            <div class="input-group mb-5">
+                                                <span class="input-group-text" id="">M</span>
+                                                <input type="text" class="form-control" placeholder="Medium" aria-label="Medium" aria-describedby="basic-addon1"/>
+                                            </div>
+                                            <div class="input-group mb-5">
+                                                <span class="input-group-text" id="">L</span>
+                                                <input type="text" class="form-control" placeholder="Large" aria-label="Large" aria-describedby="basic-addon3"/>
+                                            </div>
+
                                             <!--end::Input-->
                                         </div>
                                         <div class="form-group">
@@ -348,6 +367,13 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
+        $("#flexCheckDefault").change(function(e) {
+            if (this.checked) {
+                $(".has-varient").removeClass("d-none");
+            } else {
+                $(".has-varient").addClass("d-none");
+            }
+        });
         $(document).ready(function() {
             // Function to filter the table based on the search input
             function filterTable() {

@@ -28,7 +28,7 @@
                 aria-label="Slide 2"></button>
         </div>
         <div class="carousel-inner">
-            
+
             @if (isset($slider[0]))
 
                 @foreach ($slider as $key => $item)
@@ -269,7 +269,7 @@
                                 <div id="model_product_price" class="rate"></div>
                             </div>
                             <div class="mt-3 new2"></div>
-                            {{-- <h5>Options</h5>
+                            <h5>Options</h5>
                                 <h5>Select</h5>
 
 
@@ -279,14 +279,14 @@
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         White
                                     </label>
-                                </div> --}}
-                            {{-- <div class="form-check  ml-3">
+                                </div>
+                            <div class="form-check  ml-3">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
                                         id="flexRadioDefault2">
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         Red
                                     </label>
-                                </div> --}}
+                                </div>
 
 
                             <h5 class="mt-2" style="color: white; ">Special instructions</h5>
@@ -334,9 +334,9 @@
 @endsection
 @section('script')
 <script>
-     $('.close').click(function (e) { 
+     $('.close').click(function (e) {
          $('#myModalcart').modal('hide');
-    
+
     });
 </script>
 
@@ -403,7 +403,7 @@
                     success: function(response) {
                         $('#myModalcart').modal('show');
                         getCart1('model');
-    
+
                         toastr.success(response.message);
                     },
                     error: function(xhr, status, error) {
